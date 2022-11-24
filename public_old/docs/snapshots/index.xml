@@ -1,0 +1,71 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dell Technologies – Snapshots</title>
+    <link>https://dell.github.io/csm-docs/docs/snapshots/</link>
+    <description>Recent content in Snapshots on Dell Technologies</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://dell.github.io/csm-docs/docs/snapshots/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Volume Group Snapshots</title>
+      <link>https://dell.github.io/csm-docs/docs/snapshots/volume-group-snapshots/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dell.github.io/csm-docs/docs/snapshots/volume-group-snapshots/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;volume-group-snapshot-feature&#34;&gt;Volume Group Snapshot Feature&lt;/h2&gt;
+&lt;p&gt;In order to use Volume Group Snapshots, ensure the volume snapshot module is enabled.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubernetes Volume Snapshot CRDs&lt;/li&gt;
+&lt;li&gt;Volume Snapshot Controller&lt;/li&gt;
+&lt;li&gt;Volume Snapshot Class&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;creating-volume-group-snapshots&#34;&gt;Creating Volume Group Snapshots&lt;/h3&gt;
+&lt;p&gt;This is a sample manifest for creating a Volume Group Snapshot:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;apiVersion: volumegroup.storage.dell.com/v1
+kind: DellCsiVolumeGroupSnapshot
+metadata:
+  name: &amp;quot;vgs-test&amp;quot;
+  namespace: &amp;quot;test&amp;quot;
+spec:
+  # Add fields here
+  driverName: &amp;quot;csi-&amp;lt;driver-name&amp;gt;.dellemc.com&amp;quot; # Example: &amp;quot;csi-powerstore.dellemc.com&amp;quot;
+  # defines how to process VolumeSnapshot members when volume group snapshot is deleted
+  # &amp;quot;Retain&amp;quot; - keep VolumeSnapshot instances
+  # &amp;quot;Delete&amp;quot; - delete VolumeSnapshot instances
+  memberReclaimPolicy: &amp;quot;Retain&amp;quot;
+  volumesnapshotclass: &amp;quot;&amp;lt;snapshot-class&amp;gt;&amp;quot;
+  pvcLabel: &amp;quot;vgs-snap-label&amp;quot;
+  # pvcList:
+  #   - &amp;quot;pvcName1&amp;quot;
+  #   - &amp;quot;pvcName2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The PVC labels field specifies a label that must be present in PVCs that are to be snapshotted. Here is a sample of that portion of a .yaml for a PVC:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;metadata:
+  name: volume1
+  namespace: test
+  labels:
+    volume-group: vgs-snap-label
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;More details about the installation and use of the VolumeGroup Snapshotter can be found here: &lt;a href=&#34;https://github.com/dell/csi-volumegroup-snapshotter&#34;&gt;dell-csi-volumegroup-snapshotter&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Volume group cannot be seen from the Kubernetes level as of now only volume group snapshots can be viewed as a CRD&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Volume Group Snapshots feature is supported with Helm.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

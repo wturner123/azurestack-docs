@@ -1,0 +1,675 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.103.1" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/csm-docs/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/csm-docs/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/csm-docs/favicons/android-192x192.png" sizes="192x192">
+
+<title>PowerScale | Dell Technologies</title>
+<meta name="description" content="Code features for PowerScale Driver">
+<meta property="og:title" content="PowerScale" />
+<meta property="og:description" content="Code features for PowerScale Driver" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dell.github.io/csm-docs/v2/csidriver/features/powerscale/" /><meta property="article:section" content="v2" />
+
+<meta property="article:modified_time" content="2022-06-22T16:36:23+05:30" /><meta property="og:site_name" content="Dell Technologies" />
+
+<meta itemprop="name" content="PowerScale">
+<meta itemprop="description" content="Code features for PowerScale Driver">
+<meta itemprop="dateModified" content="2022-06-22T16:36:23+05:30" />
+<meta itemprop="wordCount" content="3230">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PowerScale"/>
+<meta name="twitter:description" content="Code features for PowerScale Driver"/>
+
+
+
+
+<link rel="preload" href="/csm-docs/scss/main.min.d0bfa16d819c9dab58324fe79e0fe1241c505038028e706c280c6fb590220afe.css" as="style">
+<link href="/csm-docs/scss/main.min.d0bfa16d819c9dab58324fe79e0fe1241c505038028e706c280c6fb590220afe.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/prism.css"/>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/csm-docs/">
+		<span class="navbar-logo"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1017 132"><defs><style>.cls-1{fill:#fff}</style></defs><title>DellTech_Logo_Prm_Wht_rgb</title><path class="cls-1" d="M1015 84.89c0-12.23-6.8-17.66-20.39-20.38s-21.73-4.08-21.73-13.58c0-6.8 5.44-10.87 15-10.87 12.22.0 16.3 5.43 16.3 12.22l1.36 1.36h5.43l1.37-1.36c0-13.58-10.88-19-24.46-19-15 0-23.1 8.15-23.1 17.67.0 10.86 8.15 16.3 21.73 19s20.38 4.08 20.38 15c0 6.79-4.07 12.23-17.66 12.23-12.22.0-17.66-6.8-17.66-15l-1.35-1.36h-5.44l-1.35 1.36c0 12.23 9.5 21.74 25.8 21.74 17.66.0 25.82-8.15 25.82-19M956.58 71.31l1.36-1.37V65.87c0-19-10.87-32.61-29.89-32.61s-29.89 13.59-29.89 32.61v2.72c0 19 9.51 35.32 31.25 35.32 19 0 25.81-12.23 27.17-20.38l-1.36-1.36h-5.43l-1.36 1.36c-2.72 8.15-8.16 13.59-19 13.59-17.66.0-23.1-16.31-23.1-24.46l1.36-1.35zm-8.15-6.8H907.67l-1.36-1.36c0-9.51 5.44-23.09 21.74-23.09s21.74 13.58 21.74 23.09zm-59.78 36.68V36l-1.36-1.35h-5.43L880.5 36v65.22l1.36 1.36h5.43zm0-78.8V14.24l-1.36-1.36h-5.43l-1.36 1.36v8.15l1.36 1.36h5.43zM837 97.12c-13.59.0-21.74-9.52-21.74-28.53S823.44 40.06 837 40.06s21.73 9.5 21.73 28.53S850.61 97.12 837 97.12M858.76 93c0 17.66-4.07 31.25-20.38 31.25-12.22.0-16.3-5.44-17.66-12.23l-1.35-1.36h-5.44l-1.36 1.36c1.36 10.87 9.51 19 25.81 19 17.67.0 28.53-10.87 28.53-38V36l-1.35-1.35h-4.08L860.12 36l-1.36 8.16H857.4c-2.71-5.43-9.5-10.87-21.74-10.87-19 0-28.53 15-28.53 35.33s9.52 35.32 28.53 35.32c12.24.0 19-5.43 21.74-10.87zm-88.3-53c13.58.0 23.09 10.87 23.09 28.53S784 97.12 770.46 97.12s-23.1-10.87-23.1-28.53 9.51-28.53 23.1-28.53m0 63.85c17.66.0 31.25-12.23 31.25-35.32s-13.59-35.33-31.25-35.33-31.25 12.23-31.25 35.33 13.59 35.32 31.25 35.32m-40.76-2.72V8.81l-1.36-1.36h-5.43l-1.36 1.36v92.38l1.36 1.36h5.43zM680.8 40.06c13.58.0 23.09 10.87 23.09 28.53s-9.51 28.53-23.09 28.53-23.1-10.87-23.1-28.53 9.51-28.53 23.1-28.53m0 63.85c17.66.0 31.25-12.23 31.25-35.32S698.46 33.26 680.8 33.26s-31.25 12.23-31.25 35.33 13.59 35.32 31.25 35.32m-39.4-2.72V60.43c0-17.66-9.51-27.17-24.45-27.17-9.52.0-17.67 4.08-21.74 10.87h-1.36L592.49 36l-1.36-1.35h-4.08L585.7 36v65.22l1.35 1.36h5.44l1.36-1.36V64.51c0-15 6.79-24.45 21.73-24.45 10.87.0 17.66 6.79 17.66 20.37v40.76l1.37 1.36H640zm-69.29.0V60.43c0-17.66-9.51-27.17-24.45-27.17-9.52.0-17.66 4.08-21.74 10.87h-1.36V8.81L523.2 7.45h-5.43l-1.36 1.36v92.38l1.36 1.36h5.43l1.36-1.36V64.51c0-15 6.8-24.45 21.74-24.45 10.87.0 17.66 6.79 17.66 20.37v40.76l1.36 1.36h5.44zM455.28 68.59c0-19 9.5-28.53 23.09-28.53s19 8.15 20.38 16.29l1.35 1.37h5.44l1.36-1.37c-1.36-13.58-12.23-23.09-28.53-23.09-17.66.0-31.24 10.87-31.24 35.33s13.58 35.32 31.24 35.32c16.3.0 27.17-9.51 28.53-23.1l-1.36-1.36H500.1l-1.35 1.36C497.39 89 492 97.12 478.37 97.12s-23.09-9.52-23.09-28.53m-14.95 2.72 1.36-1.37V65.87c0-19-10.87-32.61-29.9-32.61s-29.88 13.59-29.88 32.61v2.72c0 19 9.51 35.32 31.25 35.32 19 0 25.81-12.23 27.17-20.38L439 82.17h-5.43l-1.36 1.36c-2.72 8.15-8.15 13.59-19 13.59-17.66.0-23.1-16.31-23.1-24.46l1.36-1.35zm-8.15-6.8H391.42l-1.36-1.36c0-9.51 5.44-23.09 21.73-23.09s21.75 13.58 21.75 23.09zM395.57 12.88V8.81l-1.36-1.36H323.56L322.2 8.81v4.07l1.36 1.36h29.89l1.36 1.36v85.59l1.36 1.36h5.43l1.36-1.36V15.6l1.36-1.36h29.89z"/><path class="cls-1" d="M322.2 83.65v18.9H260.85V7.45h21.6v76.2zM38.55 102.55A47.57 47.57.0 0084.58 67l53.8 42 53.77-42v35.56H253.5V83.65H213.75V7.45h-21.6V43L140.58 83.3l-11.54-9L153.73 55l26.89-21-15.35-12-51.58 40.3-11.53-9L153.73 13 138.38 1 84.58 43a47.57 47.57.0 00-46-35.58H0v95.1zM21.6 83.65V26.35H38.55c14.33.0 26 12.83 26 28.65s-11.67 28.65-26 28.65z"/></svg></span><span class="font-weight-bold">Dell Technologies</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/csm-docs/docs/" ><span>Dell Technologies (Dell) Container Storage Modules (CSM)</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/dell/csm" target="_blank" ><span>GitHub</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown mr-4 d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	
+	
+	<a class="dropdown-item" href="https://dell.github.io/csm-docs/docs/">Current(v1.3)</a>
+	
+	<a class="dropdown-item" href="https://dell.github.io/csm-docs/v1">v1.2.1</a>
+	
+	<a class="dropdown-item" href="https://dell.github.io/csm-docs/v2">v1.2</a>
+	
+	<a class="dropdown-item" href="https://dell.github.io/csm-docs/v3">v1.1</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/csm-docs/offline-search-index.1e79a0908736ce645e100ec566b3c5a3.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        
+
+<h2 id="multicluster-support">Multicluster support</h2>
+<p>You can connect a single CSI-PowerScale driver with multiple PowerScale clusters.</p>
+<p><strong>Pre-Requisites:</strong></p>
+<ol>
+<li>Creation of secret.yaml with credentials related to one or more Clusters.</li>
+<li>Creation of (at least) one Storage class for each cluster.</li>
+<li>Creation of custom-volumesnapshot classes with proper isiPath matching corresponding storage classes.</li>
+<li>Inclusion of cluster name in volume handle, if you want to provision existing static volumes.</li>
+</ol>
+<h2 id="consuming-existing-volumes-with-static-provisioning">Consuming existing volumes with static provisioning</h2>
+<p>You can use existent volumes from the PowerScale array as Persistent Volumes in your Kubernetes, perform the following steps:</p>
+<ol>
+<li>Open your volume in One FS, and take a note of volume-id.</li>
+<li>Create PersistentVolume and use this volume-id as a volumeHandle in the manifest. Modify other parameters according to your needs.</li>
+<li>In the following example, the PowerScale cluster accessZone is assumed as &lsquo;System&rsquo;, storage class as &lsquo;isilon&rsquo;, cluster name as &lsquo;pscale-cluster&rsquo; and volume&rsquo;s internal name as &lsquo;isilonvol&rsquo;. The volume-handle should be in the format of &lt;volume_name&gt;=<em>=</em>=&lt;export_id&gt;=<em>=</em>=<zone>=<em>=</em>=&lt;cluster_name&gt;</li>
+</ol>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: isilonstaticpv
+  namespace: default
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: isilon
+  csi:
+    driver: csi-isilon.dellemc.com
+    volumeAttributes:
+        Path: &quot;/ifs/data/csi/isilonvol&quot;
+        Name: &quot;isilonvol&quot;
+        AzServiceIP: 'XX.XX.XX.XX'
+    volumeHandle: isilonvol=_=_=652=_=_=System=_=_=pscale-cluster
+  claimRef:
+    name: isilonstaticpvc
+    namespace: default
+</code></pre>
+<ol start="3">
+<li>Create PersistentVolumeClaim to use this PersistentVolume.</li>
+</ol>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: isilonstaticpvc
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+        requests:
+          storage: 5Gi
+  volumeName: isilonstaticpv
+  storageClassName: isilon           
+</code></pre>
+<ol start="4">
+<li>Then use this PVC as a volume in a pod.</li>
+</ol>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+    name: static-prov-pod
+spec:
+    containers:
+      - name: test
+        image: docker.io/centos:latest
+        command: [ &quot;/bin/sleep&quot;, &quot;3600&quot; ]
+        volumeMounts:
+          - mountPath: &quot;/data0&quot;
+            name: pvol
+    volumes:
+      - name: pvol
+        persistentVolumeClaim:
+            claimName: isilonstaticpvc
+</code></pre>
+<ol start="5">
+<li>After the pod becomes <code>Ready</code> and <code>Running</code>, you can start to use this pod and volume.</li>
+</ol>
+<h2 id="pvc-creation-feature">PVC Creation Feature</h2>
+<p>Following yaml content can be used to create a PVC without referring any PV.</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: testvolume
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+        requests:
+          storage: 5Gi
+  storageClassName: isilon           
+</code></pre>
+<h2 id="volume-snapshot-feature">Volume Snapshot Feature</h2>
+<p>The CSI PowerScale driver version 2.0 and later supports managing v1 snapshots.</p>
+<p>In order to use Volume Snapshots, ensure the following components have been deployed to your cluster:</p>
+<ul>
+<li>Kubernetes Volume Snapshot CRDs</li>
+<li>Volume Snapshot Controller</li>
+</ul>
+<blockquote>
+<p>For general use, update the snapshot controller YAMLs with an appropriate namespace before installing. For
+example, on a Vanilla Kubernetes cluster, update the namespace from default to kube-system before issuing the
+kubectl create command.</p>
+</blockquote>
+<h3 id="volume-snapshot-class">Volume Snapshot Class</h3>
+<p>During the installation of CSI PowerScale driver version 2.0 and higher, no default Volume Snapshot Class will get created.</p>
+<p>Following are the manifests for the Volume Snapshot Class:</p>
+<ol>
+<li>VolumeSnapshotClass</li>
+</ol>
+<pre><code class="language-yaml">
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: &quot;isilon-snapclass&quot;
+driver: csi-isilon.dellemc.com
+#The deletionPolicy of a volume snapshot class can either be Retain or Delete
+#If the deletionPolicy is Delete, then the underlying storage snapshot is deleted along with the VolumeSnapshotContent object.
+#If the deletionPolicy is Retain, then both the underlying snapshot and VolumeSnapshotContent remain
+deletionPolicy: Delete
+parameters:
+  #IsiPath should match with respective storageClass IsiPath
+  IsiPath: &quot;/ifs/data/csi&quot;
+</code></pre>
+<p>The following is a sample manifest for creating a Volume Snapshot using the <strong>v1</strong> snapshot APIs; The following snippet assumes that the persistent volume claim name is testvolume.</p>
+<pre><code class="language-yaml">apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: pvcsnap
+  namespace: default
+spec:
+  volumeSnapshotClassName: isilon-snapclass
+  source:
+    persistentVolumeClaimName: testvolume
+</code></pre>
+<p>Once the VolumeSnapshot has been successfully created by the CSI PowerScale driver, a VolumeSnapshotContent object is automatically created. Once the status of the VolumeSnapshot object has the <em>readyToUse</em> field set to <em>true</em> , it is available for use.</p>
+<p>Following is the relevant section of VolumeSnapshot object status:</p>
+<pre><code class="language-yaml">status:
+  boundVolumeSnapshotContentName: snapcontent-xxxxxxxxxxxxx
+  creationTime: &quot;2020-07-16T08:42:12Z&quot;
+  readyToUse: true
+</code></pre>
+<h3 id="creating-pvcs-with-volume-snapshots-as-source">Creating PVCs with Volume Snapshots as Source</h3>
+<p>The following is a sample manifest for creating a PVC with a VolumeSnapshot as a source:</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: createfromsnap
+  namespace: default
+spec:
+  storageClassName: isilon
+  dataSource:
+    name: pvcsnap
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+</code></pre>
+<blockquote>
+<p>Starting from CSI PowerScale driver version 2.2, it is allowed to create PersistentVolumeClaim from VolumeSnapshot with different isi paths i.e., isi paths of the new volume and the VolumeSnapshot can be different.</p>
+</blockquote>
+<h2 id="volume-expansion">Volume Expansion</h2>
+<p>The CSI PowerScale driver version 1.2 and later supports the expansion of Persistent Volumes (PVs). This expansion can be done either online (for example, when a PVC is attached to a node) or offline (for example, when a PVC is not attached to any node).</p>
+<p>To use this feature, the storage class that is used to create the PVC must have the attribute <code>allowVolumeExpansion</code> set to true.</p>
+<p>The following is a sample manifest for a storage class that allows for Volume Expansion:</p>
+<pre><code class="language-yaml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: isilon-expand-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: &quot;false&quot;
+provisioner: &quot;csi-isilon.dellemc.com&quot;
+reclaimPolicy: Delete
+parameters:
+  ClusterName: &lt;clusterName specified in secret.yaml&gt;
+  AccessZone: System
+  isiPath: &quot;/ifs/data/csi&quot;
+  AzServiceIP : 'XX.XX.XX.XX'
+  rootClientEnabled: &quot;true&quot;
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+</code></pre>
+<p>To resize a PVC, edit the existing PVC spec and set spec.resources.requests.storage to the intended size. For example, if you have a PVC isilon-pvc-demo of size 3Gi, then you can resize it to 30Gi by updating the PVC.</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: isilon-pvc-expansion-demo
+spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+        requests:
+            storage: 30Gi # Updated size from 3Gi to 30Gi
+    storageClassName: isilon-expand-sc
+</code></pre>
+<blockquote>
+<p>The Kubernetes Volume Expansion feature can only be used to increase the size of a volume. It cannot be used to shrink a volume.</p>
+</blockquote>
+<h2 id="volume-cloning-feature">Volume Cloning Feature</h2>
+<p>The CSI PowerScale driver version 1.3 and later supports volume cloning. This allows specifying existing PVCs in the <em>dataSource</em> field to indicate a user would like to clone a Volume.</p>
+<p>Source and destination PVC must be in the same namespace and have the same Storage Class.</p>
+<p>To clone a volume, you must first have an existing PVC:</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: existing-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: isilon
+</code></pre>
+<p>The following is a sample manifest for cloning:</p>
+<pre><code class="language-yaml">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: volume-from-volume
+  namespace: default 
+spec:
+  accessModes:
+  - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: isilon
+  dataSource:
+    kind: PersistentVolumeClaim
+    name: existing-pvc
+    apiGroup: &quot;&quot;
+</code></pre>
+<h2 id="controller-ha">Controller HA</h2>
+<p>The CSI PowerScale driver version 1.4.0 and later supports running multiple replicas of controller pod. At any time, only one controller pod is active(leader), and the rest are on standby.
+In case of a failure, one of the standby pods becomes active and takes the position of leader. This is achieved by using native leader election mechanisms utilizing <code>kubernetes leases</code>.</p>
+<p>Additionally by leveraging <code>pod anti-affinity</code>, no two-controller pods are ever scheduled on the same node.</p>
+<p>To increase or decrease the number of controller pods, edit the following value in <code>myvalues.yaml</code> file:</p>
+<pre><code>controllerCount: 2
+</code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> The default value for controllerCount is 2. It is recommended to not change this unless really required. Also, if the controller count is greater than the number of available nodes (where the pods can be scheduled), some controller pods will remain in a Pending state.</p>
+</blockquote>
+<p>If you are using the <code>dell-csi-operator</code>, adjust the following value in your Custom Resource manifest</p>
+<pre><code>replicas: 2  
+</code></pre>
+<p>For more details about configuring Controller HA using the Dell CSI Operator, refer to the <a href="../../installation/operator/#custom-resource-specification">Dell CSI Operator documentation</a>.</p>
+<h2 id="ephemeral-inline-volume">Ephemeral Inline Volume</h2>
+<p>The CSI PowerScale driver version 1.4.0 and later supports CSI ephemeral inline volumes.</p>
+<p>This feature serves as use cases for data volumes whose content and lifecycle are tied to a pod. For example, a driver might populate a volume with dynamically created secrets that are specific to the application running in the pod. Such volumes need to be created together with a pod and can be deleted as part of pod termination (ephemeral). They get defined as part of the pod spec (inline).</p>
+<p>At runtime, nested inline volumes follow the lifecycle of their associated pods where the driver handles all phases of volume operations as pods are created and destroyed.</p>
+<p>The following is a sample manifest for creating CSI ephemeral Inline Volume in pod manifest with CSI PowerScale driver.</p>
+<pre><code class="language-yaml">kind: Pod
+apiVersion: v1
+metadata:
+  name: my-csi-app-inline-volume
+spec:
+  containers:
+    - name: my-frontend
+      image: busybox
+      command: [ &quot;sleep&quot;, &quot;100000&quot; ]
+      volumeMounts:
+        - mountPath: &quot;/data&quot;
+          name: my-csi-volume
+  volumes:
+    - name: my-csi-volume
+      csi:
+        driver: csi-isilon.dellemc.com
+        volumeAttributes:
+          size: &quot;2Gi&quot;
+          ClusterName: &quot;cluster1&quot;
+</code></pre>
+<p>This manifest creates a pod in a given cluster and attaches a newly created ephemeral inline CSI volume to it.</p>
+<h2 id="topology">Topology</h2>
+<h3 id="topology-support">Topology Support</h3>
+<p>The CSI PowerScale driver version 1.4.0 and later supports Topology by default which forces volumes to be placed on worker nodes that have connectivity to the backend storage, as a result of which the nodes which have access to PowerScale Array are appropriately labeled. The driver leverages these labels to ensure that the driver components (controller, node) are spawned only on nodes wherein these labels exist.</p>
+<p>This covers use cases where:</p>
+<p>The CSI PowerScale driver may not be installed or running on some nodes where Users have chosen to restrict the nodes on accessing the PowerScale storage array.</p>
+<p>We support CustomTopology which enables users to apply labels for nodes - &ldquo;csi-isilon.dellemc.com/XX.XX.XX.XX=csi-isilon.dellemc.com&rdquo; and expect the labels to be honored by the driver.</p>
+<p>When “enableCustomTopology” is set to “true”, the CSI driver fetches custom labels “csi-isilon.dellemc.com/XX.XX.XX.XX=csi-isilon.dellemc.com” applied on worker nodes, and use them to initialize node pod with custom PowerScale FQDN/IP.</p>
+<p><strong>Note:</strong> Only a single cluster can be configured as part of secret.yaml for custom topology.</p>
+<h3 id="topology-usage">Topology Usage</h3>
+<p>To utilize the Topology feature, create a custom <code>StorageClass</code> with <code>volumeBindingMode</code> set to <code>WaitForFirstConsumer</code> and specify the desired topology labels within <code>allowedTopologies</code> field of this custom storage class. This ensures that the Pod schedule takes advantage of the topology and the selected node has access to provisioned volumes.</p>
+<p><strong>Note:</strong> Whenever a new storage cluster is being added in secret, even though it is dynamic, the new storage cluster IP address-related label is not added to worker nodes dynamically. The user has to spin off (bounce) driver-related pods (controller and node pods) in order to apply newly added information to be reflected in worker nodes.</p>
+<p><strong>Storage Class Example with Topology Support:</strong></p>
+<pre><code class="language-yaml"># This is a sample manifest for utilizing the topology feature and mount options.
+# PVCs created using this storage class will be scheduled 
+# only on the nodes with access to Isilon
+
+# Change all instances of &lt;ISILON_IP&gt; to the IP of the PowerScale OneFS API server
+
+# Provide mount options through &quot;mountOptions&quot; attribute 
+# to create PVCs with mount options.
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: isilon
+provisioner: csi-isilon.dellemc.com
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+parameters:
+  AccessZone: System
+  IsiPath: &quot;/ifs/data/csi&quot;
+  # AccessZone groupnet service IP. Update AzServiceIP in values.yaml if different than isiIP.
+  #AzServiceIP : 192.168.2.1
+  # When a PVC is being created, it takes the storage class' value of &quot;storageclass.rootClientEnabled&quot;, 
+  # which  determines, when a node mounts the PVC, in NodeStageVolume, whether to add the k8s node to 
+  # the &quot;Root clients&quot; field (when true) or &quot;Clients&quot; field (when false) of the NFS export 
+  RootClientEnabled: &quot;false&quot;
+  # Name of PowerScale cluster where pv will be provisioned
+  # This name should match with name of one of the cluster configs in isilon-creds secret
+  # If this parameter is not specified, then default cluster config in isilon-creds secret will be considered if available
+  #ClusterName: &quot;&lt;cluster_name&gt;&quot;
+
+# volumeBindingMode controls when volume binding and dynamic provisioning should occur.
+# Immediate mode indicates that volume binding and dynamic provisioning occurs once the PersistentVolumeClaim is created
+# WaitForFirstConsumer mode will delay the binding and provisioning of a PersistentVolume
+# until a Pod using the PersistentVolumeClaim is created
+volumeBindingMode: WaitForFirstConsumer
+# allowedTopologies helps scheduling pod on worker nodes which match all of below expressions
+# If enableCustomTopology is set to true in helm values.yaml, then do not specify allowedTopologies
+allowedTopologies:
+  - matchLabelExpressions:
+      - key: csi-isilon.dellemc.com/&lt;ISILON_IP&gt;
+        values:
+          - csi-isilon.dellemc.com
+# specify additional mount options for when a Persistent Volume is being mounted on a node.
+# To mount volume with NFSv4, specify mount option vers=4. Make sure NFSv4 is enabled on the Isilon Cluster.
+mountOptions: [&quot;&lt;mountOption1&gt;&quot;, &quot;&lt;mountOption2&gt;&quot;, ..., &quot;&lt;mountOptionN&gt;&quot;]
+</code></pre>
+<p>For additional information, see the <a href="https://kubernetes-csi.github.io/docs/topology.html">Kubernetes Topology documentation</a>.</p>
+<h2 id="support-custom-networks-for-nfs-io-traffic">Support custom networks for NFS I/O traffic</h2>
+<p>When allowedNetworks is specified for using custom networks to handle NFS traffic, and a user already
+has workloads scheduled, there is a possibility that it might lead to backward compatibility issues. For example, ControllerUnPublish might not be able to completely remove clients from the NFS exports of previously created pods.</p>
+<p>Also, the previous workload will still be using the default network and not custom networks. For previous workloads to use custom networks, the recreation of pods is required.</p>
+<p>When csi-powerscale driver creates an NFS export, the traffic flows through the client specified in the export. By default, the client is the network interface for Kubernetes 
+communication (same IP/fqdn as k8s node) by default.</p>
+<p>For a cluster with multiple network interfaces and if a user wants to segregate k8s traffic from NFS traffic; you can use the <code>allowedNetworks</code> option.
+<code>allowedNetworks</code> takes CIDR addresses as a parameter to match the IPs to be picked up by the driver to allow and route NFS traffic.</p>
+<h2 id="volume-limit">Volume Limit</h2>
+<p>The CSI Driver for Dell PowerScale allows users to specify the maximum number of PowerScale volumes that can be used in a node.</p>
+<p>The user can set the volume limit for a node by creating a node label <code>max-isilon-volumes-per-node</code> and specifying the volume limit for that node.
+<br/> <code>kubectl label node &lt;node_name&gt; max-isilon-volumes-per-node=&lt;volume_limit&gt;</code></p>
+<p>The user can also set the volume limit for all the nodes in the cluster by specifying the same to <code>maxIsilonVolumesPerNode</code> attribute in values.yaml.</p>
+<blockquote>
+<p><strong>NOTE:</strong> <br>The default value of <code>maxIsilonVolumesPerNode</code> is 0. <br>If <code>maxIsilonVolumesPerNode</code> is set to zero, then CO shall decide how many volumes of this type can be published by the controller to the node.<br><br>The volume limit specified to <code>maxIsilonVolumesPerNode</code> attribute is applicable to all the nodes in the cluster for which node label <code>max-isilon-volumes-per-node</code> is not set.</p>
+</blockquote>
+<h2 id="node-selector-in-helm-template">Node selector in helm template</h2>
+<p>Now user can define in which worker node, the CSI node pod daemonset can run (just like any other pod in Kubernetes world.)For more information, refer to <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector</a></p>
+<p>Similarly, users can define the tolerations based on various conditions like memory pressure, disk pressure and network availability. Refer to <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#taints-and-tolerations">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#taints-and-tolerations</a> for more information.</p>
+<h2 id="usage-of-smartquotas-to-limit-storage-consumption">Usage of SmartQuotas to Limit Storage Consumption</h2>
+<p>CSI driver for Dell Isilon handles capacity limiting using SmartQuotas feature.</p>
+<p>To use the SmartQuotas feature user can specify the boolean value &rsquo;enableQuota&rsquo; in myvalues.yaml or my-isilon-settings.yaml.</p>
+<p>Let us assume the user creates a PVC with 3 Gi of storage and &lsquo;SmartQuotas&rsquo; have already been enabled in PowerScale Cluster.</p>
+<ul>
+<li>
+<p>When &rsquo;enableQuota&rsquo; is set to &rsquo;true&rsquo;</p>
+<ul>
+<li>The driver sets the hard limit of the PVC to 3Gi.</li>
+<li>The user adds data of 2Gi to the above said PVC (by logging into POD). It works as expected.</li>
+<li>The user tries to add 2Gi more data.</li>
+<li>Driver doesn&rsquo;t allow the user to enter more data as total data to be added is 4Gi and PVC limit is 3Gi.</li>
+<li>The user can expand the volume from 3Gi to 6Gi. The driver allows it and sets the hard limit of PVC to 6Gi.</li>
+<li>User retries adding 2Gi more data (which has been errored out previously).</li>
+<li>The driver accepts the data.</li>
+</ul>
+</li>
+<li>
+<p>When &rsquo;enableQuota&rsquo; is set to &lsquo;false&rsquo;</p>
+<ul>
+<li>Driver doesn&rsquo;t set any hard limit against the PVC created.</li>
+<li>The user adds data of 2Gi to the above said PVC, which is having the size 3Gi (by logging into POD). It works as expected.</li>
+<li>The user tries to add 2Gi more data. Now the total size of data is 4Gi.</li>
+<li>Driver allows the user to enter more data irrespective of the initial PVC size (since no quota is set against this PVC)</li>
+<li>The user can expand the volume from an initial size of 3Gi to 4Gi or more. The driver allows it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="dynamic-logging-configuration">Dynamic Logging Configuration</h2>
+<p>This feature is introduced in CSI Driver for PowerScale version 1.6.0 and updated in version 2.0.0</p>
+<h3 id="helm-based-installation">Helm based installation</h3>
+<p>As part of driver installation, a ConfigMap with the name <code>isilon-config-params</code> is created, which contains an attribute <code>CSI_LOG_LEVEL</code> which specifies the current log level of CSI driver.</p>
+<p>Users can set the default log level by specifying log level to <code>logLevel</code> attribute in values.yaml during driver installation.</p>
+<p>To change the log level dynamically to a different value user can edit the same values.yaml, and run the following command</p>
+<pre><code>cd dell-csi-helm-installer
+./csi-install.sh --namespace isilon --values ./my-isilon-settings.yaml --upgrade
+</code></pre>
+<p>Note: here my-isilon-settings.yaml is a values.yaml file which user has used for driver installation.</p>
+<h3 id="operator-based-installation">Operator based installation</h3>
+<p>As part of driver installation, a ConfigMap with the name <code>isilon-config-params</code> is created using the manifest located in the sample file. This ConfigMap contains an attribute <code>CSI_LOG_LEVEL</code> which specifies the current log level of the CSI driver. To set the default/initial log level user can set this field during driver installation.</p>
+<p>To update the log level dynamically user has to edit the ConfigMap <code>isilon-config-params</code> and update <code>CSI_LOG_LEVEL</code> to the desired log level.</p>
+<pre><code>kubectl edit configmap -n isilon isilon-config-params
+</code></pre>
+<blockquote>
+<p>Note: Prior to CSI Driver for PowerScale version 2.0.0, the log level was allowed to be updated dynamically through <code>logLevel</code> attribute in the secret object.</p>
+</blockquote>
+<h2 id="nat-support">NAT Support</h2>
+<p>CSI Driver for Dell PowerScale is supported in the NAT environment.</p>
+<h2 id="configurable-permissions-for-volume-directory">Configurable permissions for volume directory</h2>
+<p>This feature is introduced in CSI Driver for PowerScale version 2.0.0</p>
+<h3 id="helm-based-installation-1">Helm based installation</h3>
+<p>The permissions for volume directory can now be configured in 3 ways:</p>
+<ol>
+<li>Through values.yaml</li>
+<li>Through secrets</li>
+<li>Through storage class</li>
+</ol>
+<pre><code>  # isiVolumePathPermissions: The permissions for isi volume directory path
+  # This value acts as a default value for isiVolumePathPermissions, if not specified for a cluster config in secret
+  # Allowed values: valid octal mode number
+  # Default value: &quot;0777&quot;
+  # Examples: &quot;0777&quot;, &quot;777&quot;, &quot;0755&quot;
+  isiVolumePathPermissions: &quot;0777&quot;
+</code></pre>
+<p>The permissions present in values.yaml are the default for all cluster config.</p>
+<p>If the volume permission is not present in storage class then secrets are considered and if it is not present even in secrets then values.yaml is considered.</p>
+<blockquote>
+<p><strong>Note:</strong> <br>For volume creation from source (volume from snapshot/volume from volume) permissions are inherited from source. <br><br>Create myvalues.yaml/my-isilon-settings.yaml and storage class accordingly.</p>
+</blockquote>
+<h3 id="operator-based-installation-1">Operator based installation</h3>
+<p>In the case of operator-based installation, default permission for powerscale directory is present in the samples file.</p>
+<p>Other ways of configuring powerscale volume permissions remain the same as helm-based installation.</p>
+<h2 id="pvpvc-metrics">PV/PVC Metrics</h2>
+<p>CSI Driver for Dell PowerScale 2.1.0 and above supports volume health monitoring. This allows Kubernetes to report on the condition, status and usage of the underlying volumes. 
+For example, if a volume were to be deleted from the array, or unmounted outside of Kubernetes, Kubernetes will now report these abnormal conditions as events.</p>
+<h3 id="this-feature-can-be-enabled">This feature can be enabled</h3>
+<ol>
+<li>For controller plugin, by setting attribute <code>controller.healthMonitor.enabled</code> to <code>true</code> in <code>values.yaml</code> file. Also health monitoring interval can be changed through attribute <code>controller.healthMonitor.interval</code> in <code>values.yaml</code> file.</li>
+<li>For node plugin, by setting attribute <code>node.healthMonitor.enabled</code> to <code>true</code> in <code>values.yaml</code> file and by enabling the alpha feature gate <code>CSIVolumeHealth</code>.</li>
+</ol>
+<h2 id="single-pod-access-mode-for-persistentvolumes--readwriteoncepod-alpha-feature">Single Pod Access Mode for PersistentVolumes- ReadWriteOncePod (ALPHA FEATURE)</h2>
+<p>Use <code>ReadWriteOncePod(RWOP)</code> access mode if you want to ensure that only one pod across the whole cluster can read that PVC or write to it. This is supported for CSI Driver for PowerScale 2.1.0+ and Kubernetes version 1.22+.</p>
+<p>To use this feature, enable the ReadWriteOncePod feature gate for kube-apiserver, kube-scheduler, and kubelet, by setting command line arguments:
+<code>--feature-gates=&quot;...,ReadWriteOncePod=true&quot;</code></p>
+<h3 id="creating-a-persistentvolumeclaim">Creating a PersistentVolumeClaim</h3>
+<pre><code class="language-yaml">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: single-writer-only
+spec:
+  accessModes:
+  - ReadWriteOncePod # the volume can be mounted as read-write by a single pod across the whole cluster
+  resources:
+    requests:
+      storage: 1Gi
+</code></pre>
+<p>When this feature is enabled, the existing <code>ReadWriteOnce(RWO)</code> access mode restricts volume access to a single node and allows multiple pods on the same node to read from and write to the same volume.</p>
+<p>To migrate existing PersistentVolumes to use <code>ReadWriteOncePod</code>, please follow the instruction from <a href="https://kubernetes.io/blog/2021/09/13/read-write-once-pod-access-mode-alpha/#migrating-existing-persistentvolumes">here</a>.</p>
+
+
+
+      </main>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/dell/csm" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener" href="http://del.ly/Slack_request" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 The Dell Technologies All Rights Reserved</small>
+        <small class="ml-1"><a href="https://www.dell.com/learn/us/en/uscorp1/policies-privacy" target="_blank" rel="noopener">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/csm-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
+
+
+
+<script src='/js/prism.js'></script>
+
+
+
+  </body>
+</html>
