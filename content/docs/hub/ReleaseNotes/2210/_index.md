@@ -1,7 +1,7 @@
 ---
-title: "Dell 2210 and Microsoft 2206 releases"
+title: "Release Notes for 2210"
 linkTitle: "2210"
-weight: 3
+weight: 7790
 Description: >
 
 ---
