@@ -1,0 +1,8 @@
+# UI strings. Buttons and similar.
+
+[print_entire_section]
+other = "Print page"
+[post_edit_this]
+other = "Edit"
+[post_create_issue]
+other = "Open an issue"
