@@ -92,7 +92,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.35e41fc90c0b80e2bfe923f5d8ac122a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.35e41fc90c0b80e2bfe923f5d8ac122a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -186,13 +186,8 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack-li">
   <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack"><span class="">Layers below S2D stack</span></a>
   <ul class="ul-4 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices-li">
   <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices"><span class="">Storage Devices</span></a>
-  <ul class="ul-5 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevicesmediareadme-li">
-  <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/media/readme/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevicesmediareadme"><span class=""></span></a>
-</li>
-  </ul>
 </li>
   </ul>
 </li>
@@ -312,23 +307,21 @@
 <p>Management machine can be also deployed as <a href="https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations">Privileged Access Workstation</a>.</p>
 <h2 id="minimum-infrastructure">Minimum infrastructure</h2>
 <p>The minimum components are Domain Controller and Management machine. Management machine can be Windows 10 or Windows Server at least the same version as the managed server (for example Windows 10 1809 and newer can manage Windows Server 2019). DHCP server can significantly help as managed servers can receive IP address. That means you can manage them remotely without logging into servers to configure static IP, but it&rsquo;s not mandatory.</p>
-<p>Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).
-docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png
-<img src="02-Supporting-Infrastructure/media/MinimumInfrastructure01.png" alt="">
-<img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png" alt=""></p>
+<p>Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).</p>
+<p><img src="MinimumInfrastructure01.png" alt=""></p>
 <h2 id="medium-infrastructure">Medium infrastructure</h2>
 <p>Medium infrastructure assumes you have multiple administrators and/or multiple clusters in your environment. Another servers dedicated for management can be introduced to help with management centralization or automating management.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install#install-on-server-core">Installing Windows Admin Center in Gateway Mode</a></li>
 <li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-install?view=sc-vmm-2019">Planning SCVMM Installation</a></li>
 </ul>
-<p><img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MediumInfrastructure01.png" alt=""></p>
+<p><img src="MediumInfrastructure01.png" alt=""></p>
 <h2 id="large-scale-infrastructure">Large Scale infrastructure</h2>
 <p>Large Infrastructure assumes that you have more clusters spanning multiple racks or even sites. To help with bare-metal deployment, network management, patch management is SCVMM essential. Supporting roles (WSUS, WDS, Library servers) managed by SCVMM can be deployed across multiple servers. SCVMM supports deployment in HA Mode (Active-Passive) with SQL server Always On. DHCP is mandatory for bare-metal deployment as during PXE boot, server needs to obtain IP Address.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-ha-install?view=sc-vmm-2019">Planning HA SCVMM Installation</a></li>
 </ul>
-<p><img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/LargeScaleInfrastructure01.png" alt=""></p>
+<p><img src="LargeScaleInfrastructure01.png" alt=""></p>
 
         <div class="section-index">
     
@@ -345,7 +338,7 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/786aac82f7fd9326abc78d67679758afb210a6a1">Add DellGEOS Azure Stack HCI docs and change links from docs to learn (786aac8)</a>
+  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/6ea28962102ef166e14a9526b5a47b77b763b3df">Fix links dell geos (#3) (6ea2896)</a>
 </div>
 
 </div>

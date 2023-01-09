@@ -92,7 +92,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.35e41fc90c0b80e2bfe923f5d8ac122a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.35e41fc90c0b80e2bfe923f5d8ac122a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -186,13 +186,8 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack-li">
   <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack"><span class="">Layers below S2D stack</span></a>
   <ul class="ul-4 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices-li">
   <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevices"><span class="">Storage Devices</span></a>
-  <ul class="ul-5 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevicesmediareadme-li">
-  <a href="/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/media/readme/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-azurestack-docsdocshcistoragestack01-layers-below-s2d-stack01-storagedevicesmediareadme"><span class=""></span></a>
-</li>
-  </ul>
 </li>
   </ul>
 </li>
@@ -321,7 +316,7 @@
 <p>HDD mediatype is always using SATA or SAS. And this type of bus was more than enough for it&rsquo;s purpose. With introduction of SSD mediatype, SATA/SAS started to show it&rsquo;s limitation. Namely with SATA/SAS you will utilize 100% of your CPU and you will not be able to reach more than ~300k IOPS. It&rsquo;s because SATA/SAS was designed for spinning media and also one controller connects multiple devices to one PCIe connection. NVMe was designed from scratch for low latency and parallelism and has dedicated connection to PCIe. Therefore NAND NVMe outperforms NAND SATA/SAS SSD drive.</p>
 <p>Another significant leap was introduction of Intel Optane SSD, that introduces even lower latencies than NAND SSDs. And since in Optane media is bit addressable, there is no garbage to collect (on NAND SSD you erase only in blocks with negative performance impact).</p>
 <p>Important piece when selecting storage devices is, that if you consider SSD+HDD combination, all heavy lifting will end up in one SATA/SAS controller connected into one PCIe slot. Therefore it&rsquo;s recommended to consider using NVMe instead, as each NVMe will have its PCIe line.</p>
-<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/InterfaceEfficiency01.png" alt=""></p>
+<p><img src="InterfaceEfficiency01.png" alt=""></p>
 <h2 id="network-cards">Network cards</h2>
 <p>There are several considerations when talking about network cards.</p>
 <h3 id="network-interface-speed">Network Interface Speed</h3>
@@ -392,7 +387,7 @@
 <blockquote>
 <p>Note: Dell sells only Integrated Systems as Microsoft highly recommend those over just verified solutions.</p>
 </blockquote>
-<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/PPT01.png" alt=""></p>
+<p><img src="PPT01.png" alt=""></p>
 
         <div class="section-index">
     
@@ -409,7 +404,7 @@
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/786aac82f7fd9326abc78d67679758afb210a6a1">Add DellGEOS Azure Stack HCI docs and change links from docs to learn (786aac8)</a>
+  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/6ea28962102ef166e14a9526b5a47b77b763b3df">Fix links dell geos (#3) (6ea2896)</a>
 </div>
 
 </div>

@@ -24,24 +24,24 @@
         
         &lt;h1 id=&#34;planning-operating-system&#34;&gt;Planning Operating System&lt;/h1&gt;
 &lt;p&gt;Storage Spaces Direct is technology, that is contained in both Azure Stack HCI OS and Windows Server Datacenter. It enables you to create hyperconverged cluster as there is a software storage bus, that enables every cluster node to access all physical disks in cluster.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;PPT02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;!-- ## ![Azure Stack HCI](prod-1906-poweredge-r740xd-12x35-azure-stack-hci-980x366.jpg) --&gt;
 &lt;h2 id=&#34;familiar-for-it&#34;&gt;Familiar for IT&lt;/h2&gt;
 &lt;p&gt;Both operating systems are easy to use for Windows Server admins that are familiar with failover clustering as both systems are using traditional technologies (Failover Clustering, Hyper-V) while domain joined. Therefore all tools (such as Server Manager, MMC and Windows Admin Center) can be used for management.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/OSManagement.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;OSManagement.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hyper-converged-infrastructure-stack&#34;&gt;Hyper-Converged infrastructure stack&lt;/h2&gt;
 &lt;p&gt;Both Azure Stack HCI and Windows Server are using the same technology that is well known since Windows Server 2016 - Storage Spaces Direct. Storage Spaces Direct enables all servers to see all disks from every node, therefore Storage Spaces stack can define resiliency and place data (slabs) in different fault domains. In this case nodes. Since all is happening in software, devices like high-speed NVMe disks can be used and shared using software stack using high-speed RDMA network adapters.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;PPT04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;delivered-as-an-azure-hybrid-service&#34;&gt;Delivered as an Azure hybrid service&lt;/h2&gt;
 &lt;p&gt;The difference between both products is in way the service is consumed. With Windows Server, it&amp;rsquo;s traditional &amp;ldquo;buy and forget&amp;rdquo; model, where you can have operating system that is supported for 5+5 years (main+extended support) and you can pay upfront (OEM License, EA License &amp;hellip;). Azure Stack HCI licensing can be dynamic. Imagine investing into the system where you have 40 cores/node, but you will initially use 16 cores only - you can easily configure number of cores in DELL systems using Openmanage Integration in Windows Admin Center and then pay only for how much you consume.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/WAC01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/WAC02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;WAC01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;WAC02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Additionally you can purchase Windows Server licenses as &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/manage/vm-activate#windows-server-subscription&#34;&gt;subscription add-on&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/Portal01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Portal01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;os-lifecycle&#34;&gt;OS Lifecycle&lt;/h2&gt;
 &lt;p&gt;The main difference is the way features are developed for each platform. Windows Server follows traditional development cycle (new version every 2.5-3years), while Azure Stack HCI follows cloud development cycle together with Windows Client OS (new version every year).&lt;/p&gt;
 &lt;p&gt;As result, &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server#compare-technical-features&#34;&gt;new features&lt;/a&gt; are developed and delivered into Azure Stack HCI OS every year.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT03.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;PPT03.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;While both Windows Server and Azure Stack HCI operating systems can run on virtualization host, going forward the main focus will be Azure Stack HCI OS for hosts and Windows Server for guest workloads. For more information see the video below.
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
     &lt;iframe
@@ -51,7 +51,7 @@
 &lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;Comparison of Azure Stack HCI and Windows Server is available &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server&#34;&gt;in official docs&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;PPT01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -72,23 +72,21 @@
 &lt;p&gt;Management machine can be also deployed as &lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations&#34;&gt;Privileged Access Workstation&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;minimum-infrastructure&#34;&gt;Minimum infrastructure&lt;/h2&gt;
 &lt;p&gt;The minimum components are Domain Controller and Management machine. Management machine can be Windows 10 or Windows Server at least the same version as the managed server (for example Windows 10 1809 and newer can manage Windows Server 2019). DHCP server can significantly help as managed servers can receive IP address. That means you can manage them remotely without logging into servers to configure static IP, but it&amp;rsquo;s not mandatory.&lt;/p&gt;
-&lt;p&gt;Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).
-docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png
-&lt;img src=&#34;02-Supporting-Infrastructure/media/MinimumInfrastructure01.png&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;MinimumInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;medium-infrastructure&#34;&gt;Medium infrastructure&lt;/h2&gt;
 &lt;p&gt;Medium infrastructure assumes you have multiple administrators and/or multiple clusters in your environment. Another servers dedicated for management can be introduced to help with management centralization or automating management.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install#install-on-server-core&#34;&gt;Installing Windows Admin Center in Gateway Mode&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/system-center/vmm/plan-install?view=sc-vmm-2019&#34;&gt;Planning SCVMM Installation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MediumInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;MediumInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;large-scale-infrastructure&#34;&gt;Large Scale infrastructure&lt;/h2&gt;
 &lt;p&gt;Large Infrastructure assumes that you have more clusters spanning multiple racks or even sites. To help with bare-metal deployment, network management, patch management is SCVMM essential. Supporting roles (WSUS, WDS, Library servers) managed by SCVMM can be deployed across multiple servers. SCVMM supports deployment in HA Mode (Active-Passive) with SQL server Always On. DHCP is mandatory for bare-metal deployment as during PXE boot, server needs to obtain IP Address.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/system-center/vmm/plan-ha-install?view=sc-vmm-2019&#34;&gt;Planning HA SCVMM Installation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/LargeScaleInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;LargeScaleInfrastructure01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -107,15 +105,15 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 &lt;h2 id=&#34;hyperconverged-deployments&#34;&gt;HyperConverged deployments&lt;/h2&gt;
 &lt;p&gt;HyperConverged deployments can be small as 2 nodes connected directly with network cable and grow to multi-PB 16 node clusters (unlike traditional clusters, where limit is 64 nodes). Minimum requirements are described in &lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements&#34;&gt;hardware requirements doc&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Simplicity is the main benefit in this deployment model. All hardware is standardized and from one vendor, therefore there is a high chance that there are hundreds of customers with exact same configuration. This significantly helps with troubleshooting. There are no extra hops compared to SAN, where some IOs are going over FC infrastructure and some over LAN (CSV redirection).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/HyperConvergedModel01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;HyperConvergedModel01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;converged-deployments&#34;&gt;Converged deployments&lt;/h2&gt;
 &lt;p&gt;Converged deployments have separate AzSHCI cluster with Scale-Out File Server role installed. Multiple compute clusters (up to 64 nodes each) can access single Scale-Out File Server. This design allows to use both Datacenter and Standard licenses for Compute Clusters.&lt;/p&gt;
 &lt;p&gt;This design adds some complexity as Virtual Machines are accessing its storage over network. Main benefit is, that one VM consuming all CPU cycles will not affect other VMs because of degraded storage performance and also you can scale storage independently from RAM and CPU (if you run out of cpu, no need to buy server loaded with storage). This design allows higher density, better deduplication job schedule and decreased east-west traffic (as VMs are pointed to it&amp;rsquo;s CSV owner node using Witness Service or new &lt;a href=&#34;https://techcommunity.microsoft.com/t5/failover-clustering/scale-out-file-server-improvements-in-windows-server-2019/ba-p/372156&#34;&gt;SMB Connections move on connect&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/ConvergedModel01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ConvergedModel01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;cluster-sets&#34;&gt;Cluster Sets&lt;/h2&gt;
 &lt;p&gt;If multiple clusters are using multiple Scale-Out FileServers or even if multiple HyperConverged clusters are present, cluster sets helps putting all clusters under one namespace and allows to define fault domains. When VM is created, fault domain can be used (instead of pointing VM to specific node/cluster).&lt;/p&gt;
 &lt;p&gt;Technically all VMs are located on SOFS share that is presented using DFS-N namespace. This namespace is hosted on Management cluster that does not need any shared storage as all configuration data are in registry.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/ClusterSets01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ClusterSets01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;user-profile-disks-host&#34;&gt;User Profile Disks host&lt;/h2&gt;
 &lt;p&gt;Azure Stack HCI can also host user profile disks (UPDs). Since UPD is VHD (both native Windows Server functionality and &lt;a href=&#34;https://github.com/microsoft/MSLab/tree/master/Scenarios/FSLogix&#34;&gt;FSLogix&lt;/a&gt;), Scale-Out File Server can be used as workload pattern is the same as for Virtual Machines. However it might make sense to use fileserver hosted Virtual Machine.&lt;/p&gt;
 &lt;h2 id=&#34;sql&#34;&gt;SQL&lt;/h2&gt;
@@ -123,7 +121,7 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 &lt;blockquote&gt;
 &lt;p&gt;SQL Performance in one Virtual Machine (out of 40 on 4 node cluster) running SQL workload (database forced to read from disk)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/SQLPerformanceVM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;SQLPerformanceVM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
 &lt;p&gt;TBD&lt;/p&gt;
 &lt;h2 id=&#34;vdi&#34;&gt;VDI&lt;/h2&gt;
@@ -145,7 +143,7 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 &lt;p&gt;To correctly plan infrastructure design is key part in Azure Stack HCI planning. With incorrect configuration, the infrastructure might not be reliable under load. Depending on scale more complex solution might make sense to better control traffic.&lt;/p&gt;
 &lt;p&gt;In general there are two types of traffic - East-West and North-South. East-West is handled by SMB protocol (all traffic generated by Storage Bus Layer and Live Migration). North-South is mostly traffic generated by Virtual Machines.&lt;/p&gt;
 &lt;p&gt;Physicals switches should be configured with native VLAN for management traffic. This will significantly help as without configuring VLAN on physical host, you will be able to communicate over network. This helps bare metal deployment and also helps with Virtual Switch creation when management network is using vNIC.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/pswitch01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;pswitch01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In text above were several abbreviations used. Let&amp;rsquo;s explain few.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;pSwitch = Physical Switch. It&amp;rsquo;s your Top of the rack Switch (TOR)&lt;/li&gt;
@@ -153,18 +151,18 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 &lt;li&gt;vNIC = Virtual Network Adapter. It is a vNIC that is connected to Management OS (to parent partition). This is the NIC that is usually used for management or SMB.&lt;/li&gt;
 &lt;li&gt;vmNIC = Virtual Machine Network Adapter. This is a vNIC connected to Virtual Machine.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology00.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology00.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;topology-design&#34;&gt;Topology design&lt;/h2&gt;
 &lt;h3 id=&#34;single-subnet&#34;&gt;Single subnet&lt;/h3&gt;
 &lt;p&gt;In Windows Server 2016 was support for single subnet multichannel in cluster support added. This allows to configure only single subnet for multiple network adapters dedicated for SMB Traffic. It is recommended topology design for smaller deployments, where interconnection between TOR switches can handle at least 50% network throughput generated by nodes (as there is 50% chance, that traffic travel using switch interconnect - m-LAG). For example with 4 nodes each node 2 times 25Gbps connections, you should have at least 100Gbps connection between TOR switches.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;TOR Switches will be configured with Trunk and native (access) VLAN for management.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;two-subnets&#34;&gt;Two subnets&lt;/h3&gt;
 &lt;p&gt;With increased number of nodes, there might be a congestion in TOR switches interconnect. Also in case congestion will happen and pause frame will be sent, both switches will be paused. To mitigate both, you can configure 2 subnets - each network switch will host separate subnet. This also brings one benefit - in converged setup if connection fails, it will be visible in failover cluster manager. m-LAG is optional if switches are dedicated for East-West (SMB) only. In this case as there is no traffic generated from SMB multichannel as each SMB adapter is in different subnet. In case VMs or any other traffic is using it, m-LAG is required.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology03.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology03.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;TOR Switches will be configured with Trunk and native (access) VLAN for management with one slight difference from single subnet. Each subnet for SMB traffic will have it&amp;rsquo;s own VLAN. This will also help discover disconnected physical connections (&lt;a href=&#34;https://youtu.be/JxKMSqnGwKw?t=204)&#34;&gt;https://youtu.be/JxKMSqnGwKw?t=204)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Note: Two subnet deployment is being now standard. Same approach is used when &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/deploy/network-atc&#34;&gt;NetworkATC&lt;/a&gt; is deployed.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -175,7 +173,7 @@ docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastruc
 $NumberOfNodes = 5
 (1..($NumberOfNodes - 1) | Measure-Object -Sum).Sum
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/connections01.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;connections01.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;rdma-protocols&#34;&gt;RDMA Protocols&lt;/h2&gt;
 &lt;p&gt;RDMA is not required for Azure Stack HCI, but it is highly recommended. It has lower latency as traffic is using hardware data path (application can send data directly to hardware using DMA).&lt;/p&gt;
 &lt;p&gt;Great resources explaining benefit of RDMA:&lt;/p&gt;
@@ -184,7 +182,7 @@ $NumberOfNodes = 5
 &lt;li&gt;&lt;a href=&#34;https://channel9.msdn.com/Blogs/Regular-IT-Guy/Behind-the-Scenes-with-Storage-Replica-and-RDMA&#34;&gt;RDMA protocol deep dive video&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There are multiple favors of RDMA. The most used in Azure Stack HCI are RoCEv2 and iWARP. Infiniband can be used also, but just for SMB traffic (NICs cannot be connected to vSwitch).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/RDMA01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RDMA01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;iwarp&#34;&gt;iWARP&lt;/h3&gt;
 &lt;p&gt;iWARP is using TCP for transport. This is bit easier to configure as it uses TCP for Congestion Control. Configuring DCB/ETS is not mandatory. For larger deployments it is recommended as traffic can be prioritized.&lt;/p&gt;
 &lt;p&gt;Some network vendors require to configure Jumbo Frames to 9014.&lt;/p&gt;
@@ -192,22 +190,22 @@ $NumberOfNodes = 5
 &lt;p&gt;RoCE is using UDP for transport. Since it&amp;rsquo;s UDP, it requires lossless L2. It is mandatory to enable DCB (PFC/ETS) and ECN on both physical NICs and physical network infrastructure.&lt;/p&gt;
 &lt;p&gt;If Congestion control mechanisms are not correctly implemented, it can lead to huge retransmits. This can lead to infrastructure instabilities and storage disconnections. It is crucial to configure this correctly.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;where DCB needs to be configured&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/dcb01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;dcb01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;virtual-switch-and-virtual-network-adapters&#34;&gt;Virtual Switch and Virtual Network adapters&lt;/h2&gt;
 &lt;h3 id=&#34;converged-design&#34;&gt;Converged Design&lt;/h3&gt;
 &lt;p&gt;This design is most common as it is simplest and requires just two ports. Since RDMA can be enabled on vNICs. In the example below is one VLAN used for SMB vNICs. As mentioned in above text, you may consider using two VLANs and two subnets for SMB vNICs to control traffic flow as it is becoming standard.&lt;/p&gt;
 &lt;p&gt;Converged design also makes best use of capacity (let&amp;rsquo;s say you have 4x25Gbps NICs), you can then use up to 100Gbps capacity for storage or Virtual Machines, while using latest technology such as &lt;a href=&#34;https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-virtual-machine-multiple-queues&#34;&gt;VMMQ&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dedicated-nics-for-east-west-traffic&#34;&gt;Dedicated NICs for East-West traffic&lt;/h3&gt;
 &lt;p&gt;Some customers prefer to dedicate physical network adapters for east west traffic. In example below all physical ports on physical switch are configured the same (for simplicity). Also just two physical switches are used. You can also have dedicated switches for east-west traffic (for SMB). If DCB is configured, VLANs are mandatory for SMB adapters. In example below one VLAN for SMB is used. Two VLANs and two subnets can be used to better control traffic.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology05.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology05.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dedicated-nics-for-east-west-traffic-and-management&#34;&gt;Dedicated NICs for East-West traffic and management&lt;/h3&gt;
 &lt;p&gt;Some customers even prefer to have dedicated network cards (ports) for management. One of the reason can be customers requirements to have dedicated physical switches for management.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology06.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;topology06.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;network-adapters-hardware&#34;&gt;Network adapters hardware&lt;/h2&gt;
 &lt;p&gt;Network adapters that support all modern features such as VMMQ or SDN offloading are in Hardware Compatibility list listed as &lt;strong&gt;Software-Defined Data Center (SDDC) Premium&lt;/strong&gt; Additional Qualifier. For more information about Hardware Certification for Azure Stack HCI you can read this 2 part blog -
 &lt;a href=&#34;https://blogs.technet.microsoft.com/windowsserver/2018/02/20/the-technical-value-of-wssd-validated-hci-solutions-part-1/&#34;&gt;part1&lt;/a&gt;, &lt;a href=&#34;https://blogs.technet.microsoft.com/windowsserver/2018/02/21/the-technical-value-of-validated-hci-solutions-part-2/&#34;&gt;part2&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/04-Network-Architecture/media/SDDC01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;SDDC01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -225,11 +223,11 @@ $NumberOfNodes = 5
 &lt;h2 id=&#34;capacity-reserve&#34;&gt;Capacity reserve&lt;/h2&gt;
 &lt;p&gt;When disk failure happens, it is necessary to have some capacity reserve to have immediate capacity to rebuild to. So for example if one disk in one node disconnects, there will be reserved capacity to have required number of copies (2 copies in 2-way mirror, 3 copies in 3-way mirror).&lt;/p&gt;
 &lt;p&gt;It is recommended to have largest disk capacity in each node not occupied - reserved. For calculation you can use &lt;a href=&#34;http://aka.ms/s2dcalc&#34;&gt;http://aka.ms/s2dcalc&lt;/a&gt;. It is not necessary to mark disk as &amp;ldquo;reserved&amp;rdquo; or anything like that as it all about not consuming capacity of one disk.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity01.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;capacity01.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Since we regular maintenance is required (security patches), reboot might be necessary. Or for example if any hardware upgrade is done (for example increasing RAM), node might need to be put into maintenance mode or even shut down. If VMs are required to run, then there has to be capacity (RAM) to keep VMs running on rest of the nodes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity02.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;capacity02.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;With more than 5 nodes it might make sense to reserve entire node. You will have capacity for VMs when node in maintenance, and you will be also able to rebuild if one node is completely lost - assuming all disks damaged (which is usually unlikely to happen as usually just one component fails and can be replaced withing service agreement).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity03.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;capacity03.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;resiliency-options&#34;&gt;Resiliency options&lt;/h2&gt;
 &lt;h3 id=&#34;mirror-two-way-and-three-way&#34;&gt;Mirror (two-way and three-way)&lt;/h3&gt;
 &lt;p&gt;Two-way mirroring writes two copies of everything. Its storage efficiency is 50% - to write 1TB of data, you need at least 2TB of physical storage capacity. Likewise, you need at least two fault domains. By default, fault domain is Storage Scale Unit (which translates into server node). Fault domain can be also Chassis or Rack. Therefore if you have two node cluster, two-way mirroring will be used.&lt;/p&gt;
@@ -246,7 +244,7 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 &lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance&#34;&gt;https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;scoped-volumes&#34;&gt;Scoped volumes&lt;/h2&gt;
 &lt;p&gt;With increasing number of nodes it might be useful to put data only on selected nodes to better control what data will be accessible in case of failure of certain nodes. With scoped volumes, volumes can system tolerate more than 2 nodes failure while keeping volumes online.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/ScopedVolumes01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ScopedVolumes01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;cache-drives&#34;&gt;Cache drives&lt;/h2&gt;
 &lt;p&gt;Faster media can be used as cache. If HDDs are used, cache devices are mandatory. Cache drives do not contribute to capacity.&lt;/p&gt;
 &lt;p&gt;For more information about cache visit &lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/understand-the-cache&#34;&gt;docs&lt;/a&gt;&lt;/p&gt;
@@ -271,7 +269,7 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 &lt;p&gt;HDD mediatype is always using SATA or SAS. And this type of bus was more than enough for it&amp;rsquo;s purpose. With introduction of SSD mediatype, SATA/SAS started to show it&amp;rsquo;s limitation. Namely with SATA/SAS you will utilize 100% of your CPU and you will not be able to reach more than ~300k IOPS. It&amp;rsquo;s because SATA/SAS was designed for spinning media and also one controller connects multiple devices to one PCIe connection. NVMe was designed from scratch for low latency and parallelism and has dedicated connection to PCIe. Therefore NAND NVMe outperforms NAND SATA/SAS SSD drive.&lt;/p&gt;
 &lt;p&gt;Another significant leap was introduction of Intel Optane SSD, that introduces even lower latencies than NAND SSDs. And since in Optane media is bit addressable, there is no garbage to collect (on NAND SSD you erase only in blocks with negative performance impact).&lt;/p&gt;
 &lt;p&gt;Important piece when selecting storage devices is, that if you consider SSD+HDD combination, all heavy lifting will end up in one SATA/SAS controller connected into one PCIe slot. Therefore it&amp;rsquo;s recommended to consider using NVMe instead, as each NVMe will have its PCIe line.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/06-Hardware/media/InterfaceEfficiency01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;InterfaceEfficiency01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;network-cards&#34;&gt;Network cards&lt;/h2&gt;
 &lt;p&gt;There are several considerations when talking about network cards.&lt;/p&gt;
 &lt;h3 id=&#34;network-interface-speed&#34;&gt;Network Interface Speed&lt;/h3&gt;
@@ -342,7 +340,7 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 &lt;blockquote&gt;
 &lt;p&gt;Note: Dell sells only Integrated Systems as Microsoft highly recommend those over just verified solutions.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://dell.github.io/azurestack-docs/docs/hci/PlanningAzureStack/06-Hardware/media/PPT01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;PPT01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>

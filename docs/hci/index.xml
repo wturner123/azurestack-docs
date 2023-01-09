@@ -95,7 +95,7 @@
 &lt;p&gt;&lt;img src=&#34;StorageStack10.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are also many first party and third party filter drivers. You can expose those with fltmc command&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;StorageStack11.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can (reserve theirs)[https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes]&lt;/p&gt;
+&lt;p&gt;As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can &lt;a href=&#34;https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes&#34;&gt;reserve theirs&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>

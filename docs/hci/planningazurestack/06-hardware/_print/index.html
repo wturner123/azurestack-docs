@@ -92,7 +92,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.35e41fc90c0b80e2bfe923f5d8ac122a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -155,7 +155,7 @@ This is the multi-page printable view of this section.
 <p>HDD mediatype is always using SATA or SAS. And this type of bus was more than enough for it&rsquo;s purpose. With introduction of SSD mediatype, SATA/SAS started to show it&rsquo;s limitation. Namely with SATA/SAS you will utilize 100% of your CPU and you will not be able to reach more than ~300k IOPS. It&rsquo;s because SATA/SAS was designed for spinning media and also one controller connects multiple devices to one PCIe connection. NVMe was designed from scratch for low latency and parallelism and has dedicated connection to PCIe. Therefore NAND NVMe outperforms NAND SATA/SAS SSD drive.</p>
 <p>Another significant leap was introduction of Intel Optane SSD, that introduces even lower latencies than NAND SSDs. And since in Optane media is bit addressable, there is no garbage to collect (on NAND SSD you erase only in blocks with negative performance impact).</p>
 <p>Important piece when selecting storage devices is, that if you consider SSD+HDD combination, all heavy lifting will end up in one SATA/SAS controller connected into one PCIe slot. Therefore it&rsquo;s recommended to consider using NVMe instead, as each NVMe will have its PCIe line.</p>
-<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/InterfaceEfficiency01.png" alt=""></p>
+<p><img src="InterfaceEfficiency01.png" alt=""></p>
 <h2 id="network-cards">Network cards</h2>
 <p>There are several considerations when talking about network cards.</p>
 <h3 id="network-interface-speed">Network Interface Speed</h3>
@@ -226,7 +226,7 @@ This is the multi-page printable view of this section.
 <blockquote>
 <p>Note: Dell sells only Integrated Systems as Microsoft highly recommend those over just verified solutions.</p>
 </blockquote>
-<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/PPT01.png" alt=""></p>
+<p><img src="PPT01.png" alt=""></p>
 
 </div>
 </div>
