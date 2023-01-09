@@ -92,7 +92,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.13a922225e08e2f3eab44a8da5a17e54.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.68c53a09a5e261650ff5415fa96d28a6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1415,11 +1415,11 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 	<h1 id="storage-stack-overview">Storage Stack Overview</h1>
 <p>Understanding Storage Stack is crucial for understanding what technologies are involved and how (where storage replica is, where is ReFS Multi-resilient Volume, &hellip;). Understanding how layers are stacked will also help when IO flow is troubleshooted - like reviewing performance counters or troubleshooting core functionality.</p>
 <p>Traditional stack compared to storage spaces stack (note that MPIO is missing, but for Storage Spaces Direct it&rsquo;s not needed as there is only one path to the physical device, so it was omitted)</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack01.png" alt=""></p>
+<p><img src="StorageStack01.png" alt=""></p>
 <p>You can notice 4 &ldquo;new&rdquo; layers, but actually it&rsquo;s just Spaces layer (Spaceport) and Storage Bus Layer.</p>
 <p>To better understand what&rsquo;s in the stack, you can also explore some parts with PowerShell</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack02.png" alt=""></p>
-<p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version I found was from webarchive and I copied it here <img src="/docs/hci/StorageStack/media/Storage.pdf" alt=""></p>
+<p><img src="StorageStack02.png" alt=""></p>
+<p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version I found was from webarchive and I copied it <a href="Storage.pdf">here</a>.</p>
 <h2 id="layers-below-s2d-stack">Layers below S2D Stack</h2>
 <h3 id="port--miniport-driver">Port &amp; Miniport driver</h3>
 <p>storport.sys &amp; stornvme.sys</p>
@@ -1432,14 +1432,14 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 <p>A <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/introduction-to-storage-class-drivers">storage class driver</a> (typically disk.sys) uses the well-established SCSI class/port interface to control a mass storage device of its type on any bus for which the system supplies a storage port driver (currently SCSI, IDE, USB and IEEE 1394). The particular bus to which a storage device is connected is transparent to the storage class driver.</p>
 <p>Storage class driver is responsible for claiming devices, interpreting system I/O requests and <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-class-driver-s-general-functionality">many more</a></p>
 <p>In Storage Spaces stack (Virtual Disk) disk.sys is responsible for claiming Virtual Disk exposed by spaceport (storage spaces)</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack03.png" alt=""></p>
+<p><img src="StorageStack03.png" alt=""></p>
 <h3 id="partition-manager">Partition Manager</h3>
 <p>partmgr.sys</p>
 <p>Partitions are handled by partmgr.sys. Partition is usually GPT or MBR (preferably GPT as MBR has many limitations such as 2TB size limit)</p>
 <p>As you can see in the stack, there are two partition managers. One partition layout is on physical disk and it is then consumed by storage spaces (spaceport).</p>
 <p>On the picture below you can see individual physical disk from spaces exposed and it&rsquo;s partitions showing metadata partition and partition containing pool data (normally not visible as it&rsquo;s hidden by partmgr.sys when it detects spaces).</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack04.png" alt=""></p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack05.png" alt=""></p>
+<p><img src="StorageStack04.png" alt=""></p>
+<p><img src="StorageStack05.png" alt=""></p>
 <h2 id="s2d-stack">S2D Stack</h2>
 <h3 id="storage-bus-layer">Storage Bus Layer</h3>
 <p>clusport.sys and clusblft.sys</p>
@@ -1451,26 +1451,26 @@ To use dual parity, you need at least four hardware fault domains – with Stora
 <p>Defines resiliency when volume (virtual disk) is created (creates/distributes extents across physical disks)</p>
 <h3 id="virtual-disk">Virtual Disk</h3>
 <p>disk.sys is now used by storage spaces and exposes virtual disk that was provisioned using spaceport.sys</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack06.png" alt=""></p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack07.png" alt=""></p>
+<p><img src="StorageStack06.png" alt=""></p>
+<p><img src="StorageStack07.png" alt=""></p>
 <h2 id="layers-above-s2d-stack">Layers above S2D Stack</h2>
 <h3 id="volume-manager">Volume Manager</h3>
 <p>dmio.sys, volmgr.sys</p>
 <p>Volumes are created on top of the partition and on volumes you can then create filesystems and expose it to the components higher in the stack.</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack08.png" alt=""></p>
+<p><img src="StorageStack08.png" alt=""></p>
 <h3 id="volume-snapshot">Volume Snapshot</h3>
 <p>volsnap.sys</p>
 <p>Volsnap is the component that creates system provider for the volume <a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service">shadow copy service (VSS)</a>. This service is controller by vssadmin.exe</p>
 <h3 id="bitlocker">Bitlocker</h3>
 <p>fvevol.sys</p>
 <p>Bitlocker is well known disk encryption software that is on the market since Windows Vista. In PowerShell you can expose volume status with Get-BitlockerVolume command.</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack09.png" alt=""></p>
+<p><img src="StorageStack09.png" alt=""></p>
 <h3 id="filter-drivers">Filter Drivers</h3>
 <p>Interesting about filter drivers is, that all FileSystem drivers are actually filter drivers - special ones, File System Drivers - like REFS.sys, NTFS.sys, Exfat.sys &hellip;</p>
 <p>You can learn more about filesystem using fsutil</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack10.png" alt=""></p>
+<p><img src="StorageStack10.png" alt=""></p>
 <p>There are also many first party and third party filter drivers. You can expose those with fltmc command</p>
-<p><img src="/docs/hci/StorageStack/media/StorageStack11.png" alt=""></p>
+<p><img src="StorageStack11.png" alt=""></p>
 <p>As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can (reserve theirs)[https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes]</p>
 
 </div>
