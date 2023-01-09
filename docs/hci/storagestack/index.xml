@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solutions for Microsoft Azure Stack – Storage Stack</title>
+    <link>https://dell.github.io/azurestack-docs/docs/hci/storagestack/</link>
+    <description>Recent content in Storage Stack on Solutions for Microsoft Azure Stack</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hci/storagestack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Layers below S2D stack</title>
+      <link>https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

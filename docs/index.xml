@@ -13,5 +13,81 @@
       
     
     
+    <item>
+      <title>Docs: </title>
+      <link>https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/media/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/media/readme/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;storage-devices&#34;&gt;Storage Devices&lt;/h1&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;p&gt;Microsoft Documentation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives&#34;&gt;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations&#34;&gt;https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;NVMe vs SATA&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf&#34;&gt;https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf&#34;&gt;http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf&#34;&gt;https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&#34;&gt;https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on&#34;&gt;https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf&#34;&gt;https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;storage-devices-1&#34;&gt;Storage Devices&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;./media/Stack-PhysicalDisks.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;interfaces&#34;&gt;Interfaces&lt;/h3&gt;
+&lt;p&gt;While SATA is still well performing for most of the customers (see performance results), NVMe offers benefit of higher capacity and also more effective protocol (AHCI vs NVMe), that was developed specifically for SSDs (opposite to AHCI, that was developed for spinning media). SATA/SAS is however not scaling well with the larger disks.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./media/ScalablePerformance.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Source: &lt;a href=&#34;https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf&#34;&gt;https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is also another aspect of performance limitation of SATA/SAS devices - the controller. All SATA/SAS devices are connected to one SAS controller (non-raid) that has limited speed (only one PCI-e connection).&lt;/p&gt;
+&lt;p&gt;Drive Connector is universal (U2, also known as SFF-8639)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./media/DriveConnector.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Source: &lt;a href=&#34;https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&#34;&gt;https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;NVMe drives are mapped directly to CPU&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./media/NVMeDriveMapping.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Source: &lt;a href=&#34;https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf&#34;&gt;https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;storage-protocol&#34;&gt;Storage Protocol&lt;/h3&gt;
+&lt;p&gt;SSDs were originally created to replace conventional rotating media. As such they were designed to connect to the same bus types as HDDs, both SATA and SAS (Serial ATA and Serial Attached SCSI).&lt;/p&gt;
+&lt;p&gt;However, this imposed speed limitations on the SSDs.  Now a new type of SSD exists that attaches to PCI-e. Known as NVMe SSDs or simply NVMe.&lt;/p&gt;
+&lt;p&gt;For 1M IOPS, NVMe has more than &lt;a href=&#34;https://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf&#34;&gt;50% less latency with less than 50% CPU Cycles used&lt;/a&gt;. It is due to &lt;a href=&#34;https://en.wikipedia.org/wiki/NVM_Express#Comparison_with_AHCI&#34;&gt;improved protocol&lt;/a&gt; (AHCI vs NVMe)&lt;/p&gt;
+&lt;h3 id=&#34;storage-configurations&#34;&gt;Storage Configurations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Hybrid (HDD+SSD)&lt;/li&gt;
+&lt;li&gt;All Flash (All SSD)&lt;/li&gt;
+&lt;li&gt;All-NVMe&lt;/li&gt;
+&lt;li&gt;NVMe+HDD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When combining multiple media types, faster media will be used as caching. While it is recommended to use 10% of the capacity for cache, it should be noted, that it is just important to not spill the cache with the production workload, as it will dramatically reduce performance&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./media/CachePerfDrop.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Source: &lt;a href=&#34;https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/&#34;&gt;https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;exploring-stack-with-powershell&#34;&gt;Exploring Stack with PowerShell&lt;/h3&gt;
+&lt;h3 id=&#34;performance-results&#34;&gt;Performance results&lt;/h3&gt;
+&lt;p&gt;From the results below you can see that SATA vs SAS vs NVMe is 590092 vs 738507 vs 1496373 4k 100% read IOPS.&lt;/p&gt;
+&lt;p&gt;The difference between SAS and SATA is also 8 vs 4 disks in each node. The difference between SAS and NVMe is more than double.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Dedup.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core and deduplication enabled&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core enabled&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Bitlocker.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core &amp;amp; BitLocker enabled&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./media/AX6515-All-Flash-16SAS-SSDs-32VMs-2nodes-azshci.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 8xSAS SSDs each&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./media/R640-All-NVMe-16NVMe-64VMs-2Node.txt&#34;&gt;R640 - 2nodes, 32 cores and 8xNVMe SSDs each&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

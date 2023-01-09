@@ -91,7 +91,7 @@ This pop-up is transient and can be disregarded. This issue will be resolved in 
 &lt;/div&gt;
 
 &lt;h2 id=&#34;microsoft-fixed-issues&#34;&gt;Microsoft fixed issues&lt;/h2&gt;
-&lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2206&#34;&gt;Azure Stack Hub 2206 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
+&lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2206&#34;&gt;Azure Stack Hub 2206 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
 &lt;h2 id=&#34;hardware-and-firmware-support&#34;&gt;Hardware and firmware support&lt;/h2&gt;
 &lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://www.dell.com/support/home/us/en/04/product-support/product/cloud-for-microsoft-azure-stack13g/docs&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub 13G Documentation&lt;/a&gt; and &lt;a href=&#34;https://www.dell.com/support/home/us/en/04/product-support/product/cloud-for-microsoft-azure-stack14g/docs&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub 14G Documentation&lt;/a&gt; on the Dell Technologies Online Support website.&lt;/p&gt;
 
@@ -174,9 +174,9 @@ This information is updated as needed.
 &lt;h3 id=&#34;microsoft-resources&#34;&gt;Microsoft resources&lt;/h3&gt;
 &lt;p&gt;The following additional resources are available on the Microsoft website:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/azure-stack/user/&#34;&gt;Azure Stack Hub User Documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/azure-stack/&#34;&gt;Azure Stack Hub Operator Documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-datacenter-integration&#34;&gt;Datacenter integration considerations for Azure Stack Hub integrated systems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure/azure-stack/user/&#34;&gt;Azure Stack Hub User Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure/azure-stack/&#34;&gt;Azure Stack Hub Operator Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/operator/azure-stack-datacenter-integration&#34;&gt;Datacenter integration considerations for Azure Stack Hub integrated systems&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;payload-information&#34;&gt;Payload information&lt;/h2&gt;
 &lt;p&gt;Firmware and driver versions of each individual component can be found in the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix.

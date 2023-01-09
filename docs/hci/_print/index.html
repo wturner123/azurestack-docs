@@ -92,7 +92,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.08ac3a2548eb909bb5b6c7e8f0b7242e.json"
+  data-offline-search-index-json-src="/azurestack-docs/offline-search-index.13a922225e08e2f3eab44a8da5a17e54.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -159,6 +159,1073 @@ This is the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d63ed42e668d5ee18348f7aa4a1fda78">1 - Planning Azure Stack</h1>
+    
+	<p>This documentation is written from a Sys-Admin point of view as an addition to the official documentation, with the intent to demonstrate to IT Professionals how it compares to traditional solutions and Windows Server with a focus on Dell portfolio.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-621954cfadda09a4d3375d3e768cffd3">1.1 - 01. Operating System</h1>
+    
+	<h1 id="planning-operating-system">Planning Operating System</h1>
+<p>Storage Spaces Direct is technology, that is contained in both Azure Stack HCI OS and Windows Server Datacenter. It enables you to create hyperconverged cluster as there is a software storage bus, that enables every cluster node to access all physical disks in cluster.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT02.png" alt=""></p>
+<!-- ## ![Azure Stack HCI](prod-1906-poweredge-r740xd-12x35-azure-stack-hci-980x366.jpg) -->
+<h2 id="familiar-for-it">Familiar for IT</h2>
+<p>Both operating systems are easy to use for Windows Server admins that are familiar with failover clustering as both systems are using traditional technologies (Failover Clustering, Hyper-V) while domain joined. Therefore all tools (such as Server Manager, MMC and Windows Admin Center) can be used for management.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/OSManagement.png" alt=""></p>
+<h2 id="hyper-converged-infrastructure-stack">Hyper-Converged infrastructure stack</h2>
+<p>Both Azure Stack HCI and Windows Server are using the same technology that is well known since Windows Server 2016 - Storage Spaces Direct. Storage Spaces Direct enables all servers to see all disks from every node, therefore Storage Spaces stack can define resiliency and place data (slabs) in different fault domains. In this case nodes. Since all is happening in software, devices like high-speed NVMe disks can be used and shared using software stack using high-speed RDMA network adapters.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT04.png" alt=""></p>
+<h2 id="delivered-as-an-azure-hybrid-service">Delivered as an Azure hybrid service</h2>
+<p>The difference between both products is in way the service is consumed. With Windows Server, it&rsquo;s traditional &ldquo;buy and forget&rdquo; model, where you can have operating system that is supported for 5+5 years (main+extended support) and you can pay upfront (OEM License, EA License &hellip;). Azure Stack HCI licensing can be dynamic. Imagine investing into the system where you have 40 cores/node, but you will initially use 16 cores only - you can easily configure number of cores in DELL systems using Openmanage Integration in Windows Admin Center and then pay only for how much you consume.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/WAC01.png" alt=""></p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/WAC02.png" alt=""></p>
+<p>Additionally you can purchase Windows Server licenses as <a href="https://learn.microsoft.com/en-us/azure-stack/hci/manage/vm-activate#windows-server-subscription">subscription add-on</a></p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/Portal01.png" alt=""></p>
+<h2 id="os-lifecycle">OS Lifecycle</h2>
+<p>The main difference is the way features are developed for each platform. Windows Server follows traditional development cycle (new version every 2.5-3years), while Azure Stack HCI follows cloud development cycle together with Windows Client OS (new version every year).</p>
+<p>As result, <a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server#compare-technical-features">new features</a> are developed and delivered into Azure Stack HCI OS every year.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT03.png" alt=""></p>
+<p>While both Windows Server and Azure Stack HCI operating systems can run on virtualization host, going forward the main focus will be Azure Stack HCI OS for hosts and Windows Server for guest workloads. For more information see the video below.
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+    <iframe
+        src="http://www.youtube-nocookie.com/embed/EWv5JUHDR1k?start=423&end="
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"
+        title="YouTube Video"></iframe>
+</div>
+</p>
+<p>Comparison of Azure Stack HCI and Windows Server is available <a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server">in official docs</a>.</p>
+<p><img src="/docs/hci/PlanningAzureStack/01-Operating-System/media/PPT01.png" alt=""></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-fbe8aaf5ebeaf94c0b576b815a44e40a">1.2 - 02. Supporting Infrastructure</h1>
+    
+	<h1 id="planning-supporting-infrastructure">Planning Supporting Infrastructure</h1>
+<p>There are several deployment sizes. Let&rsquo;s split it into three main categories. While all three categories can be managed just with one management machine and PowerShell, with more clusters or racks, management of the infrastructure can be very complex task. We can assume, that with Azure Stack HCI hybrid capabilities, will more infrastructure move into cloud.</p>
+<p>In many cases we hear, that due to security, DHCP is not allowed in server subnet. Limiting what server can receive IP address can be done with <a href="https://learn.microsoft.com/en-us/powershell/module/dhcpserver/add-dhcpserverv4filter">MAC Address Filtering</a>.</p>
+<p>Management infrastructure can be deployed in separate domain from hosted virtual machines to further increase security.</p>
+<p>Management machine can be also deployed as <a href="https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations">Privileged Access Workstation</a>.</p>
+<h2 id="minimum-infrastructure">Minimum infrastructure</h2>
+<p>The minimum components are Domain Controller and Management machine. Management machine can be Windows 10 or Windows Server at least the same version as the managed server (for example Windows 10 1809 and newer can manage Windows Server 2019). DHCP server can significantly help as managed servers can receive IP address. That means you can manage them remotely without logging into servers to configure static IP, but it&rsquo;s not mandatory.</p>
+<p>Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).
+docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png
+<img src="02-Supporting-Infrastructure/media/MinimumInfrastructure01.png" alt="">
+<img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MinimumInfrastructure01.png" alt=""></p>
+<h2 id="medium-infrastructure">Medium infrastructure</h2>
+<p>Medium infrastructure assumes you have multiple administrators and/or multiple clusters in your environment. Another servers dedicated for management can be introduced to help with management centralization or automating management.</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install#install-on-server-core">Installing Windows Admin Center in Gateway Mode</a></li>
+<li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-install?view=sc-vmm-2019">Planning SCVMM Installation</a></li>
+</ul>
+<p><img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/MediumInfrastructure01.png" alt=""></p>
+<h2 id="large-scale-infrastructure">Large Scale infrastructure</h2>
+<p>Large Infrastructure assumes that you have more clusters spanning multiple racks or even sites. To help with bare-metal deployment, network management, patch management is SCVMM essential. Supporting roles (WSUS, WDS, Library servers) managed by SCVMM can be deployed across multiple servers. SCVMM supports deployment in HA Mode (Active-Passive) with SQL server Always On. DHCP is mandatory for bare-metal deployment as during PXE boot, server needs to obtain IP Address.</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-ha-install?view=sc-vmm-2019">Planning HA SCVMM Installation</a></li>
+</ul>
+<p><img src="/docs/hci/PlanningAzureStack/02-Supporting-Infrastructure/media/LargeScaleInfrastructure01.png" alt=""></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9eba56a4b228eb8325698f2c35de1e83">1.3 - 03. Planning Deployment Models and Workloads</h1>
+    
+	<h1 id="planning-deployment-models-and-workloads">Planning Deployment Models and Workloads</h1>
+<p>Depending on size, usage and complexity of the environment you need to design what deployment model for Azure Stack HCI you want to choose. HyperConvered deployment is the simplest. It&rsquo;s great for it&rsquo;s simplicity, however for specialized tasks (like CPU/RAM consuming Virtual Machines) with moderate/high storage workload it might be more effective to split CPU/RAM intensive workload and storage into Converged deployment.</p>
+<h2 id="hyperconverged-deployments">HyperConverged deployments</h2>
+<p>HyperConverged deployments can be small as 2 nodes connected directly with network cable and grow to multi-PB 16 node clusters (unlike traditional clusters, where limit is 64 nodes). Minimum requirements are described in <a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements">hardware requirements doc</a>.</p>
+<p>Simplicity is the main benefit in this deployment model. All hardware is standardized and from one vendor, therefore there is a high chance that there are hundreds of customers with exact same configuration. This significantly helps with troubleshooting. There are no extra hops compared to SAN, where some IOs are going over FC infrastructure and some over LAN (CSV redirection).</p>
+<p><img src="/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/HyperConvergedModel01.png" alt=""></p>
+<h2 id="converged-deployments">Converged deployments</h2>
+<p>Converged deployments have separate AzSHCI cluster with Scale-Out File Server role installed. Multiple compute clusters (up to 64 nodes each) can access single Scale-Out File Server. This design allows to use both Datacenter and Standard licenses for Compute Clusters.</p>
+<p>This design adds some complexity as Virtual Machines are accessing its storage over network. Main benefit is, that one VM consuming all CPU cycles will not affect other VMs because of degraded storage performance and also you can scale storage independently from RAM and CPU (if you run out of cpu, no need to buy server loaded with storage). This design allows higher density, better deduplication job schedule and decreased east-west traffic (as VMs are pointed to it&rsquo;s CSV owner node using Witness Service or new <a href="https://techcommunity.microsoft.com/t5/failover-clustering/scale-out-file-server-improvements-in-windows-server-2019/ba-p/372156">SMB Connections move on connect</a>).</p>
+<p><img src="/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/ConvergedModel01.png" alt=""></p>
+<h2 id="cluster-sets">Cluster Sets</h2>
+<p>If multiple clusters are using multiple Scale-Out FileServers or even if multiple HyperConverged clusters are present, cluster sets helps putting all clusters under one namespace and allows to define fault domains. When VM is created, fault domain can be used (instead of pointing VM to specific node/cluster).</p>
+<p>Technically all VMs are located on SOFS share that is presented using DFS-N namespace. This namespace is hosted on Management cluster that does not need any shared storage as all configuration data are in registry.</p>
+<p><img src="/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/ClusterSets01.png" alt=""></p>
+<h2 id="user-profile-disks-host">User Profile Disks host</h2>
+<p>Azure Stack HCI can also host user profile disks (UPDs). Since UPD is VHD (both native Windows Server functionality and <a href="https://github.com/microsoft/MSLab/tree/master/Scenarios/FSLogix">FSLogix</a>), Scale-Out File Server can be used as workload pattern is the same as for Virtual Machines. However it might make sense to use fileserver hosted Virtual Machine.</p>
+<h2 id="sql">SQL</h2>
+<p>There are multiple ways to deploy SQL Server on Azure Stack HCI cluster. But in the end there are two main - Deploying a SQL Server in a Virtual Machine, or in AKS (Azure Kubernetes Service) as SQL Managed instance.</p>
+<blockquote>
+<p>SQL Performance in one Virtual Machine (out of 40 on 4 node cluster) running SQL workload (database forced to read from disk)</p>
+</blockquote>
+<p><img src="/docs/hci/PlanningAzureStack/03-Deployment-Models-and-Workloads/media/SQLPerformanceVM.png" alt=""></p>
+<h2 id="kubernetes">Kubernetes</h2>
+<p>TBD</p>
+<h2 id="vdi">VDI</h2>
+<p>TBD</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3a7a3d1dbf329cffb6bef9a8a838ae27">1.4 - 04. Planning Network Architecture</h1>
+    
+	<h1 id="planning-network-architecture">Planning Network Architecture</h1>
+<p>To correctly plan infrastructure design is key part in Azure Stack HCI planning. With incorrect configuration, the infrastructure might not be reliable under load. Depending on scale more complex solution might make sense to better control traffic.</p>
+<p>In general there are two types of traffic - East-West and North-South. East-West is handled by SMB protocol (all traffic generated by Storage Bus Layer and Live Migration). North-South is mostly traffic generated by Virtual Machines.</p>
+<p>Physicals switches should be configured with native VLAN for management traffic. This will significantly help as without configuring VLAN on physical host, you will be able to communicate over network. This helps bare metal deployment and also helps with Virtual Switch creation when management network is using vNIC.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/pswitch01.png" alt=""></p>
+<p>In text above were several abbreviations used. Let&rsquo;s explain few.</p>
+<ul>
+<li>pSwitch = Physical Switch. It&rsquo;s your Top of the rack Switch (TOR)</li>
+<li>vSwitch = Virtual Switch. It is switch, that is created on host using New-VMSwitch command</li>
+<li>vNIC = Virtual Network Adapter. It is a vNIC that is connected to Management OS (to parent partition). This is the NIC that is usually used for management or SMB.</li>
+<li>vmNIC = Virtual Machine Network Adapter. This is a vNIC connected to Virtual Machine.</li>
+</ul>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology00.png" alt=""></p>
+<h2 id="topology-design">Topology design</h2>
+<h3 id="single-subnet">Single subnet</h3>
+<p>In Windows Server 2016 was support for single subnet multichannel in cluster support added. This allows to configure only single subnet for multiple network adapters dedicated for SMB Traffic. It is recommended topology design for smaller deployments, where interconnection between TOR switches can handle at least 50% network throughput generated by nodes (as there is 50% chance, that traffic travel using switch interconnect - m-LAG). For example with 4 nodes each node 2 times 25Gbps connections, you should have at least 100Gbps connection between TOR switches.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology01.png" alt=""></p>
+<p>TOR Switches will be configured with Trunk and native (access) VLAN for management.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology02.png" alt=""></p>
+<h3 id="two-subnets">Two subnets</h3>
+<p>With increased number of nodes, there might be a congestion in TOR switches interconnect. Also in case congestion will happen and pause frame will be sent, both switches will be paused. To mitigate both, you can configure 2 subnets - each network switch will host separate subnet. This also brings one benefit - in converged setup if connection fails, it will be visible in failover cluster manager. m-LAG is optional if switches are dedicated for East-West (SMB) only. In this case as there is no traffic generated from SMB multichannel as each SMB adapter is in different subnet. In case VMs or any other traffic is using it, m-LAG is required.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology03.png" alt=""></p>
+<p>TOR Switches will be configured with Trunk and native (access) VLAN for management with one slight difference from single subnet. Each subnet for SMB traffic will have it&rsquo;s own VLAN. This will also help discover disconnected physical connections (<a href="https://youtu.be/JxKMSqnGwKw?t=204)">https://youtu.be/JxKMSqnGwKw?t=204)</a>.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology04.png" alt=""></p>
+<blockquote>
+<p>Note: Two subnet deployment is being now standard. Same approach is used when <a href="https://learn.microsoft.com/en-us/azure-stack/hci/deploy/network-atc">NetworkATC</a> is deployed.</p>
+</blockquote>
+<h3 id="direct-connections-switchless">Direct connections (Switchless)</h3>
+<p>In Windows Server 2019 you can connect all nodes in mesh mode. In case you have 2 nodes, it&rsquo;s just one connection. With 3 nodes, it&rsquo;s 3 interconnects. With 5 nodes, it whoops to 10. For 2 or 3 nodes design it makes sense to use 2 connections between 2 nodes in case one link goes down (for example cable failure). This would result traffic going over slower connection (like 1Gb if North-South is using Gigabit network links). Dell supports up to 4 nodes in switchless configuration.</p>
+<p>The math is simple. With 5 nodes its 4+3+2+1=10. Each connection requires separate subnet.</p>
+<pre><code class="language-powershell"># Calculation for number of connections
+$NumberOfNodes = 5
+(1..($NumberOfNodes - 1) | Measure-Object -Sum).Sum
+</code></pre>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/connections01.gif" alt=""></p>
+<h2 id="rdma-protocols">RDMA Protocols</h2>
+<p>RDMA is not required for Azure Stack HCI, but it is highly recommended. It has lower latency as traffic is using hardware data path (application can send data directly to hardware using DMA).</p>
+<p>Great resources explaining benefit of RDMA:</p>
+<ul>
+<li><a href="https://techcommunity.microsoft.com/t5/storage-at-microsoft/to-rdma-or-not-to-rdma-8211-that-is-the-question/ba-p/425982">Blog comparing storage performance with and without RDMA</a></li>
+<li><a href="https://channel9.msdn.com/Blogs/Regular-IT-Guy/Behind-the-Scenes-with-Storage-Replica-and-RDMA">RDMA protocol deep dive video</a></li>
+</ul>
+<p>There are multiple favors of RDMA. The most used in Azure Stack HCI are RoCEv2 and iWARP. Infiniband can be used also, but just for SMB traffic (NICs cannot be connected to vSwitch).</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/RDMA01.png" alt=""></p>
+<h3 id="iwarp">iWARP</h3>
+<p>iWARP is using TCP for transport. This is bit easier to configure as it uses TCP for Congestion Control. Configuring DCB/ETS is not mandatory. For larger deployments it is recommended as traffic can be prioritized.</p>
+<p>Some network vendors require to configure Jumbo Frames to 9014.</p>
+<h3 id="roce">RoCE</h3>
+<p>RoCE is using UDP for transport. Since it&rsquo;s UDP, it requires lossless L2. It is mandatory to enable DCB (PFC/ETS) and ECN on both physical NICs and physical network infrastructure.</p>
+<p>If Congestion control mechanisms are not correctly implemented, it can lead to huge retransmits. This can lead to infrastructure instabilities and storage disconnections. It is crucial to configure this correctly.</p>
+<p><strong>where DCB needs to be configured</strong></p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/dcb01.png" alt=""></p>
+<h2 id="virtual-switch-and-virtual-network-adapters">Virtual Switch and Virtual Network adapters</h2>
+<h3 id="converged-design">Converged Design</h3>
+<p>This design is most common as it is simplest and requires just two ports. Since RDMA can be enabled on vNICs. In the example below is one VLAN used for SMB vNICs. As mentioned in above text, you may consider using two VLANs and two subnets for SMB vNICs to control traffic flow as it is becoming standard.</p>
+<p>Converged design also makes best use of capacity (let&rsquo;s say you have 4x25Gbps NICs), you can then use up to 100Gbps capacity for storage or Virtual Machines, while using latest technology such as <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-virtual-machine-multiple-queues">VMMQ</a>.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology04.png" alt=""></p>
+<h3 id="dedicated-nics-for-east-west-traffic">Dedicated NICs for East-West traffic</h3>
+<p>Some customers prefer to dedicate physical network adapters for east west traffic. In example below all physical ports on physical switch are configured the same (for simplicity). Also just two physical switches are used. You can also have dedicated switches for east-west traffic (for SMB). If DCB is configured, VLANs are mandatory for SMB adapters. In example below one VLAN for SMB is used. Two VLANs and two subnets can be used to better control traffic.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology05.png" alt=""></p>
+<h3 id="dedicated-nics-for-east-west-traffic-and-management">Dedicated NICs for East-West traffic and management</h3>
+<p>Some customers even prefer to have dedicated network cards (ports) for management. One of the reason can be customers requirements to have dedicated physical switches for management.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/topology06.png" alt=""></p>
+<h2 id="network-adapters-hardware">Network adapters hardware</h2>
+<p>Network adapters that support all modern features such as VMMQ or SDN offloading are in Hardware Compatibility list listed as <strong>Software-Defined Data Center (SDDC) Premium</strong> Additional Qualifier. For more information about Hardware Certification for Azure Stack HCI you can read this 2 part blog -
+<a href="https://blogs.technet.microsoft.com/windowsserver/2018/02/20/the-technical-value-of-wssd-validated-hci-solutions-part-1/">part1</a>, <a href="https://blogs.technet.microsoft.com/windowsserver/2018/02/21/the-technical-value-of-validated-hci-solutions-part-2/">part2</a>.</p>
+<p><img src="/docs/hci/PlanningAzureStack/04-Network-Architecture/media/SDDC01.png" alt=""></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b56f15df841768569bc812367b455f71">1.5 - 05. Storage Capacity Planning</h1>
+    
+	<h1 id="planning-capacity">Planning capacity</h1>
+<h2 id="capacity-reserve">Capacity reserve</h2>
+<p>When disk failure happens, it is necessary to have some capacity reserve to have immediate capacity to rebuild to. So for example if one disk in one node disconnects, there will be reserved capacity to have required number of copies (2 copies in 2-way mirror, 3 copies in 3-way mirror).</p>
+<p>It is recommended to have largest disk capacity in each node not occupied - reserved. For calculation you can use <a href="http://aka.ms/s2dcalc">http://aka.ms/s2dcalc</a>. It is not necessary to mark disk as &ldquo;reserved&rdquo; or anything like that as it all about not consuming capacity of one disk.</p>
+<p><img src="/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity01.gif" alt=""></p>
+<p>Since we regular maintenance is required (security patches), reboot might be necessary. Or for example if any hardware upgrade is done (for example increasing RAM), node might need to be put into maintenance mode or even shut down. If VMs are required to run, then there has to be capacity (RAM) to keep VMs running on rest of the nodes.</p>
+<p><img src="/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity02.gif" alt=""></p>
+<p>With more than 5 nodes it might make sense to reserve entire node. You will have capacity for VMs when node in maintenance, and you will be also able to rebuild if one node is completely lost - assuming all disks damaged (which is usually unlikely to happen as usually just one component fails and can be replaced withing service agreement).</p>
+<p><img src="/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/capacity03.gif" alt=""></p>
+<h2 id="resiliency-options">Resiliency options</h2>
+<h3 id="mirror-two-way-and-three-way">Mirror (two-way and three-way)</h3>
+<p>Two-way mirroring writes two copies of everything. Its storage efficiency is 50% - to write 1TB of data, you need at least 2TB of physical storage capacity. Likewise, you need at least two fault domains. By default, fault domain is Storage Scale Unit (which translates into server node). Fault domain can be also Chassis or Rack. Therefore if you have two node cluster, two-way mirroring will be used.</p>
+<p>With three-way mirror, the storage efficiency is 33.3% - to write 1TB of data, you need at least 3TB of physical storage capacity. Likewise you need to have at least three fault domains. If you have 3 nodes, by default three-way mirror will be used.</p>
+<h3 id="dual-parity">Dual-parity</h3>
+<p>Dual parity implements Reed-Solomon error-correcting codes to keep two bitwise parity symbols, thereby providing the same fault tolerance as three-way mirroring (i.e. up to two failures at once), but with better storage efficiency. It most closely resembles RAID-6.
+To use dual parity, you need at least four hardware fault domains – with Storage Spaces Direct, that means four servers. At that scale, the storage efficiency is 50% – to store 2 TB of data, you need 4 TB of physical storage capacity.</p>
+<p>With increasing number of fault domains (nodes), local reconstruction codes, or LRC can be used. LRC can decrease rebuild times as only local (local group) parity can be used to rebuild data (there is one local and one global parity in dataset).</p>
+<h3 id="mirror-accelerated-parity">Mirror-Accelerated Parity</h3>
+<p>Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is using mirroring to accelerate erasure coding.</p>
+<p>To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers.</p>
+<p>The storage efficiency of mirror-accelerated parity is in between what you&rsquo;d get from using all mirror or all parity, and depends on the proportions you choose</p>
+<h3 id="recommended-reading">Recommended reading</h3>
+<p><a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance">https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance</a></p>
+<h2 id="scoped-volumes">Scoped volumes</h2>
+<p>With increasing number of nodes it might be useful to put data only on selected nodes to better control what data will be accessible in case of failure of certain nodes. With scoped volumes, volumes can system tolerate more than 2 nodes failure while keeping volumes online.</p>
+<p><img src="/docs/hci/PlanningAzureStack/05-Storage-Capacity-Planning/media/ScopedVolumes01.png" alt=""></p>
+<h2 id="cache-drives">Cache drives</h2>
+<p>Faster media can be used as cache. If HDDs are used, cache devices are mandatory. Cache drives do not contribute to capacity.</p>
+<p>For more information about cache visit <a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/understand-the-cache">docs</a></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2f05a0386dbcf789bb26d2e6bf7ef4a9">1.6 - 06. Hardware</h1>
+    
+	<h1 id="planning-hardware">Planning hardware</h1>
+<h2 id="cpu">CPU</h2>
+<p>In hyperconverged systems, CPU handles both VMs and Storage. Rule of thumb is that each logical processor can handle ~60MiB IOPS. Let&rsquo;s calculate an exaple: four node cluster, each node two twelve-core CPUs results. If we consider 4k IOPS, each LP can handle ~15k IOPS. With 4 nodes, 24 LPs each it results in ~1.5M IOPS. All assuming that CPU is used for IO operations only.</p>
+<h2 id="storage-devices">Storage devices</h2>
+<p>In general, there are two kinds of devices - spinning media and solid state media disks. We all know this story as it&rsquo;s been some time we upgraded our PCs with SSDs and we were able to see the significant latency drop. There are two factors though - type of media (HDD or SSD) and type of bus (SATA, SAS, NVMe or Storage Class Memory -SCM).</p>
+<p>HDD mediatype is always using SATA or SAS. And this type of bus was more than enough for it&rsquo;s purpose. With introduction of SSD mediatype, SATA/SAS started to show it&rsquo;s limitation. Namely with SATA/SAS you will utilize 100% of your CPU and you will not be able to reach more than ~300k IOPS. It&rsquo;s because SATA/SAS was designed for spinning media and also one controller connects multiple devices to one PCIe connection. NVMe was designed from scratch for low latency and parallelism and has dedicated connection to PCIe. Therefore NAND NVMe outperforms NAND SATA/SAS SSD drive.</p>
+<p>Another significant leap was introduction of Intel Optane SSD, that introduces even lower latencies than NAND SSDs. And since in Optane media is bit addressable, there is no garbage to collect (on NAND SSD you erase only in blocks with negative performance impact).</p>
+<p>Important piece when selecting storage devices is, that if you consider SSD+HDD combination, all heavy lifting will end up in one SATA/SAS controller connected into one PCIe slot. Therefore it&rsquo;s recommended to consider using NVMe instead, as each NVMe will have its PCIe line.</p>
+<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/InterfaceEfficiency01.png" alt=""></p>
+<h2 id="network-cards">Network cards</h2>
+<p>There are several considerations when talking about network cards.</p>
+<h3 id="network-interface-speed">Network Interface Speed</h3>
+<p>Network Cards are coming in speeds ranging from 1Gbps to 200Gbps. While hyperconverged infrastructure will work with 1Gbps, the performance will be limited. The requirement is to have at least one 10Gbps port per server. However it&rsquo;s recommended to have at least 2x10Gbps with RDMA enabled.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Mediatype</th>
+<th style="text-align:left">Recommended NICs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SSD as cache or SSD all-flash</td>
+<td style="text-align:left">2×10 Gbps or 2x25Gbps</td>
+</tr>
+<tr>
+<td style="text-align:left">NVMe as cache</td>
+<td style="text-align:left">2-4×25Gbps or 2×100Gbps</td>
+</tr>
+<tr>
+<td style="text-align:left">NVMe all-flash</td>
+<td style="text-align:left">2-4×25Gbps or 2×100Gbps</td>
+</tr>
+<tr>
+<td style="text-align:left">Optane as cache</td>
+<td style="text-align:left">2-4×100 Gbps or 2×200Gbps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="use-of-rdma">Use of RDMA</h3>
+<p>When RDMA is enabled, it will bypass networking stack and DMA directly into memory of NIC. This will significantly reduce CPU overhead. While RDMA is not mandatory, it&rsquo;s highly recommended for Azure Stack HCI as it will leave more CPU for Virtual Machines and Storage.</p>
+<h3 id="rdma-protocol">RDMA protocol</h3>
+<p>There are two favors of RDMA. iWARP (TCP/IP) and RoCE (UDP). The main difference a need of lossless infrastructure for RoCE as when switch is loaded and starts dropping packets, it cannot prioritize or even notify infrastructure to stop sending packets if DCB/PFC/ETS is not configured. When packet is dropped on UDP, large retransmit needs to happen and this cause even higher load on switches. Retransmit will also happen on TCP/IP, but significantly smaller. It is still recommended to configure PFC/ETS on both if possible - in case switch needs to notify infrastructure to stop sending packets.</p>
+<h2 id="network-infrastructure">Network infrastructure</h2>
+<p>Reliable, low latency infrastructure is a must for reliable function of Converged and HyperConverged infrastructure. As already covered above, DCB (PFC nad ETS) is recommended for iWARP and required for RoCE. There is also alternative - starting Windows Server 2019, direct connection is supported. As you can see, it does not make sense to have more than 5 nodes in the cluster (with increasing number of interconnects)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Number of nodes</th>
+<th style="text-align:left">Number of direct connections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">10</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: Dell supports up to 4 nodes in switchless configuration</p>
+</blockquote>
+<h2 id="hardware-certification-programme">Hardware certification programme</h2>
+<p>It is very important to follow validated hardware path. This way you can avoid ghost hunting when single component will misbehave due to firmware or even hardware not being able to handle load under high pressure. There is very good blog summarizing importance of validated hardware <a href="https://cloudblogs.microsoft.com/windowsserver/2018/02/20/the-technical-value-of-wssd-validated-hci-solutions-part-1/">part1</a> <a href="https://cloudblogs.microsoft.com/windowsserver/2018/02/21/the-technical-value-of-validated-hci-solutions-part-2/">part2</a>. Validated solutions are available in <a href="https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog">Azure Stack HCI Catalog</a>. For Azure Stack HCI you can also consider <a href="https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Integrated+System">Integrated System</a> which includes the Azure Stack HCI operating system pre-installed as well as partner extensions for driver and firmware updates.</p>
+<blockquote>
+<p>Note: Dell sells only Integrated Systems as Microsoft highly recommend those over just verified solutions.</p>
+</blockquote>
+<p><img src="/docs/hci/PlanningAzureStack/06-Hardware/media/PPT01.png" alt=""></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d3b7e7399b0e891910d06bb1c2678108">2 - Storage Stack</h1>
+    
+	<h1 id="storage-stack-overview">Storage Stack Overview</h1>
+<p>Understanding Storage Stack is crucial for understanding what technologies are involved and how (where storage replica is, where is ReFS Multi-resilient Volume, &hellip;). Understanding how layers are stacked will also help when IO flow is troubleshooted - like reviewing performance counters or troubleshooting core functionality.</p>
+<p>Traditional stack compared to storage spaces stack (note that MPIO is missing, but for Storage Spaces Direct it&rsquo;s not needed as there is only one path to the physical device, so it was omitted)</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack01.png" alt=""></p>
+<p>You can notice 4 &ldquo;new&rdquo; layers, but actually it&rsquo;s just Spaces layer (Spaceport) and Storage Bus Layer.</p>
+<p>To better understand what&rsquo;s in the stack, you can also explore some parts with PowerShell</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack02.png" alt=""></p>
+<p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version I found was from webarchive and I copied it here <img src="/docs/hci/StorageStack/media/Storage.pdf" alt=""></p>
+<h2 id="layers-below-s2d-stack">Layers below S2D Stack</h2>
+<h3 id="port--miniport-driver">Port &amp; Miniport driver</h3>
+<p>storport.sys &amp; stornvme.sys</p>
+<p>Port drivers implement the processing of an I/O request specific to a type of I/O port, such as SATA, and are implemented as kernel-mode libraries of functions rather than actual device drivers. Port driver is written by Microsoft (storport.sys). If third party wants to use write their own device driver (like HBA), then it will use miniport driver (except if device is NVMe, then miniport driver is Microsoft stornvme.sys)</p>
+<p>Miniport drivers usually use storport.sys performance enhancements such as support for the paralell execution of IO.</p>
+<p><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-port-drivers">storage port drivers</a>
+<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-miniport-drivers">storage miniport drivers</a></p>
+<h3 id="class-driver">Class Driver</h3>
+<p>disk.sys</p>
+<p>A <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/introduction-to-storage-class-drivers">storage class driver</a> (typically disk.sys) uses the well-established SCSI class/port interface to control a mass storage device of its type on any bus for which the system supplies a storage port driver (currently SCSI, IDE, USB and IEEE 1394). The particular bus to which a storage device is connected is transparent to the storage class driver.</p>
+<p>Storage class driver is responsible for claiming devices, interpreting system I/O requests and <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-class-driver-s-general-functionality">many more</a></p>
+<p>In Storage Spaces stack (Virtual Disk) disk.sys is responsible for claiming Virtual Disk exposed by spaceport (storage spaces)</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack03.png" alt=""></p>
+<h3 id="partition-manager">Partition Manager</h3>
+<p>partmgr.sys</p>
+<p>Partitions are handled by partmgr.sys. Partition is usually GPT or MBR (preferably GPT as MBR has many limitations such as 2TB size limit)</p>
+<p>As you can see in the stack, there are two partition managers. One partition layout is on physical disk and it is then consumed by storage spaces (spaceport).</p>
+<p>On the picture below you can see individual physical disk from spaces exposed and it&rsquo;s partitions showing metadata partition and partition containing pool data (normally not visible as it&rsquo;s hidden by partmgr.sys when it detects spaces).</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack04.png" alt=""></p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack05.png" alt=""></p>
+<h2 id="s2d-stack">S2D Stack</h2>
+<h3 id="storage-bus-layer">Storage Bus Layer</h3>
+<p>clusport.sys and clusblft.sys</p>
+<p>These two drivers (client/server) are exposing all physical disk to each cluster node, so it looks like all physical disks from every cluster node are connected to each server. For interconnect is SMB used, therefore high-speed RDMA can be used (recommended).</p>
+<p>It also contains SBL cache.</p>
+<h3 id="spaceport">Spaceport</h3>
+<p>spaceport.sys</p>
+<p>Claims disks and adds them to storage spaces pool. It creates partitions where internal data structures are metadata are kept (see screenshot in partition manager).</p>
+<p>Defines resiliency when volume (virtual disk) is created (creates/distributes extents across physical disks)</p>
+<h3 id="virtual-disk">Virtual Disk</h3>
+<p>disk.sys is now used by storage spaces and exposes virtual disk that was provisioned using spaceport.sys</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack06.png" alt=""></p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack07.png" alt=""></p>
+<h2 id="layers-above-s2d-stack">Layers above S2D Stack</h2>
+<h3 id="volume-manager">Volume Manager</h3>
+<p>dmio.sys, volmgr.sys</p>
+<p>Volumes are created on top of the partition and on volumes you can then create filesystems and expose it to the components higher in the stack.</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack08.png" alt=""></p>
+<h3 id="volume-snapshot">Volume Snapshot</h3>
+<p>volsnap.sys</p>
+<p>Volsnap is the component that creates system provider for the volume <a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service">shadow copy service (VSS)</a>. This service is controller by vssadmin.exe</p>
+<h3 id="bitlocker">Bitlocker</h3>
+<p>fvevol.sys</p>
+<p>Bitlocker is well known disk encryption software that is on the market since Windows Vista. In PowerShell you can expose volume status with Get-BitlockerVolume command.</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack09.png" alt=""></p>
+<h3 id="filter-drivers">Filter Drivers</h3>
+<p>Interesting about filter drivers is, that all FileSystem drivers are actually filter drivers - special ones, File System Drivers - like REFS.sys, NTFS.sys, Exfat.sys &hellip;</p>
+<p>You can learn more about filesystem using fsutil</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack10.png" alt=""></p>
+<p>There are also many first party and third party filter drivers. You can expose those with fltmc command</p>
+<p><img src="/docs/hci/StorageStack/media/StorageStack11.png" alt=""></p>
+<p>As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can (reserve theirs)[https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes]</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-64d65c6384cd494a50a15bef8ab6c8ee">2.1 - Layers below S2D stack</h1>
+    
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-54f27f709ce186a296e60f45e7e23649">2.1.1 - Storage Devices</h1>
+    
+	<!-- TOC -->
+<ul>
+<li><a href="#storage-devices">Storage Devices</a>
+<ul>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#interfaces">Interfaces</a></li>
+<li><a href="#storage-protocol">Storage Protocol</a></li>
+<li><a href="#storage-configurations">Storage Configurations</a></li>
+<li><a href="#os-disks">OS Disks</a></li>
+<li><a href="#consumer-grade-ssds">Consumer-Grade SSDs</a></li>
+<li><a href="#exploring-stack-with-powershell">Exploring Stack with PowerShell</a>
+<ul>
+<li><a href="#get-physicaldisk">Get-PhysicalDisk</a></li>
+<li><a href="#storage-reliability-counter">Storage Reliability Counter</a></li>
+</ul>
+</li>
+<li><a href="#performance-results">Performance results</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/Stack-PhysicalDisks.png" alt=""></p>
+<h2 id="resources">Resources</h2>
+<p>Microsoft Documentation</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives">https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations">https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations</a></li>
+</ul>
+<p>NVMe vs SATA</p>
+<ul>
+<li><a href="https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf">https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf</a></li>
+<li><a href="http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf">http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf</a></li>
+<li><a href="https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf">https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf</a></li>
+<li><a href="https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf">https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf</a></li>
+<li><a href="https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on">https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on</a></li>
+<li><a href="https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf">https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf</a></li>
+<li><a href="https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/">https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/</a></li>
+</ul>
+<h2 id="interfaces">Interfaces</h2>
+<p>While SATA is still well performing for most of the customers (see performance results), NVMe offers benefit of higher capacity and also more effective protocol (AHCI vs NVMe), that was developed specifically for SSDs (opposite to AHCI, that was developed for spinning media). SATA/SAS is however not scaling well with the larger disks.</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/ScalablePerformance.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf">https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf</a></li>
+</ul>
+<p>There is also another aspect of performance limitation of SATA/SAS devices - the controller. All SATA/SAS devices are connected to one SAS controller (non-raid) that has limited speed (only one PCI-e connection).</p>
+<p>Drive Connector is universal (U2, also known as SFF-8639)</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/DriveConnector.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf">https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf</a></li>
+</ul>
+<p>NVMe drives are mapped directly to CPU</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/NVMeDriveMapping.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf">https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf</a></li>
+</ul>
+<p>NVMe backplane connection - Example AX7525 - 16 PCIe Gen4 lanes in each connection (8 are used), 12 connections in backplane, in this case no PCIe switches.</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/AX7525Backplane.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/dell-emc-poweredge-r7525-internal-view-24x-nvme-backplane-and-fans/">https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/dell-emc-poweredge-r7525-internal-view-24x-nvme-backplane-and-fans/</a></li>
+</ul>
+<h2 id="storage-protocol">Storage Protocol</h2>
+<p>SSDs were originally created to replace conventional rotating media. As such they were designed to connect to the same bus types as HDDs, both SATA and SAS (Serial ATA and Serial Attached SCSI).</p>
+<p>However, this imposed speed limitations on the SSDs.  Now a new type of SSD exists that attaches to PCI-e. Known as NVMe SSDs or simply NVMe.</p>
+<p>For 1M IOPS, NVMe has more than <a href="https://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf">50% less latency with less than 50% CPU Cycles used</a>. It is due to <a href="https://en.wikipedia.org/wiki/NVM_Express#Comparison_with_AHCI">improved protocol</a> (AHCI vs NVMe)</p>
+<h2 id="storage-configurations">Storage Configurations</h2>
+<p>(slowest to fastest)</p>
+<ul>
+<li>Hybrid (HDD+SSD)</li>
+<li>All Flash (All SSD)</li>
+<li>NVMe+HDD</li>
+<li>All-NVMe</li>
+</ul>
+<p>When combining multiple media types, faster media will be used as caching. While it is recommended to use 10% of the capacity for cache, it should be noted, that it is just important to not spill the cache with the production workload, as it will dramatically reduce performance. Therefore all production workload should fit into the Storage Bus Layer Cache (cache devices). The sweet spot (price vs performance) is combination of fast NVMe (mixed use or write intensive) with HDDs. For performance intensive workloads it&rsquo;s recommended to use all-flash solutions as caching introduces ~20% overhead + less predicable behavior (data can be already destaged&hellip;), therefore it is recommended to use All-Flash for SQL workloads.</p>
+<p>Performance drop when spilling cache devices:</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/CachePerfDrop.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/">https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/</a></li>
+</ul>
+<h2 id="os-disks">OS Disks</h2>
+<p>In Dell Servers are BOSS (Boot Optimized Storage Solution) cards used. In essence it card wih 2x m2 2280 NVMe disks connected to PCI-e with configurable non-RAID/RAID 1</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/AX750BOSS01.png" alt=""></p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/AX750BOSS02.png" alt=""></p>
+<h2 id="consumer-grade-ssds">Consumer-Grade SSDs</h2>
+<p>You should avoid any consumer grade SSDs as consumer grade SSDs might contain NAND with higher latency (therefore there can be performance drop after spilling FTL buffer) or because consumer grade SSDs are not power protected (PLP). You can learn more about why consumer-grade SSDs are not good idea in a <a href="https://techcommunity.microsoft.com/t5/storage-at-microsoft/don-t-do-it-consumer-grade-solid-state-drives-ssd-in-storage/ba-p/425914">blog post</a>. Consumer-grade SSDs do also have lower DWPD (Disk Written Per Day). You can learn about DWPD in <a href="https://blogs.technet.microsoft.com/filecab/2017/08/11/understanding-dwpd-tbw/">this blogpost</a></p>
+<h2 id="exploring-stack-with-powershell">Exploring Stack with PowerShell</h2>
+<h3 id="get-physicaldisk">Get-PhysicalDisk</h3>
+<pre><code class="language-powershell">$Server = &quot;axnode1&quot;
+Get-PhysicalDisk -CimSession $Server | Format-Table -Property FriendlyName, Manufacturer, Model, SerialNumber, MediaType, BusType, SpindleSpeed, LogicalSectorSize, PhysicalSectorSize
+</code></pre>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/PowerShell01.png" alt=""></p>
+<p>From screenshot you can see, that AX640 BOSS card reports as SATA device with Unspecified Mediatype, while SAS disks are reported as SSDs, with SAS BusType. Let&rsquo;s deep dive into BusType/MediaType a little bit (see table below)</p>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/BusType.png" alt=""></p>
+<p>Storage Spaces requires BusType SATA/SAS/NVMe or SCM. BusType RAID is unsupported.</p>
+<p>You can also see Logical Sector Size and Physical Sector size. This refers to Drive Type (4K native vs 512E vs 512).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&ldquo;LogicalSectorSize&rdquo; value</th>
+<th style="text-align:center">&ldquo;PhysicalSectorSize&rdquo; value</th>
+<th style="text-align:center">Drive type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">4K native</td>
+</tr>
+<tr>
+<td style="text-align:center">512</td>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">Advanced Format (also known as 512E)</td>
+</tr>
+<tr>
+<td style="text-align:center">512</td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">512-byte native</td>
+</tr>
+</tbody>
+</table>
+<p>Reference</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-US/troubleshoot/windows-server/backup-and-storage/support-policy-4k-sector-hard-drives">https://learn.microsoft.com/en-US/troubleshoot/windows-server/backup-and-storage/support-policy-4k-sector-hard-drives</a></li>
+<li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh147334(v=ws.10)?redirectedfrom=MSDN">https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh147334(v=ws.10)?redirectedfrom=MSDN</a></li>
+</ul>
+<h3 id="storage-reliability-counter">Storage Reliability Counter</h3>
+<p>Once disk is added to storage spaces, S.M.A.R.T. attributes can be filtered out. For reading disk status (such as wear level temperatures&hellip;) can be get-storagereliability counter used.</p>
+<pre><code class="language-powershell">$Server = &quot;axnode1&quot;
+Get-PhysicalDisk -CimSession $Server | Get-StorageReliabilityCounter -CimSession $Server | Format-Table -Property DeviceID, Wear, Temperature*, PowerOnHours, ManufactureDate, ReadLatencyMax, WriteLatencyMax, PSComputerName
+</code></pre>
+<p><img src="/docs/hci/StorageStack/01-Layers-Below-S2D-Stack/01-StorageDevices/media/PowerShell02.png" alt=""></p>
+<h2 id="performance-results">Performance results</h2>
+<p>From the results below you can see that SATA vs SAS vs NVMe is 590092 vs 738507 vs 1496373 4k 100% read IOPS. All measurements were done with VMFleet 2.0 <a href="https://github.com/DellGEOS/AzureStackHOLs/tree/main/lab-guides/05-TestPerformanceWithVMFleet">https://github.com/DellGEOS/AzureStackHOLs/tree/main/lab-guides/05-TestPerformanceWithVMFleet</a></p>
+<p>The difference between SAS and SATA is also 8 vs 4 disks in each node. The difference between SAS and NVMe is more than double.</p>
+<ul>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Dedup.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core and deduplication enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Bitlocker.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core &amp; BitLocker enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-16SAS-SSDs-32VMs-2nodes-azshci.txt">AX6515 - 2nodes, 16 cores and 8xSAS SSDs each</a></li>
+<li><a href="./media/R640-All-NVMe-16NVMe-64VMs-2Node.txt">R640 - 2nodes, 32 cores and 8xNVMe SSDs each</a></li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-36da8914af9134656b80862c9625c47f">2.1.1.1 - </h1>
+    
+	<h1 id="storage-devices">Storage Devices</h1>
+<h2 id="resources">Resources</h2>
+<p>Microsoft Documentation</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives">https://learn.microsoft.com/en-us/azure-stack/hci/concepts/choose-drives</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations">https://learn.microsoft.com/en-us/azure-stack/hci/concepts/drive-symmetry-considerations</a></li>
+</ul>
+<p>NVMe vs SATA</p>
+<ul>
+<li><a href="https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf">https://sata-io.org/sites/default/files/documents/NVMe%20and%20AHCI%20as%20SATA%20Express%20Interface%20Options%20-%20Whitepaper_.pdf</a></li>
+<li><a href="http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf">http://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf</a></li>
+<li><a href="https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf">https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf</a></li>
+<li><a href="https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf">https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf</a></li>
+<li><a href="https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on">https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on</a></li>
+<li><a href="https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf">https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf</a></li>
+</ul>
+<h2 id="storage-devices-1">Storage Devices</h2>
+<p><img src="./media/Stack-PhysicalDisks.png" alt=""></p>
+<h3 id="interfaces">Interfaces</h3>
+<p>While SATA is still well performing for most of the customers (see performance results), NVMe offers benefit of higher capacity and also more effective protocol (AHCI vs NVMe), that was developed specifically for SSDs (opposite to AHCI, that was developed for spinning media). SATA/SAS is however not scaling well with the larger disks.</p>
+<p><img src="./media/ScalablePerformance.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf">https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf</a></li>
+</ul>
+<p>There is also another aspect of performance limitation of SATA/SAS devices - the controller. All SATA/SAS devices are connected to one SAS controller (non-raid) that has limited speed (only one PCI-e connection).</p>
+<p>Drive Connector is universal (U2, also known as SFF-8639)</p>
+<p><img src="./media/DriveConnector.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf">https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf</a></li>
+</ul>
+<p>NVMe drives are mapped directly to CPU</p>
+<p><img src="./media/NVMeDriveMapping.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf">https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf</a></li>
+</ul>
+<h3 id="storage-protocol">Storage Protocol</h3>
+<p>SSDs were originally created to replace conventional rotating media. As such they were designed to connect to the same bus types as HDDs, both SATA and SAS (Serial ATA and Serial Attached SCSI).</p>
+<p>However, this imposed speed limitations on the SSDs.  Now a new type of SSD exists that attaches to PCI-e. Known as NVMe SSDs or simply NVMe.</p>
+<p>For 1M IOPS, NVMe has more than <a href="https://www.nvmexpress.org/wp-content/uploads/2013/04/IDF-2012-NVM-Express-and-the-PCI-Express-SSD-Revolution.pdf">50% less latency with less than 50% CPU Cycles used</a>. It is due to <a href="https://en.wikipedia.org/wiki/NVM_Express#Comparison_with_AHCI">improved protocol</a> (AHCI vs NVMe)</p>
+<h3 id="storage-configurations">Storage Configurations</h3>
+<ul>
+<li>Hybrid (HDD+SSD)</li>
+<li>All Flash (All SSD)</li>
+<li>All-NVMe</li>
+<li>NVMe+HDD</li>
+</ul>
+<p>When combining multiple media types, faster media will be used as caching. While it is recommended to use 10% of the capacity for cache, it should be noted, that it is just important to not spill the cache with the production workload, as it will dramatically reduce performance</p>
+<p><img src="./media/CachePerfDrop.png" alt=""></p>
+<ul>
+<li>Source: <a href="https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/">https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/</a></li>
+</ul>
+<h3 id="exploring-stack-with-powershell">Exploring Stack with PowerShell</h3>
+<h3 id="performance-results">Performance results</h3>
+<p>From the results below you can see that SATA vs SAS vs NVMe is 590092 vs 738507 vs 1496373 4k 100% read IOPS.</p>
+<p>The difference between SAS and SATA is also 8 vs 4 disks in each node. The difference between SAS and NVMe is more than double.</p>
+<ul>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Dedup.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core and deduplication enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Bitlocker.txt">AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core &amp; BitLocker enabled</a></li>
+<li><a href="./media/AX6515-All-Flash-16SAS-SSDs-32VMs-2nodes-azshci.txt">AX6515 - 2nodes, 16 cores and 8xSAS SSDs each</a></li>
+<li><a href="./media/R640-All-NVMe-16NVMe-64VMs-2Node.txt">R640 - 2nodes, 32 cores and 8xNVMe SSDs each</a></li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+    
+	
+  
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-de8524a4d7711bdad42e6a195a9d5856">3 - Support Matrix</h1>
+    
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-f6639f04025d437d9dca1e2109adbe7b">3.1 - Azure Stack HCI Support Matrix - 2302</h1>
+    
+	
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <style>
+    table {
+        border-width:1px;border-style:solid;
+        border-color:black;
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+        table-layout:fixed;
+        overflow-wrap: break-word;
+    }
+    th {
+        border-width:1px;
+        padding:7px;
+        border-style:solid;
+        border-color:#0076CE;
+        background-color:#0076CE;
+        color:#FFFFFF;
+        text-align:center;
+    }
+    td {
+        border-width:1px;
+        padding:7px;
+        border-style:solid;
+        border-color:#0076CE;
+        text-align:center;
+    }
+    caption {
+        padding-bottom: 10px;
+        color:  #0076CE;
+        font-weight: bold;
+        text-align: left;
+        font-size: 20px;
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="content">
+
+
+<h3 id="supported-platforms">Supported Platforms</h3>
+
+
+<table> <colgroup><col/><col/></colgroup> <tr><th>Model</th><th>Supported Operating System</th></tr> <tr><td>AX-640</td><td>Windows Server 2016 Datacenter<br>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-740xd</td><td>Windows Server 2016 Datacenter<br>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-6515</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-7525</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-650</td><td>Azure Stack HCI-20H2<br>Windows Server 2022 Datacenter<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2</td></tr> <tr><td>AX-750</td><td>Azure Stack HCI-20H2<br>Windows Server 2022 Datacenter<br>Azure Stack HCI-21H2<br>Azure Stack HCI-22H2</td></tr> <tr><td>R640 Storage Spaces Direct RN</td><td>Windows Server 2016 Datacenter<br>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2</td></tr> <tr><td>R740xd Storage Spaces Direct RN</td><td>Windows Server 2016 Datacenter<br>Windows Server 2019 Datacenter<br>Azure Stack HCI-20H2</td></tr> <tr><td>R440 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> <tr><td>R740xd2 Storage Spaes Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> </table><br>
+
+
+<h3 id="base-components">Base Components</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Component</th><th>Type</th><th>Software Bundle</th><th>Minimum Supported Version</th><th>Supported Platforms</th><th>Supported OS</th></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>W77H1</td><td>2.16.1</td><td>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN </td><td>NA</td></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>CKFTD</td><td>2.16.1</td><td>R440 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>VHNTJ</td><td>2.16.1</td><td>R740xd2 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>61GYN</td><td>2.9.3</td><td>AX-6515</td><td>NA</td></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>C45MX</td><td>2.9.3</td><td>AX-7525</td><td>NA</td></tr> <tr><td>BIOS</td><td>Firmware DUP</td><td>G7K8G</td><td>1.8.2</td><td>AX-650<br><br>AX-750</td><td>NA</td></tr> <tr><td>iDRAC9 with Lifecycle Controller</td><td>Firmware DUP</td><td>W9V83</td><td>6.00.30.00</td><td>All</td><td>NA</td></tr> <tr><td>Non-expander Storage Backplane</td><td>Firmware DUP</td><td>R31PT</td><td>4.36</td><td>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN </td><td>NA</td></tr> <tr><td>Non-expander Storage Backplane</td><td>Firmware DUP</td><td>6NNVP</td><td>3.72</td><td>AX-7525<br><br>AX-650<br><br>AX-750</td><td>NA</td></tr> <tr><td>NVMe Switch Storage Backplane</td><td>Firmware DUP</td><td>5XJWN</td><td>1.05</td><td>AX-750</td><td>NA</td></tr> <tr><td>Expander Storage Backplane</td><td>Firmware DUP</td><td>H9PV3</td><td>1.2</td><td>AX-750</td><td>NA</td></tr> <tr><td>Expander Storage Backplane</td><td>Firmware DUP</td><td>60K1J</td><td>2.52</td><td>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740x2 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>1GW62</td><td>1.0.10</td><td>R440 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>MFYDX</td><td>9.0.6</td><td>AX-640<br><br>R640 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>G65GH</td><td>1.1.4</td><td>AX-740xd<br><br>R740xd Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>R13D8</td><td>1.0.4</td><td>R740xd2 Storage Spaces Direct RN</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>79XGF</td><td>1.0.7</td><td>AX-6515</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>4NMC7</td><td>1.2.0</td><td>AX-7525</td><td>NA</td></tr> <tr><td>CPLD</td><td>Firmware DUP</td><td>T8FR1</td><td>1.0.9</td><td>AX-650<br><br>AX-750</td><td>NA</td></tr> <tr><td>Microsoft Azure Stack HCI OS Driver Pack</td><td>Firmware DUP</td><td>5K0W1</td><td>20.06.00</td><td>All</td><td>NA</td></tr> <tr><td>Chipset driver for 14G Intel platforms</td><td>Driver DUP</td><td>3DTYV</td><td>10.1.18807.8279</td><td>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740x2 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td></tr> <tr><td>Chipset driver for 15G AMD platforms</td><td>Driver DUP</td><td>DH4X8</td><td>2.18.30.202</td><td>AX-6515<br><br>AX-7525</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td></tr> <tr><td>Chipset driver for 15G Intel platforms</td><td>Driver DUP</td><td>HHCYX</td><td>10.1.18793.8276</td><td>AX-650<br><br>AX-750</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td></tr> <tr><td>iDRAC Service Module OS DUP</td><td>Application</td><td>7K0YY</td><td>5.1.0.0</td><td>All</td><td>NA</td></tr> </table><br>
+
+
+<h3 id="network-adapters">Network Adapters</h3>
+
+
+<table>
+<colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<tr><th>Component</th><th>Part Number</th><th>SDDC AQ for Windows Server 2022</th><th>RDMA Protocol</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Driver Software Bundle</th><th>Driver Minimum Supported Version</th><th>Supported OS</th><th>Supported Platforms</th></tr><tr><td>Broadcom 57416 Dual Port 10 GbE BaseT Network LOM Mezz Card</td><td>J4RN3</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57504 Quad Port 10/25GbE,SFP28, OCP NIC 3.0</td><td>X1KR4</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57416 Dual Port 10 Gb E SFP+ Network LOM Mezz Card</td><td>WC9TR</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57416 Dual Port 10GbE BASE-T Adapter, OCP NIC 3.0</td><td>T6HR8</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57416 Dual Port 10 GbE SFP+ Network LOM Mezz Card</td><td>6XH9X</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57412 2 Port 10Gb SRP+ + 5720 2 Port 1 GB Base-T, rNDC</td><td>NWMNX</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom BCM57414 25G SFP Dual Port OCP3 Mezz</td><td>NHN45</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57414 Dual Port 25 Gb E SFP+ Network LOM Mezz Card</td><td>930PP</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57412 Dual Port 10GbE SFP+, OCP NIC 3.0</td><td>CP610</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 57414 Dual Port 10/25GbE SFP28, OCP NIC 3.0</td><td>KHCTP</td><td rowspan="1">Management<br><br>Compute (Standard)<br><br>Storage (Premium)</td><td rowspan="1">N/A</td><td rowspan="1">230WD</td><td rowspan="1">22.21.07.80</td><td rowspan="1">7DTCN</td><td rowspan="1">22.21.06.80</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Broadcom 5720 Dual Port 1 GbE Network LOM Mezz Card</td><td>KJMHJ</td><td rowspan="1">Management</td><td rowspan="1">N/A</td><td rowspan="1">JFF2M</td><td rowspan="1">22.20.11</td><td rowspan="1">V3JM4</td><td rowspan="1">22.20.2</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Intel X710-T2L Dual Port 10GbE BASE-T, OCP NIC 3.0</td><td>VMFKR</td><td rowspan="1">Management<br><br>Compute (Standard)</td><td rowspan="1">N/A</td><td rowspan="1">GXJ5G</td><td rowspan="1">21.5.9</td><td rowspan="1">NVPY7 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">21.5.0 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Intel X710 Quad Port 10GbE SFP+, OCP NIC 3.0 </td><td>VF81P</td><td rowspan="1">Management<br><br>Compute (Standard)</td><td rowspan="1">N/A</td><td rowspan="1">GXJ5G</td><td rowspan="1">21.5.9</td><td rowspan="1">NVPY7 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">21.5.0 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Intel X710-T4L Quad Port 10GbE BASE-T, OCP NIC 3.0 </td><td>50RV4</td><td rowspan="1">Management<br><br>Compute (Standard)</td><td rowspan="1">N/A</td><td rowspan="1">GXJ5G</td><td rowspan="1">21.5.9</td><td rowspan="1">NVPY7 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">21.5.0 - WS2019<br><br>Inbox - WS2022</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Intel X710 DP 10Gb DA/SFP+, +I350 DP 1Gb Ethernet, NDC</td><td>6VDPG</td><td rowspan="1">N/A</td><td rowspan="1">N/A</td><td rowspan="1">GXJ5G</td><td rowspan="1">21.5.9</td><td rowspan="1">NVPY7</td><td rowspan="1">21.5.0</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td></tr><tr><td>Intel(R) Ethernet 10G 2P X710 OCP</td><td>YJYK1</td><td rowspan="1">N/A</td><td rowspan="1">N/A</td><td rowspan="1">GXJ5G</td><td rowspan="1">21.5.9</td><td rowspan="1">NVPY7</td><td rowspan="1">21.5.0</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2</td><td rowspan="1">AX-750<br><br>AX-650</td></tr><tr><td>Mellanox ConnectX-6 Dx Dual Port 100GbE QSFP56 PCIe Adapter, LP</td><td>F6FXM</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">12M67</td><td rowspan="1">22.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox ConnectX-6 Dx Dual Port 100GbE QSFP56 PCIe Adapter, FH</td><td>8P2T2</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">12M67</td><td rowspan="1">22.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox ConnectX-5 Dual Port 10/25GbE SFP28 Adapter, PCIe LP, V2</td><td>JGWVY</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Mellanox ConnectX-5 Dual Port 10/25GbE SFP28 Adapter, PCIe FH, V2</td><td>F7V1F</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">All</td></tr><tr><td>Mellanox Connectx-5 EX Dual Port 100GbE QSFP20 PCIe Adapter, LP</td><td>9FTMY</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox Connectx-5 EX Dual Port 100GbE QSFP20 PCIe Adapter, FH</td><td>71C1T</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox ConnectX-5 Dual Port 25GbE SFP28 Adapter, FH</td><td>TDNNT</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox ConnectX-5 Dual Port 25GbE SFP28 Adapter, LP</td><td>V5DG9</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">PPRKV</td><td rowspan="1">16.34.10.02</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>Mellanox ConnectX-4 Lx Dual Port 25GbE DA/SFP rNDC</td><td>R887V</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">XGP2X</td><td rowspan="1">14.32.20.04</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-640<br><br>R640 Storage Spaces Direct RN</td></tr><tr><td>Mellanox ConnextX-4 Lx Dual Port 25Gbe DA/SFP Network Adapter, LP</td><td>20NJD</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">XGP2X</td><td rowspan="1">14.32.20.04</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td></tr><tr><td>Mellanox ConnectX-4 LX Dual Port 10/25GbE SFP28 Adapter, FH, V2</td><td>YGRX3</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">XGP2X</td><td rowspan="1">14.32.20.04</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-740xd<br><br>R740xd Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN</td></tr><tr><td>Mellanox ConnextX-4 Lx Dual Port 25Gbe DA/SFP Network Adapter, FH</td><td>MRT0D</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">RoCEv2</td><td rowspan="1">XGP2X</td><td rowspan="1">14.32.20.04</td><td rowspan="1">JX4HG</td><td rowspan="1">03.00.01</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-740xd<br><br>R740xd Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN</td></tr><tr><td>QLogic 57800 2x10Gb BT + 2x1Gb BT NDC</td><td>G8RPD</td><td rowspan="1">Management</td><td rowspan="1">N/A</td><td rowspan="1">D4N9T</td><td rowspan="1">16.10.00</td><td rowspan="1">V4TDK</td><td rowspan="1">36.10.00</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN</td></tr><tr><td>QLogic 57800 2x10Gb DA/SFP+ +2x1Gb BT NDC</td><td>165T0</td><td rowspan="1">Management</td><td rowspan="1">N/A</td><td rowspan="1">D4N9T</td><td rowspan="1">16.10.00</td><td rowspan="1">V4TDK</td><td rowspan="1">36.10.00</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN</td></tr><tr><td>QLogic FastLinQ 41164 Quad Port 10GbE SFP+, rNDC</td><td>XVVY1</td><td rowspan="1">Management<br><br>Compute (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>QLogic FastLinQ 41164 Quad Port 10GbE BASE-T, rNDC</td><td>X1TD1</td><td rowspan="1">Management<br><br>Compute (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>QLogic FastLinQ 41162 Dual Port 10GbE BASE-T & Dual Port 1GbE BASE-T, rNDC</td><td>0D1WT</td><td rowspan="1">Management<br><br>Compute (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN<br><br>AX-650<br><br>AX-750</td></tr><tr><td>QLogic FastLinQ 41262 Dual Port 25Gbe SFP28, rNDC</td><td>4KF8J</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td></tr><tr><td>QLogic FastLinQ 41262 Dual Port 25Gb SFP28 Adapter, LP</td><td>415DX</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td></tr><tr><td>QLogic FastLinQ 41262 Dual Port 25Gb SFP28 Adapter, FH</td><td>51GRM</td><td rowspan="1">Management<br><br>Compute (Premium)<br><br>Storage (Premium)</td><td rowspan="1">iWARP</td><td rowspan="1">KXJ6Y</td><td rowspan="1">16.10.00</td><td rowspan="1">H4V0H</td><td rowspan="1">36.10.03</td><td rowspan="1">Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td><td rowspan="1">AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td></tr></table><br>
+
+
+<h3 id="network-switches">Network Switches</h3>
+
+
+<table> <colgroup><col/><col/><col/></colgroup> <tr><th>Component</th><th>Category</th><th>Minimum Supported Version</th></tr> <tr><td>Dell EMC Networking S3048-ON OS9/OS10</td><td>Network Switch - Management</td><td>9.14.2.0/10.5.1.0</td></tr> <tr><td>Dell EMC Networking S4048-ON OS9</td><td>Network Switch</td><td>9.14.2.0</td></tr> <tr><td>Dell EMC Networking S4112F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> <tr><td>Dell EMC Networking S4128F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> <tr><td>Dell EMC Networking S4148F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> <tr><td>Dell EMC Networking S5048-ON OS9</td><td>Network Switch</td><td>9.14.2.0</td></tr> <tr><td>Dell EMC Networking S5148F-ON OS10</td><td>Network Switch</td><td>10.4.2.1 - &quot;OS10 (v10.5.x) is not supported on S5148F-ON&quot;</td></tr> <tr><td>Dell EMC Networking S5212F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> <tr><td>Dell EMC Networking S5224F/S5248F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> <tr><td>Dell EMC Networking S5232F-ON OS10</td><td>Network Switch</td><td>10.5.1.0</td></tr> </table><br>
+
+
+<h3 id="gpus">GPUs</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>GPU Model</th><th>Vendor</th><th>Description</th><th>Part Number</th><th>Firmware version</th><th>Driver Version</th><th>Supported Platform</th><th>Supported OS</th></tr> <tr><td>A30</td><td>NVIDIA</td><td>CRD,ACLTR,NVIDIA,A30,24GB,165W&#160;</td><td>W3C1G</td><td>92.00.58.00.01</td><td>511.65 WHQL</td><td>AX-750<br>AX-7525</td><td>Azure Stack HCI-21H2</td></tr> <tr><td>A30</td><td>NVIDIA</td><td>CRD,ACLTR,NVIDIA,A30,24GB,V2</td><td>RV08M</td><td>92.00.58.00.01</td><td>511.65 WHQL</td><td>AX-750<br>AX-7525</td><td>Azure Stack HCI-21H2</td></tr> </table><br>
+
+
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">NOTE</h4>
+
+    Dell update packages are not available for GPU cards, please download the latest driver version from NVIDIA driver download page.
+
+</div>
+
+<h3 id="storage-controllers">Storage Controllers</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Component</th><th>Dell Part Number</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Driver Software Bundle</th><th>Driver Minimum Supported Version</th><th>Supported Platforms</th><th>Supported OS</th></tr> <tr><td>BOSS-S1</td><td>2MFVD</td><td>3P39V</td><td>2.5.13.3024</td><td>8KKVC</td><td>1.2.0.1052</td><td>AX-6515<br><br>AX-7525<br><br>AX-640<br><br>AX-740xd<br><br>R640 Storage Spaces Direct RN<br><br>R740xd Storage Spaces Direct RN<br><br>R440 Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td></tr> <tr><td>BOSS-S2</td><td>FGNRW</td><td>MVC3P</td><td>2.5.13.4008</td><td>8KKVC</td><td>1.2.0.1052</td><td>AX-7525<br><br>AX-650<br><br>AX-750</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2<br><br>Windows Server 2022 Datacenter<br><br>Azure Stack HCI-21H2</td></tr> <tr><td>HBA330 Controller, 12Gps Mini Card</td><td>P2R3R</td><td>124X2</td><td>16.17.01.00</td><td>P1NP6</td><td>2.51.25.01</td><td>R440 Storage Spaces Direct RN<br><br>AX-640<br><br>R640 Storage Spaces Direct RN<br><br>AX-740XD<br><br>R740xd Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN<br><br>AX-6515</td><td>Windows Server 2016 Datacenter</td></tr> <tr><td>HBA330 Controller, 12Gps Mini Card</td><td>P2R3R</td><td>124X2</td><td>16.17.01.00</td><td>MF8G0</td><td>2.51.25.02</td><td>R440 Storage Spaces Direct RN<br><br>AX-640<br><br>R640 Storage Spaces Direct RN<br><br>AX-740XD<br><br>R740xd Storage Spaces Direct RN<br><br>R740xd2 Storage Spaces Direct RN<br><br>AX-6515</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2</td></tr> <tr><td>HBA330 Controller, 12Gps Mini Card, LP</td><td>J7TNV</td><td>NKNVC</td><td>16.17.01.00</td><td>MF8G0</td><td>2.51.25.02</td><td>AX-740xd<br><br>R740xd Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2</td></tr> <tr><td>HBA355i</td><td>K6MCJ</td><td>2MHMF</td><td>22.15.05.00</td><td>VCDT1</td><td>2.61.14.00</td><td>AX-7525<br><br>AX-650<br><br>AX-750</td><td>Windows Server 2019 Datacenter<br><br>Azure Stack HCI-20H2</td></tr> <tr><td>HBA355i</td><td>K6MCJ</td><td>2MHMF</td><td>22.15.05.00</td><td>W95PT</td><td>2.61.41.00</td><td>AX-7525<br><br>AX-650<br><br>AX-750</td><td>Windows Server 2022 Datacenter<br><br> Azure Stack HCI-21H2</td></tr> </table><br>
+
+
+<h3 id="sas-25-hdd-capacity-only">SAS 2.5&quot; HDD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>HDD</td><td>SAS</td><td>2.5</td><td>NA</td><td>Seagate</td><td>Avenger</td><td>ST2000NX0463</td><td>TMVN7</td><td>GW3V7</td><td>NT32</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>2.5</td><td>NA</td><td>Seagate</td><td>Skybolt</td><td>DL2400MM0159</td><td>RWR8F</td><td>HYJ6K</td><td>ST5C</td><td>2.4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>2.5</td><td>NA</td><td>Seagate</td><td>Skybolt</td><td>ST2400MM0159</td><td>36YG1</td><td>4CP2D</td><td>ST7A</td><td>2.4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>2.5</td><td>NA</td><td>Toshiba</td><td>AL15SE</td><td>AL15SEB24EQY</td><td>F9NWJ</td><td>0T1RG</td><td>EF06</td><td>2.4 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="sata-25-hdd-capacity-only">SATA 2.5&quot; HDD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>HDD</td><td>SATA</td><td>2.5</td><td>NA</td><td>Seagate</td><td>Avenger</td><td>ST2000NX0423</td><td>VR92X</td><td>GMW4P</td><td>NB33</td><td>2 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="sata-35-hdd-capacity-only">SATA 3.5&quot; HDD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Aries K Plus</td><td>HUS726020ALA610</td><td>8NP2N</td><td>X59KC</td><td>KV45</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Aries K Plus</td><td>HUS726040ALA610</td><td>61FFW</td><td>X59KC</td><td>KV45</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Rainier MLK</td><td>HUS722T2TALA600</td><td>V9H6C</td><td>V3DJM</td><td>MU03</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>Tomcat R</td><td>MG04ACA200NY</td><td>NPVM6</td><td>V47C4</td><td>FK5D</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>Tomcat R</td><td>MG04ACA400NY</td><td>95M6K</td><td>V47C4</td><td>FK5D</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Nemo</td><td>ST2000NM0018-2F3130</td><td>W8FW5</td><td>CMK5N</td><td>EA04</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Nemo</td><td>ST2000NM0018-2F3</td><td>W8FW5</td><td>CMK5N</td><td>EA04</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST2000NM0145-2DC104</td><td>WG9R0</td><td>M5GJ1</td><td>DB34</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST2000NM0145-2DC</td><td>WG9R0</td><td>M5GJ1</td><td>DB34</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST4000NM0265-2DC107</td><td>MWHY9</td><td>M5GJ1</td><td>DB34</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST4000NM0265-2DC</td><td>MWHY9</td><td>M5GJ1</td><td>DB34</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Vela-A</td><td>HUS726T4TALA6L0</td><td>YH3T9</td><td>3CFT0</td><td>PV07</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Vela-AP</td><td>HUS728T8TALE6L0</td><td>1WMVC</td><td>N26JT</td><td>RT07</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Libra HE10</td><td>HUH721008ALE600</td><td>KRV2W</td><td>H12N2</td><td>LT21</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara Plus</td><td>ST8000NM0205-2FF112</td><td>92MDW</td><td>MR6RH</td><td>PB53</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara Plus</td><td>ST8000NM0205-2FF</td><td>92MDW</td><td>MR6RH</td><td>PB53</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>MG06</td><td>MG06ACA800EY</td><td>9X09C</td><td>PT7D8</td><td>GA09</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Leo-A He12</td><td>HUH721212ALE600</td><td>T2YHT</td><td>0HF04</td><td>NT10</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG07</td><td>MG07ACA12TEY</td><td>753F0</td><td>0942Y</td><td>GB03</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG08AC</td><td>MG08ACA16TEY</td><td>HPGJ4</td><td>MGF80</td><td>GC02</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG08AD</td><td>MG08ADA400NY</td><td>W2M9N</td><td>7NJXF</td><td>GD03</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST4000NM016A-2HZ130</td><td>XPJ47</td><td>M1WWC</td><td>CAJC</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST4000NM016A-2HZ</td><td>XPJ47</td><td>M1WWC</td><td>CAJC</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST8000NM012A-2KE131</td><td>F4JXT</td><td>V1521</td><td>CALD</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST8000NM012A-2KE</td><td>F4JXT</td><td>V1521</td><td>CALD</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST4000NM018B-2TF130</td><td>6KR2M</td><td>J4X0T</td><td>LC09</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST4000NM018B-2TF</td><td>6KR2M</td><td>J4X0T</td><td>LC09</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST8000NM023B-2TJ133</td><td>J7W80</td><td>4P5X3</td><td>LA0A</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SATA</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST8000NM023B-2TJ</td><td>J7W80</td><td>4P5X3</td><td>LA0A</td><td>8 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="sas-35-hdd-capacity-only">SAS 3.5&quot; HDD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Aries K Plus</td><td>HUS726020ALS210</td><td>VH6FW</td><td>68X4C</td><td>KU45</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Aries K Plus</td><td>HUS726040ALS210</td><td>X4FKY</td><td>68X4C</td><td>KU45</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>Tomcat R</td><td>MG04SCA20ENY</td><td>HHX14</td><td>RG9MK</td><td>EG03</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>Tomcat R</td><td>MG04SCA40ENY</td><td>1MVTT</td><td>RG9MK</td><td>EG03</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST2000NM0155</td><td>7RCGV</td><td>XKD4M</td><td>DT34</td><td>2 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara BP</td><td>ST4000NM0295</td><td>5JH5X</td><td>XKD4M</td><td>DT34</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Vela-A</td><td>HUS726T4TALS200</td><td>NT1X2</td><td>1DM5F</td><td>PU07</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Vela-AP</td><td>HUS728T8TAL5200</td><td>44YFV</td><td>6JJPV</td><td>RS07</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Libra HE10</td><td>HUH721008AL5200</td><td>KRDKK</td><td>MGW91</td><td>LS21</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Makara Plus</td><td>ST8000NM0185</td><td>M40TH</td><td>6421F</td><td>PT55</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>MG06</td><td>MG06SCA800EY</td><td>FV725</td><td>4G5GY</td><td>EH0D</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Hitachi</td><td>Leo-A He12</td><td>HUH721212AL5200</td><td>9HXK6</td><td>4RR8F</td><td>NS10</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Mobula BP</td><td>ST12000NM0158</td><td>YMN53</td><td>VTX9C</td><td>RSL5</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>MG07</td><td>MG07SCA12TEY</td><td>DK7C9</td><td>7DTJD</td><td>EI0D</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>MG07</td><td>MG07SCA12TEY</td><td>KFJ7G</td><td>7DTJD</td><td>EI0C</td><td>12 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG08SC</td><td>MG08SCA16TEY</td><td>8MG73</td><td>9N3RR</td><td>EJ09</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG08SC</td><td>MG08SCA16TEY</td><td>4N7V0</td><td>9N3RR</td><td>EJ09</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba&#160;</td><td>MG08SC</td><td>MG08SCA16TEY</td><td>24HF9</td><td>9N3RR</td><td>EJ09</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Evans</td><td>ST16000NM010G</td><td>CNXPV</td><td>NJ4NN</td><td>ESL7</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>WD</td><td>Paris-C</td><td>WUH721816AL5200</td><td>VF206</td><td>19MP7</td><td>US06</td><td>16 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST4000NM017A</td><td>KRM6X</td><td>WTX15</td><td>CSJA</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron</td><td>ST8000NM014A</td><td>0N660</td><td>PRFRJ</td><td>CSLC</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST4000NM019B</td><td>10N7R</td><td>912Y9</td><td>LW0A</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Seagate</td><td>Cimarron BP</td><td>ST8000NM024B</td><td>C5HD0</td><td>DTGXD</td><td>LS0A</td><td>8 TB</td><td>Capacity</td></tr> <tr><td>HDD</td><td>SAS</td><td>3.5</td><td>NA</td><td>Toshiba</td><td>MG08SD</td><td>MG08SDA400NY</td><td>FN2YX</td><td>N5XN3</td><td>EK05</td><td>4 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="sata-25-ssd-cache-or-capacity">SATA 2.5&quot; SSD Cache or Capacity</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>Youngsville-RR</td><td>SSDSC2KG019TZR</td><td>8RXV5</td><td>PN1T8</td><td>DL70</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>HK4</td><td>THNSF8800CCSE</td><td>VCRY6</td><td>H3XHN</td><td>DACB</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>HK4</td><td>THNSF81D60CSE</td><td>DMF5Y</td><td>H3XHN</td><td>DACB</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Micron</td><td>5300</td><td>MTFDDAK960TDT</td><td>XMWMK</td><td>PWVX5</td><td>J004</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Micron</td><td>5300</td><td>MTFDDAK1T9TDT</td><td>MMCDY</td><td>PWVX5</td><td>J004</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>SM863a</td><td>MZ7KM960HMJP0D3</td><td>DD4G0</td><td>97D8J</td><td>GD57</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>SM863a</td><td>MZ7KM1T9HMJP0D3</td><td>K5P0T</td><td>97D8J</td><td>GD57</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>SM883</td><td>MZ7KH960HAJR0D3</td><td>YDHYX</td><td>3J3JR</td><td>HF58</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>SM883</td><td>MZ7KH1T9HAJR0D3</td><td>71K37</td><td>3J3JR</td><td>HF58</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>S4600</td><td>SSDSC2KG960G7R</td><td>TR3MY</td><td>V141M</td><td>DL5C</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>S4600</td><td>SSDSC2KG019T7R</td><td>MWKF2</td><td>V141M</td><td>DL5C</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>S4610</td><td>SSDSC2KG960G8R</td><td>X31G3</td><td>2674V</td><td>DL69</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>S4610</td><td>SSDSC2KG019T8R</td><td>F8N2K</td><td>2674V</td><td>DL69</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>S4610</td><td>SSDSC2KG019T8R</td><td>55J8H</td><td>2674V</td><td>DL69</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Micron</td><td>5200</td><td>MTFDDAK960TDN</td><td>HY1F8</td><td>H72VG</td><td>F005</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Micron</td><td>5200</td><td>MTFDDAK1T9TDN</td><td>XKF5Y</td><td>H72VG</td><td>F005</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>HK6-V</td><td>KHK6YVSE960G</td><td>XW4D1</td><td>W0YR1</td><td>DBC4</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>HK6-V</td><td>KHK6YVSE1T92</td><td>0DXJ7</td><td>W0YR1</td><td>DBC4</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> </table><br>
+
+
+<h3 id="sata-25-ssd-capacity-only">SATA 2.5&quot; SSD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>Youngsville-RR</td><td>SSDSC2KB960GZR</td><td>F6H8H</td><td>PN1T8</td><td>DL70</td><td>960 GB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>Youngsville-RR</td><td>SSDSC2KB019TZR</td><td>VYYW8</td><td>PN1T8</td><td>DL70</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>Youngsville-RR</td><td>SSDSC2KB038TZR</td><td>WNPN1</td><td>PN1T8</td><td>DL70</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Micron</td><td>5200</td><td>MTFDDAK1T9TDD</td><td>VJ36D</td><td>H72VG</td><td>F005</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Micron</td><td>5300</td><td>MTFDDAK1T9TDS</td><td>GYGVV</td><td>PWVX5</td><td>J004</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>HK6-R </td><td>KHK6YRSE1T92</td><td>919J7</td><td>W0YR1</td><td>DBC4</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>HK6-R </td><td>KHK6YRSE3T84</td><td>8PYG5</td><td>W0YR1</td><td>DBC4</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM883a </td><td>MZ7LH1T9HALT0D3</td><td>9F9Y6</td><td>882YH</td><td>HG58</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM883 </td><td>MZ7LH1T9HMLT0D3</td><td>Y24T6</td><td>93P7P</td><td>HE59</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE5110</td><td>HFS1T9G3H2X069N</td><td>962FP</td><td>8KVKG</td><td>DZ02</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE4011 </td><td>HFS1T9G32FEH-7A10A</td><td>0XMV9</td><td>MFCH2</td><td>DE07</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE4011 </td><td>HFS1T9G32FEH-7A1</td><td>0XMV9</td><td>MFCH2</td><td>DE07</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>S4510</td><td>SSDSC2KB019T8R</td><td>33R2T</td><td>2674V</td><td>DL69</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>S4500</td><td>SSDSC2KB019T7R</td><td>XCN15</td><td>V141M</td><td>DL5C</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>S4500</td><td>SSDSC2KB038T7R</td><td>3RRN8</td><td>V141M</td><td>DL5C</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>S4510</td><td>SSDSC2KB038T8R</td><td>1RHK2</td><td>2674V</td><td>DL69</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM883 </td><td>MZ7LH3T8HMLT0D3</td><td>FYP5F</td><td>93P7P</td><td>HE59</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM883a</td><td>MZ7LH3T8HALT0D3</td><td>5TVXD</td><td>882YH</td><td>HG58</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE4011</td><td>HFS3T8G32FEH-7410A</td><td>D6C0R</td><td>MFCH2</td><td>DE07</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE4011</td><td>HFS3T8G32FEH-741</td><td>D6C0R</td><td>MFCH2</td><td>DE07</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Hynix</td><td>SE5110</td><td>HFS3T8G3H2X069N</td><td>3GDK0</td><td>8KVKG</td><td>DZ02</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Read Intensive</td><td>Micron</td><td>5300</td><td>MTFDDAK3T8TDT</td><td>4H1RX</td><td>PXMD3</td><td>J404</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Hynix</td><td>SE5031</td><td>HFS960G32FEH-BA10A</td><td>7GR2K</td><td>7X9WV</td><td>DD02</td><td>960 GB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Hynix</td><td>SE5031</td><td>HFS960G32FEH-BA1</td><td>7GR2K</td><td>7X9WV</td><td>DD02</td><td>960 GB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Hynix</td><td>SE5031</td><td>HFS1T9G32FEH-BA10A</td><td>GKTF1</td><td>7X9WV</td><td>DD02</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SATA</td><td>2.5</td><td>Mixed Use</td><td>Hynix</td><td>SE5031</td><td>HFS1T9G32FEH-BA1</td><td>GKTF1</td><td>7X9WV</td><td>DD02</td><td>1.92 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="sas-25-ssd-cache-or-capacity">SAS 2.5&quot; SSD Cache or Capacity</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Kioxia</td><td>PM6</td><td>KPM6XMUG800G</td><td>H6GCD</td><td>6K5N9</td><td>BA0D</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Kioxia</td><td>PM6</td><td>KPM6XMUG1T60</td><td>5GDXH</td><td>6K5N9</td><td>BA0D</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>PM6</td><td>KPM6XVUG800G</td><td>JTKH5</td><td>6K5N9</td><td>BA0D</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>PM6</td><td>KPM6XVUG1T60</td><td>GD3N0</td><td>6K5N9</td><td>BA0D</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SMB080Y</td><td>CN3JH</td><td>1DJXX</td><td>AS10</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SVB096Y</td><td>503M7</td><td>1DJXX</td><td>AS10</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SMB160Y</td><td>GVTYD</td><td>1DJXX</td><td>AS10</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SVB192Y</td><td>V0K7V</td><td>1DJXX</td><td>AS10</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SVB384Y</td><td>3DDFT</td><td>1DJXX</td><td>AS10</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Toshiba</td><td>Phoenix M5-M</td><td>KPM5XMUG800G</td><td>DHRVV</td><td>4P9DW</td><td>B026</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Write Intensive</td><td>Toshiba</td><td>Phoenix M5-M</td><td>KPM5XMUG1T60</td><td>W9G88</td><td>4P9DW</td><td>B026</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1645a</td><td>MZILT800HBHQ0D3</td><td>GW8T1</td><td>VJY6V</td><td>DWA4</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1645a</td><td>MZILT1T6HBJR0D3</td><td>3TCV6</td><td>VJY6V</td><td>DWA4</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1645</td><td>MZILT1T6HAJQ0D3</td><td>DR0HX</td><td>C9JP2</td><td>DWF8</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>WD</td><td>Bear Cove Quantum </td><td>WUSTR6480BSS200</td><td>6VJC9</td><td>X95FJ</td><td>G130</td><td>800 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>WD</td><td>Bear Cove Quantum </td><td>WUSTR6416BSS200</td><td>6NF96</td><td>X95FJ</td><td>G130</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M5-V</td><td>KPM5XVUG960G</td><td>WFGTH</td><td>4P9DW</td><td>B026</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M5-V</td><td>KPM5XVUG1T92</td><td>2WVYG</td><td>4P9DW</td><td>B026</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix M5-V</td><td>KPM5XVUG3T84</td><td>91W3V</td><td>4P9DW</td><td>B026</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>PM6 FIPS</td><td>KPM6WVUG960G</td><td>WMWKG</td><td>376CY</td><td>BD0D</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>PM6 FIPS</td><td>KPM6WVUG1T92</td><td>DHWH5</td><td>376CY</td><td>BD0D</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>PM6 FIPS</td><td>KPM6WVUG3T84</td><td>81H9C</td><td>376CY</td><td>BD0D</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> </table><br>
+
+
+<h3 id="sas-25-ssd-capacity-only">SAS 2.5&quot; SSD Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>WD</td><td>Bear Cove Plus</td><td>WUSTR1519ASS200</td><td>5ND33</td><td>358PN</td><td>K960</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>WD</td><td>Bear Cove Plus</td><td>WUSTR1538ASS200</td><td>YW17N</td><td>358PN</td><td>K960</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>WD</td><td>Bear Cove Quantum </td><td>WUSTVA119BSS200</td><td>02X38</td><td>X95FJ</td><td>G130</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>WD</td><td>Bear Cove Quantum </td><td>WUSTVA138BSS200</td><td>FP1KF</td><td>X95FJ</td><td>G130</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643</td><td>MZILT1T9HAJQ0D3</td><td>F0VFY</td><td>J3RRK</td><td>DSF8</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643</td><td>MZILT3T8HALS0D3</td><td>X8F87</td><td>J3RRK</td><td>DSF8</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643</td><td>MZILT7T6HMLA0D3</td><td>RVYD5</td><td>J3RRK</td><td>DSF8</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643a</td><td>MZILT1T9HBJR0D3</td><td>TMTW9</td><td>D7RNT</td><td>DSA4</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643a</td><td>MZILT3T8HBLS0D3</td><td>CRNPH</td><td>D7RNT</td><td>DSA4</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1633a</td><td>MZILS1T9HEJH0D3</td><td>086DD</td><td>XNGNT</td><td>DSLA</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1633a</td><td>MZILS3T8HMLH0D3</td><td>JR1HP</td><td>XNGNT</td><td>DSLA</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643a</td><td>MZILT960HBHQ0D3</td><td>K74WN</td><td>D7RNT</td><td>DSA4</td><td>960 GB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643a</td><td>MZILT3T8HBLS0D3</td><td>CRNPH</td><td>D7RNT</td><td>DSA4</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1643a</td><td>MZILT7T6HALA0D3</td><td>84C40</td><td>D7RNT</td><td>DSA4</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>PM6</td><td>KPM6XRUG1T92</td><td>4CN85</td><td>6K5N9</td><td>BA0D</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>PM6</td><td>KPM6XRUG3T84</td><td>H9TT5</td><td>6K5N9</td><td>BA0D</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>PM6</td><td>KPM6XRUG7T68</td><td>PD02Y</td><td>6K5N9</td><td>BA0D</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>PM6 FIPS</td><td>KPM6WRUG1T92</td><td>7F2D1</td><td>376CY</td><td>BD0D</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>PM6 FIPS</td><td>KPM6WRUG3T84</td><td>FH1W9</td><td>376CY</td><td>BD0D</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>Phoenix M5-R</td><td>KPM5XRUG1T92</td><td>TDNP7</td><td>4P9DW</td><td>B026</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>Phoenix M5-R</td><td>KPM5XRUG3T84</td><td>N85XX</td><td>4P9DW</td><td>B026</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>SAS</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>Phoenix M4</td><td>PX05SRB384Y</td><td>XCRDV</td><td>1DJXX</td><td>AS10</td><td>3.84 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="value-sas-25-ssd">Value SAS 2.5&quot; SSD</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Seagate</td><td>LangeBP SED</td><td>XS1920SE70134</td><td>K9T53</td><td>G04C8</td><td>4S0C</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Seagate</td><td>LangeBP SED</td><td>XS3840SE70134</td><td>4KPKF</td><td>G04C8</td><td>4S0C</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Seagate</td><td>LangeBP SED</td><td>XS7680SE70134</td><td>2THYF</td><td>G04C8</td><td>4S0C</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Toshiba</td><td>Phoenix&#160;RM5</td><td>KRM5XVUG3T84</td><td>X78JM</td><td>12D7W</td><td>B70C</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Seagate</td><td>LangeBP ISE</td><td>XS3840LE70154</td><td>NWGX3</td><td>NX13G</td><td>4D0C</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>Phoenix&#160;RM5</td><td>KRM5XRUG7T68</td><td>5XD2F</td><td>12D7W</td><td>B70C</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Seagate</td><td>Lange ISE</td><td>XS7680SE70074</td><td>2PKRH</td><td>H3VHX</td><td>EC16</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Seagate</td><td>LangeBP ISE</td><td>XS7680SE70154</td><td>5KW0F</td><td>NX13G</td><td>4D0C</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Seagate</td><td>LangeBP SED</td><td>XS960LE70134</td><td>2RDWT</td><td>G04C8</td><td>4S0C</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Seagate</td><td>LangeBP SED</td><td>XS1920LE70134</td><td>N6DRV</td><td>G04C8</td><td>4S0C</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Seagate</td><td>LangeBP SED</td><td>XS3840LE70134</td><td>YM9HP</td><td>G04C8</td><td>4S0C</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>RM6</td><td>KRM6VVUG960G</td><td>42XXC</td><td>3P4FR</td><td>BJ02</td><td>960 GB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>RM6</td><td>KRM6VVUG1T92</td><td>N15JP</td><td>3P4FR</td><td>BJ02</td><td>1.92 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>RM6</td><td>KRM6VVUG3T84</td><td>FXYGR</td><td>3P4FR</td><td>BJ02</td><td>3.84 TB</td><td>Cache, Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>RM6</td><td>KRM6VRUG1T92</td><td>1FGWG</td><td>3P4FR</td><td>BJ02</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>RM6</td><td>KRM6VRUG3T84</td><td>XNXD2</td><td>3P4FR</td><td>BJ02</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>SSD</td><td>VSAS</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>RM6</td><td>KRM6VRUG7T68</td><td>5MHY8</td><td>3P4FR</td><td>BJ02</td><td>7.68 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="nvme-25-cache-or-capacity">NVMe 2.5&quot; Cache or Capacity</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Write Intensive</td><td>Intel</td><td>Optane P4800x&#160;SSD/NVMe, 375GB U.2 2.5&quot; SFF</td><td>SSDPE21K375GAT</td><td>3DM57</td><td>H5J7D</td><td>E201DP38</td><td>375 GB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1725A, Dell Express Flash NVMe 1.6TB 2.5&quot; SFF</td><td>MZWLL1T6HEHP-000D3</td><td>JD6CH</td><td>34C36</td><td>1.2.1</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1725A, Dell Express Flash NVMe 3.2TB 2.5&quot; SFF</td><td>MZWLL3T2HMJP-000D3</td><td>JDMHM</td><td>34C36</td><td>1.2.1</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>
+PM1725A, Dell Express Flash NVMe 6.4TB 2.5&quot; SFF</td><td>MZWLL6T4HMLS-000D3</td><td>Y3XT2</td><td>34C36</td><td>1.2.1</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 1.6TB&#160; 2.5&quot; SFF</td><td>MZWLL1T6HAJQ-000D3</td><td>4WDXY</td><td>3F3N1</td><td>1.2.2</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 3.2TB 2.5&quot; SFF</td><td>MZWLL3T2HAJQ-000D3</td><td>K60N7</td><td>3F3N1</td><td>1.2.2</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 6.4TB 2.5&quot; SFF</td><td>MZWLL6T4HMLA-000D3</td><td>08NMX</td><td>3F3N1</td><td>1.2.2</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P4600, Dell Express Flash NVMe 1.6TB 2.5&quot; SFF</td><td>SSDPE2KE016T7T</td><td>F5P84</td><td>CR0HC</td><td>QDV1DP17</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P4600, Dell Express Flash NVMe 3.2TB 2.5&quot; SFF</td><td>SSDPE2KE032T7T</td><td>MCV6J</td><td>CR0HC</td><td>QDV1DP17</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P4610, Dell Express Flash NVMe 1.6TB 2.5&quot; SFF</td><td>SSDPE2KE016T8T</td><td>58V30</td><td>GD4X4</td><td>VDV1DP25</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P4610, Dell Express Flash NVMe 3.2TB 2.5&quot; SFF</td><td>SSDPE2KE032T8T</td><td>2CN1T</td><td>GD4X4</td><td>VDV1DP25</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P4610, Dell Express Flash NVMe 6.4TB 2.5&quot; SFF</td><td>SSDPE2KE064T8T</td><td>X27HY</td><td>GD4X4</td><td>VDV1DP25</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>KIOXIA</td><td>DELL EXPRESS FLASH KIOXIA CM6 MU 1.6TB U.2 FIPS</td><td>KCM6FVUL1T60</td><td>G7N00</td><td>T79D5</td><td>1.2.0</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 SP 3WPD, SSD, NVMe, 2.5, 512e, ISE </td><td>MZWLJ1T6HBJR-00AD3</td><td>6GK00</td><td>RVT3Y</td><td>2.4.0</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>CM6 SP</td><td>KCM6XVUL1T60</td><td>P03YC</td><td>99H3Y</td><td>2.1.9</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>CM6 SP</td><td>KCM6XVUL3T20</td><td>97GR0</td><td>99H3Y</td><td>2.1.9</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Kioxia</td><td>CM6 SP</td><td>KCM6XVUL6T40</td><td>K916X</td><td>99H3Y</td><td>2.1.9</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P5600 SP 3WPD</td><td>D7 P5600 Series 1.6TB</td><td>C9X5T</td><td>DKCMM</td><td>1.2.4</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Intel</td><td>P5600 SP 3WPD</td><td>D7 P5600 Series 3.2TB</td><td>PRKTM</td><td>DKCMM</td><td>1.2.4</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 V2 SP 3WPD</td><td>MZWLR1T6HBJR-00AD3</td><td>0MNMV</td><td>TRCC6</td><td>2.3.0</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 V2 SP 3WPD</td><td>MZWLR3T2HBLS-00AD3</td><td>V69W3</td><td>TRCC6</td><td>2.3.0</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 V2 SP 3WPD</td><td>MZWLR6T4HALA-00AD3</td><td>H8D5M</td><td>TRCC6</td><td>2.3.0</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> </table><br>
+
+
+<h3 id="nvme-25-capacity-only">NVMe 2.5&quot; Capacity Only</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>CD5</td><td>KCD5XLUG960G</td><td>DRC9H</td><td>T79D5</td><td>1.2.0</td><td>960 GB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Toshiba</td><td>CD5</td><td>KCD5XLUG3T84</td><td>17C57</td><td>T79D5</td><td>1.2.0</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>P4510</td><td>SSDPE2KX040T8T</td><td>5GMK0</td><td>GD4X4</td><td>VDV1DP25</td><td>4 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>KIOXIA</td><td>DELL EXPRESS FLASH KIOXIA CM6 RI 1.92TB U.2 FIPS</td><td>KCM6FRUL1T92</td><td>TXP72</td><td>T79D5</td><td>1.2.0</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>P5500</td><td>SSDPF2KX019T9T</td><td>WPP9G</td><td>DKCMM</td><td>1.2.4</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>P5500</td><td>SSDPF2KX038T9T</td><td>KRT3G</td><td>DKCMM</td><td>1.2.4</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Intel</td><td>P5500</td><td>SSDPF2KX076T9T</td><td>RNN67</td><td>DKCMM</td><td>1.2.4</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1733 V2</td><td>MZWLR3T8HBLS-00AD3</td><td>G5N65</td><td>TRCC6</td><td>2.3.0</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1733 V2</td><td>MZWLR7T6HALA-00AD3</td><td>DX74Y</td><td>TRCC6</td><td>2.3.0</td><td>7.68 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Samsung</td><td>PM1733 V2</td><td>MZWLR15THALA-00AD3</td><td>182NW</td><td>TRCC6</td><td>2.3.0</td><td>15.36 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>CM6</td><td>KCM6XRUL1T92</td><td>N0VK0</td><td>H5XX0</td><td>2.1.8</td><td>1.92 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>CM6</td><td>KCM6XRUL3T84</td><td>8W2G5</td><td>H5XX0</td><td>2.1.8</td><td>3.84 TB</td><td>Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>2.5</td><td>Read Intensive</td><td>Kioxia</td><td>CM6</td><td>KCM6XRUL7T86</td><td>VD0JX</td><td>H5XX0</td><td>2.1.8</td><td>7.68 TB</td><td>Capacity</td></tr> </table><br>
+
+
+<h3 id="nvme-add-in-cards">NVMe Add-in Cards</h3>
+
+
+<table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Type</th><th>Drive Type</th><th>Form Factor</th><th>Endurance</th><th>Vendor</th><th>Series</th><th>Model</th><th>Device Part Number (P/N)</th><th>Firmware Software Bundle</th><th>Firmware Minimum Supported Version</th><th>Capacity</th><th>Use</th></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725A, Dell Express Flash NVMe 1.6TB HHHL AIC</td><td>MZPLL1T6HEHP-000D3</td><td>06V6M</td><td>34C36</td><td>1.2.1</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725A, Dell Express Flash NVMe 3.2TB HHHL AIC</td><td>MZPLL3T2HMLS-00003</td><td>C2KKH</td><td>34C36</td><td>1.2.1</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725A, Dell Express Flash NVMe 6.4TB HHHL AIC</td><td>MZPLL6T4HMLS-000D3</td><td>604N5</td><td>34C36</td><td>1.2.1</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 1.6TB (MU) HHHL AIC</td><td>MZPLL1T6HAJQ-000D3</td><td>FTX2R</td><td>3F3N1</td><td>1.2.2</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 3.2TB (MU) HHHL AIC</td><td>MZPLL3T2HAJQ-00005</td><td>73KJ7</td><td>3F3N1</td><td>1.2.2</td><td>3.2 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1725b, Dell Express Flash NVMe 6.4TB (MU) HHHL AIC</td><td>MZPLL6T4HMLA-000D3</td><td>FW2K0</td><td>3F3N1</td><td>1.2.2</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 SP 3WPD, SSD, NVMe, HHHL, 512e, ISE</td><td>MZPLJ1T6HBJR-00AD3</td><td>Y7D7D</td><td>RVT3Y</td><td>2.4.0</td><td>1.6 TB</td><td>Cache, Capacity</td></tr> <tr><td>NVMe</td><td>PCIe</td><td>AIC</td><td>Mixed Use</td><td>Samsung</td><td>PM1735 SP 3WPD, SSD, NVMe, HHHL, 512e, ISE </td><td>MZPLJ6T4HALA-00AD3</td><td>91FXC</td><td>RVT3Y</td><td>2.4.0</td><td>6.4 TB</td><td>Cache, Capacity</td></tr> </table><br>
+
+
+
+
+</div>
+
+</body>
+
+</html>
+
+
+
+
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
   
 
 
