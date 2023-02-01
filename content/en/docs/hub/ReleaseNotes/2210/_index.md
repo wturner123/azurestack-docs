@@ -120,7 +120,7 @@ This information is updated as needed.
 
 {{< /rawhtml >}}
 
-## Additonal resources
+## Additional resources
 
 ### Dell Technologies resources
 Additional Dell Technologies resources are available on the Dell Technologies Online Support website ([13G documentation](https://www.dell.com/support/home/us/en/04/product-support/product/cloud-for-microsoft-azure-stack13g/docs), [14G documentation](https://www.dell.com/support/home/us/en/04/product-support/product/cloud-for-microsoft-azure-stack14g/docs)).
