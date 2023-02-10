@@ -4,8 +4,8 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.110.0">
-<link rel="canonical" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/">
-<link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/index.xml">
+<link rel="canonical" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/index.xml">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -20,15 +20,15 @@
 <link rel="icon" type="image/png" href="https://dell.github.io/azurestack-docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="https://dell.github.io/azurestack-docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>02. Supporting Infrastructure | Solutions for Microsoft Azure Stack</title>
+<title>BIOS and iDRAC configuration recommendations | Solutions for Microsoft Azure Stack</title>
 <meta name="description" content="Dell Technologies (Dell) Azure Stack documentation pages">
-<meta property="og:title" content="02. Supporting Infrastructure" />
+<meta property="og:title" content="BIOS and iDRAC configuration recommendations" />
 <meta property="og:description" content="Dell Technologies (Dell) Azure Stack documentation pages" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/" /><meta property="og:site_name" content="Solutions for Microsoft Azure Stack" />
-<meta itemprop="name" content="02. Supporting Infrastructure">
+<meta property="og:url" content="https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/" /><meta property="og:site_name" content="Solutions for Microsoft Azure Stack" />
+<meta itemprop="name" content="BIOS and iDRAC configuration recommendations">
 <meta itemprop="description" content="Dell Technologies (Dell) Azure Stack documentation pages"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="02. Supporting Infrastructure"/>
+<meta name="twitter:title" content="BIOS and iDRAC configuration recommendations"/>
 <meta name="twitter:description" content="Dell Technologies (Dell) Azure Stack documentation pages"/>
 
 
@@ -126,13 +126,13 @@ if (!doNotTrack) {
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/">Return to the regular view of this page</a>.
+<a href="https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">02. Supporting Infrastructure</h1>
+<h1 class="title">BIOS and iDRAC configuration recommendations</h1>
 
 
 
@@ -141,37 +141,235 @@ This is the multi-page printable view of this section.
   
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#minimum-infrastructure">Minimum infrastructure</a></li>
-    <li><a href="#medium-infrastructure">Medium infrastructure</a></li>
-    <li><a href="#large-scale-infrastructure">Large Scale infrastructure</a></li>
-  </ul>
+        <li><a href="#bios-configuration">BIOS Configuration</a></li>
+        <li><a href="#idrac-configuration">iDRAC Configuration</a></li>
+      </ul>
 </nav>
   
 
 
 <div class="content">
-      <h1 id="planning-supporting-infrastructure">Planning Supporting Infrastructure</h1>
-<p>There are several deployment sizes. Let&rsquo;s split it into three main categories. While all three categories can be managed just with one management machine and PowerShell, with more clusters or racks, management of the infrastructure can be very complex task. We can assume, that with Azure Stack HCI hybrid capabilities, will more infrastructure move into cloud.</p>
-<p>In many cases we hear, that due to security, DHCP is not allowed in server subnet. Limiting what server can receive IP address can be done with <a href="https://learn.microsoft.com/en-us/powershell/module/dhcpserver/add-dhcpserverv4filter">MAC Address Filtering</a>.</p>
-<p>Management infrastructure can be deployed in separate domain from hosted virtual machines to further increase security.</p>
-<p>Management machine can be also deployed as <a href="https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations">Privileged Access Workstation</a>.</p>
-<h2 id="minimum-infrastructure">Minimum infrastructure</h2>
-<p>The minimum components are Domain Controller and Management machine. Management machine can be Windows 10 or Windows Server at least the same version as the managed server (for example Windows 10 1809 and newer can manage Windows Server 2019). DHCP server can significantly help as managed servers can receive IP address. That means you can manage them remotely without logging into servers to configure static IP, but it&rsquo;s not mandatory.</p>
-<p>Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).</p>
-<p><img src="MinimumInfrastructure01.png" alt=""></p>
-<h2 id="medium-infrastructure">Medium infrastructure</h2>
-<p>Medium infrastructure assumes you have multiple administrators and/or multiple clusters in your environment. Another servers dedicated for management can be introduced to help with management centralization or automating management.</p>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install#install-on-server-core">Installing Windows Admin Center in Gateway Mode</a></li>
-<li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-install?view=sc-vmm-2019">Planning SCVMM Installation</a></li>
-</ul>
-<p><img src="MediumInfrastructure01.png" alt=""></p>
-<h2 id="large-scale-infrastructure">Large Scale infrastructure</h2>
-<p>Large Infrastructure assumes that you have more clusters spanning multiple racks or even sites. To help with bare-metal deployment, network management, patch management is SCVMM essential. Supporting roles (WSUS, WDS, Library servers) managed by SCVMM can be deployed across multiple servers. SCVMM supports deployment in HA Mode (Active-Passive) with SQL server Always On. DHCP is mandatory for bare-metal deployment as during PXE boot, server needs to obtain IP Address.</p>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-ha-install?view=sc-vmm-2019">Planning HA SCVMM Installation</a></li>
-</ul>
-<p><img src="LargeScaleInfrastructure01.png" alt=""></p>
+      
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <style>
+    table {
+        border-width:1px;border-style:solid;
+        border-color:black;
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+        table-layout:fixed;
+        overflow-wrap: break-word;
+    }
+    th {
+        border-width:1px;
+        padding:7px;
+        border-style:solid;
+        border-color:#0076CE;
+        background-color:#0076CE;
+        color:#FFFFFF;
+        text-align:center;
+    }
+    td {
+        border-width:1px;
+        padding:7px;
+        border-style:solid;
+        border-color:#0076CE;
+        text-align:center;
+    }
+    caption {
+        padding-bottom: 10px;
+        color:  #0076CE;
+        font-weight: bold;
+        text-align: left;
+        font-size: 20px;
+    }
+    </style>
+
+</head>
+
+
+<h3 id="bios-configuration">BIOS Configuration</h3>
+<p>The following table lists the BIOS configuration settings for server nodes implemented as Storage Spaces Direct cluster nodes.</p>
+<table>
+<thead>
+<tr>
+<th>BIOS Section</th>
+<th> BIOS Token</th>
+<th>PE Default Value</th>
+<th>AX Value</th>
+<th>Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processor Settings</td>
+<td>Virtualization Technology</td>
+<td>Enabled</td>
+<td>Enabled</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Processor Settings</td>
+<td>x2APIC Mode</td>
+<td>Enabled</td>
+<td>Enabled</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Processor Settings</td>
+<td>NUMA Nodes Per Socket</td>
+<td>1</td>
+<td>4</td>
+<td>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Integrated Devices</td>
+<td>SR-IOV Global Enable</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>System Profile Settings</td>
+<td>Systems Profile</td>
+<td>Performance Per Watt (DAPC)</td>
+<td>Performance</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>TPM Security</td>
+<td>Off</td>
+<td>On</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>AC Power Recovery</td>
+<td>NA</td>
+<td>On</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>AC Power Recovery Delay</td>
+<td>NA</td>
+<td>Random</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>Secure Boot</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-640<br><br>AX-740xd<br><br>AX-650<br><br>AX-750<br><br>AX-6515<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Processor Settings</td>
+<td>Kernel DMA Protection</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-650<br><br>AX-750<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Processor Settings</td>
+<td>Secure Memory Encryption</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-7525</td>
+</tr>
+<tr>
+<td>Processor Settings</td>
+<td>Transparent Secure Memory Encryption</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>TPM PPI Bypass Provision</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-650<br><br>AX-750<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>TPM PPI Bypass Clear</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-650<br><br>AX-750<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>TPM2 Algorithm Selection</td>
+<td>SHA1</td>
+<td>SHA256</td>
+<td>AX-650<br><br>AX-750<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>Intel TXT/AMD DRTM</td>
+<td>Off</td>
+<td>On</td>
+<td>AX-650<br><br>AX-750<br><br>AX-7525</td>
+</tr>
+<tr>
+<td>Systems Security</td>
+<td>SMM Security Mitigation</td>
+<td>Disabled</td>
+<td>Enabled</td>
+<td>AX-7525</td>
+</tr>
+</tbody>
+</table>
+<h3 id="idrac-configuration">iDRAC Configuration</h3>
+<p>The following table lists the iDRAC settings for server nodes configured as Azure Stack HCI cluster nodes.</p>
+
+
+<table style="width:100%">
+    <tr>
+        <th>Setting Category</th>
+        <th>Setting Name</th>
+        <th>Desired Value</th>
+    </tr>
+    <tr>
+        <td rowspan="2">Network Settings</td>
+        <td>Enable NIC</td>
+        <td>Enable</td>
+    </tr>
+    <tr>
+        <td>NIC Selection</td>
+        <td>Dedicated</td>
+    </tr>
+    <tr>
+        <td>IPMI Settings</td>
+        <td>Enable IPMI Over LAN*</td>
+        <td>Enable</td>
+    </tr>
+    <tr>
+        <td rowspan="3">Power Configuration</td>
+        <td>Redundancy Policy</td>
+        <td>Input Power Redundant</td>
+    </tr>
+    <tr>
+        <td>Enable Hot Spare</td>
+        <td>Enabled</td>
+    </tr>
+    <tr>
+        <td>Primary Power Supply Unit</td>
+        <td>PSU1</td>
+    </tr>
+</table>
+
+
+<blockquote>
+<p>*Required only if you plan to use SCVMM based management of bare-metal server.</p>
+</blockquote>
 
 </div>
 </div>
