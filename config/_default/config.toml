@@ -12,8 +12,7 @@ enableGitInfo = true
 # Language settings
 contentDir = "content/en"
 defaultContentLanguage = "en"
-# defaultContentLanguageInSubdir = false
-# defaultContentLanguageInSubdir = true
+#defaultContentLanguageInSubdir = false
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
@@ -187,8 +186,14 @@ enable = false
 
 [[menu.main]]
     name = "GitHub"
+    pre = "<i class='fab fa-github fa-lg'></i>"
     weight = 50
     url = "https://github.com/dell/azurestack-docs"
+
+[[menu.main]]
+  name = "Dark"
+  pre = "<i id='dark-mode-toggle' class='fa fa-moon'></i>"
+  weight = 100
 
 [module]
 proxy = "direct"
