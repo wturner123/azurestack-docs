@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.111.2">
+<meta name="generator" content="Hugo 0.111.3">
 <link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/index.xml">
 <meta name="robots" content="index, follow">
 
@@ -45,6 +45,9 @@
   integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/prism.css"/>
+<link disabled id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css">
+<link disabled id="prism-night-owl" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/prism-nightowl.css">
+<link id="home-page-override" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/homepage.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXKTSNG8VW"></script>
 <script>
@@ -88,7 +91,17 @@ if (!doNotTrack) {
 				
 				
 				
-				<a class="nav-link" href="https://github.com/dell/azurestack-docs" target="_blank" ><span>GitHub</span></a>
+				<a class="nav-link" href="https://github.com/dell/azurestack-docs" target="_blank" ><i class='fab fa-github fa-lg'></i><span>GitHub</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://dell.github.io/azurestack-docs/" ><i id='dark-mode-toggle' class='fa fa-moon'></i><span>Dark</span></a>
 			</li>
 			
 			
@@ -102,7 +115,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.289d26e7418a215b4bc3f49d52d39a2d.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.dc48d8ae2bc6d38fba3ae134f62d1a49.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -127,7 +140,7 @@ if (!doNotTrack) {
 
 
 
-<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-max js-td-cover td-overlay td-overlay--dark -bg-primary">
+<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-full js-td-cover td-overlay td-overlay--dark -bg-primary">
   <div class="container td-overlay__inner">
     <div class="row">
       <div class="col-12">
@@ -144,7 +157,7 @@ if (!doNotTrack) {
                         Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
                 </a>
         </div>
-        
+
             
           </div>
         </div>
@@ -154,6 +167,33 @@ if (!doNotTrack) {
   
 </section>
 
+
+<section id="feature_section" class="row td-box td-box--white td-box--gradient td-box--height-auto">
+        <div class="col">
+                <div class="row row">
+                        <div class="col-6 mb-5 mb-lg-0 text-center">
+                                <div class="mb-4 h1">
+                                        <img class="azure-stack-icon" src="icons/azure-stack-hub-2022.svg" height="50px"/>
+                                </div>
+                                <h4 class="h3">Azure Stack Hub</h4>
+                                <div class="mb-0">
+                                        <p>Dell Integrated System for Microsoft Azure Stack Hub</p>
+                                </div>
+                                <p><a href="https://dell.github.io/azurestack-docs/docs/hub">Read more …</a></p>
+                        </div>
+                        <div class="col-6 mb-5 mb-lg-0 text-center">
+                                <div class="mb-4 h1">
+                                        <img class="azure-stack-icon" src="icons/azure-stack-hci-2022.svg" height="50px"/>
+                                </div>
+                                <h4 class="h3">Azure Stack HCI</h4>
+                                <div class="mb-0">
+                                        <p>Dell Integrated System for Microsoft Azure Stack HCI</p>
+                                </div>
+                                <p><a href="https://dell.github.io/azurestack-docs/docs/hci">Read more …</a></p>
+                        </div>
+                </div>
+        </div>
+</section>
 
 
 
@@ -235,6 +275,50 @@ if (!doNotTrack) {
 
 <script src='https://dell.github.io/azurestack-docs/js/prism.js'></script>
 
+<script>
+    
+
+    var toggleIcon = document.getElementById("dark-mode-toggle");
+    var toggleMenuItem = toggleIcon.parentElement;
+    var toggleText = toggleMenuItem.childNodes[1]
+    var darkTheme = document.getElementById("dark-mode-theme");
+    var nightOwlPrism = document.getElementById("prism-night-owl");
+    var defaultPrism = $('link[href="https://dell.github.io/azurestack-docs/css/prism.css"]')[0].sheet
+
+    if (toggleMenuItem) {
+        toggleMenuItem.addEventListener("click", () => {
+            if (toggleIcon.className === "fa fa-moon fa-lg") {
+                setTheme("dark");
+            } else if (toggleIcon.className === "fa fa-sun fa-lg") {
+                setTheme("light");
+            }
+        });
+
+        toggleMenuItem.removeAttribute("href")
+    }
+
+    function setTheme(mode) {
+        localStorage.setItem("dark-mode-storage", mode);
+
+        if (mode === "dark") {
+            darkTheme.disabled = false;
+            nightOwlPrism.disabled = false;
+            defaultPrism.disabled = true;
+            toggleIcon.className = "fa fa-sun fa-lg";
+            toggleText.textContent = "Light"
+        } else if (mode === "light") {
+            darkTheme.disabled = true;
+            nightOwlPrism.disabled = true;
+            defaultPrism.disabled = false;
+            toggleIcon.className = "fa fa-moon fa-lg";
+            toggleText.textContent = "Dark"
+        }
+    }
+
+    
+    var savedTheme = localStorage.getItem("dark-mode-storage") || "light";
+    setTheme(savedTheme);
+</script>
 
 
   </body>

@@ -160,7 +160,7 @@ Get-PhysicalDisk -CimSession $Server | Get-StorageReliabilityCounter -CimSession
 &lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-8SATA-SSDs-32VMs-2Node.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Dedup.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core and deduplication enabled&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core enabled&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-Bitlocker.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core &amp;amp; BitLocker enabled&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-8SATA-SSDs-32VMs-2Node-SC-BitLocker.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 4xSATA SSDs each, secured core &amp;amp; BitLocker enabled&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;AX6515-All-Flash-16SAS-SSDs-32VMs-2nodes-azshci.txt&#34;&gt;AX6515 - 2nodes, 16 cores and 8xSAS SSDs each&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;R640-All-NVMe-16NVMe-64VMs-2Node.txt&#34;&gt;R640 - 2nodes, 32 cores and 8xNVMe SSDs each&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
