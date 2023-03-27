@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dell.github.io/azurestack-docs/docs/hub/howto/adfsspn/</loc>
+    <lastmod>2023-03-27T17:18:28+01:00</lastmod>
+  </url><url>
     <loc>https://dell.github.io/azurestack-docs/docs/</loc>
     <lastmod>2023-01-10T16:00:42+00:00</lastmod>
   </url><url>
@@ -91,6 +94,9 @@
   </url><url>
     <loc>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2210/</loc>
     <lastmod>2022-12-08T11:36:45-06:00</lastmod>
+  </url><url>
+    <loc>https://dell.github.io/azurestack-docs/docs/hub/howto/</loc>
+    <lastmod>2023-03-27T17:18:28+01:00</lastmod>
   </url><url>
     <loc>https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/</loc>
     <lastmod>2023-02-10T07:06:57-06:00</lastmod>
