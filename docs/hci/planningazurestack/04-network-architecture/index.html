@@ -116,7 +116,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.e9c7f8e35ea226e49306bcc108599007.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.969e5269cac8ec0e416dab8fb4936f5f.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -138,7 +138,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.e9c7f8e35ea226e49306bcc108599007.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.969e5269cac8ec0e416dab8fb4936f5f.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -406,14 +406,14 @@ $NumberOfNodes = 5
 <li><a href="https://techcommunity.microsoft.com/t5/storage-at-microsoft/to-rdma-or-not-to-rdma-8211-that-is-the-question/ba-p/425982">Blog comparing storage performance with and without RDMA</a></li>
 <li><a href="https://channel9.msdn.com/Blogs/Regular-IT-Guy/Behind-the-Scenes-with-Storage-Replica-and-RDMA">RDMA protocol deep dive video</a></li>
 </ul>
-<p>There are multiple favors of RDMA. The most used in Azure Stack HCI are RoCEv2 and iWARP. Infiniband can be used also, but just for SMB traffic (NICs cannot be connected to vSwitch).</p>
+<p>There are multiple flavors of RDMA. The most used in Azure Stack HCI are RoCEv2 and iWARP. Infiniband can be used also, but just for SMB traffic (NICs cannot be connected to vSwitch).</p>
 <p><img src="RDMA01.png" alt=""></p>
 <h3 id="iwarp">iWARP</h3>
 <p>iWARP is using TCP for transport. This is bit easier to configure as it uses TCP for Congestion Control. Configuring DCB/ETS is not mandatory. For larger deployments it is recommended as traffic can be prioritized.</p>
 <p>Some network vendors require to configure Jumbo Frames to 9014.</p>
 <h3 id="roce">RoCE</h3>
-<p>RoCE is using UDP for transport. Since it&rsquo;s UDP, it requires lossless L2. It is mandatory to enable DCB (PFC/ETS) and ECN on both physical NICs and physical network infrastructure.</p>
-<p>If Congestion control mechanisms are not correctly implemented, it can lead to huge retransmits. This can lead to infrastructure instabilities and storage disconnections. It is crucial to configure this correctly.</p>
+<p>RoCE is using UDP for transport. It is mandatory to enable DCB (PFC/ETS) and ECN on both physical NICs and physical network infrastructure.</p>
+<p>If congestion control mechanisms are not correctly implemented, it can lead to huge retransmits. This can lead to infrastructure instabilities and storage disconnections. It is crucial to configure this correctly.</p>
 <p><strong>where DCB needs to be configured</strong></p>
 <p><img src="dcb01.png" alt=""></p>
 <h2 id="virtual-switch-and-virtual-network-adapters">Virtual Switch and Virtual Network adapters</h2>
@@ -518,7 +518,7 @@ $NumberOfNodes = 5
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/6ea28962102ef166e14a9526b5a47b77b763b3df">Fix links dell geos (#3) (6ea2896)</a>
+  Last modified March 28, 2023: <a href="https://github.com/dell/azurestack-docs/commit/b52f67d67d8db55132edb7e3c1897720b1c9c212">Pub/minor roce fix (#19) (b52f67d)</a>
 </div>
 
 </div>

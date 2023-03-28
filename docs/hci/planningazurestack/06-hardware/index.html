@@ -116,7 +116,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.e9c7f8e35ea226e49306bcc108599007.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.969e5269cac8ec0e416dab8fb4936f5f.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -138,7 +138,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.e9c7f8e35ea226e49306bcc108599007.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.969e5269cac8ec0e416dab8fb4936f5f.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -396,7 +396,7 @@ if (!doNotTrack) {
 <h3 id="use-of-rdma">Use of RDMA</h3>
 <p>When RDMA is enabled, it will bypass networking stack and DMA directly into memory of NIC. This will significantly reduce CPU overhead. While RDMA is not mandatory, it&rsquo;s highly recommended for Azure Stack HCI as it will leave more CPU for Virtual Machines and Storage.</p>
 <h3 id="rdma-protocol">RDMA protocol</h3>
-<p>There are two favors of RDMA. iWARP (TCP/IP) and RoCE (UDP). The main difference a need of lossless infrastructure for RoCE as when switch is loaded and starts dropping packets, it cannot prioritize or even notify infrastructure to stop sending packets if DCB/PFC/ETS is not configured. When packet is dropped on UDP, large retransmit needs to happen and this cause even higher load on switches. Retransmit will also happen on TCP/IP, but significantly smaller. It is still recommended to configure PFC/ETS on both if possible - in case switch needs to notify infrastructure to stop sending packets.</p>
+<p>There are two flavors of RDMA. iWARP (TCP/IP) and RoCE (UDP). The main difference a need of lossless infrastructure for RoCE as when switch is loaded and starts dropping packets, it cannot prioritize or even notify infrastructure to stop sending packets if DCB/PFC/ETS is not configured. When packet is dropped on UDP, large retransmit needs to happen and this cause even higher load on switches. Retransmit will also happen on TCP/IP, but significantly smaller. It is still recommended to configure PFC/ETS on both if possible - in case switch needs to notify infrastructure to stop sending packets.</p>
 <h2 id="network-infrastructure">Network infrastructure</h2>
 <p>Reliable, low latency infrastructure is a must for reliable function of Converged and HyperConverged infrastructure. As already covered above, DCB (PFC nad ETS) is recommended for iWARP and required for RoCE. There is also alternative - starting Windows Server 2019, direct connection is supported. As you can see, it does not make sense to have more than 5 nodes in the cluster (with increasing number of interconnects)</p>
 <table>
@@ -521,7 +521,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified January 9, 2023: <a href="https://github.com/dell/azurestack-docs/commit/6ea28962102ef166e14a9526b5a47b77b763b3df">Fix links dell geos (#3) (6ea2896)</a>
+  Last modified March 28, 2023: <a href="https://github.com/dell/azurestack-docs/commit/b52f67d67d8db55132edb7e3c1897720b1c9c212">Pub/minor roce fix (#19) (b52f67d)</a>
 </div>
 
 </div>
