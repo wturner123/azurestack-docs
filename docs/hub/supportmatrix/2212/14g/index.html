@@ -33,10 +33,25 @@
 
 
 
-
 <link rel="preload" href="https://dell.github.io/azurestack-docs/scss/main.min.c29d693c73703f7035d01a40ce2c782e6018e2ef68055ef25121d70663627956.css" as="style">
 <link href="https://dell.github.io/azurestack-docs/scss/main.min.c29d693c73703f7035d01a40ce2c782e6018e2ef68055ef25121d70663627956.css" rel="stylesheet" integrity="">
 
+
+<script>
+    function createDarkThemeStylesheet(mode) {
+        if (mode === "dark") {
+            document.getElementsByTagName("head")[0].insertAdjacentHTML(
+                "beforeEnd",
+                "<link id=\"dark-mode-theme\" rel=\"stylesheet\" href=\"/css/dark.css\" />");
+        }
+
+        localStorage.setItem("dark-mode-storage", mode);
+    }
+
+    
+    var savedTheme = localStorage.getItem("dark-mode-storage") || "light";
+    createDarkThemeStylesheet(savedTheme);
+</script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
@@ -46,7 +61,6 @@
   integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/prism.css"/>
-<link disabled id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css">
 <link disabled id="prism-night-owl" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/prism-nightowl.css">
 <link id="home-page-override" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/homepage.css">
 
@@ -671,7 +685,6 @@ if (!doNotTrack) {
     var toggleIcon = document.getElementById("dark-mode-toggle");
     var toggleMenuItem = toggleIcon.parentElement;
     var toggleText = toggleMenuItem.childNodes[1]
-    var darkTheme = document.getElementById("dark-mode-theme");
     var nightOwlPrism = document.getElementById("prism-night-owl");
     var defaultPrism = $('link[href="https://dell.github.io/azurestack-docs/css/prism.css"]')[0].sheet
 
@@ -690,14 +703,22 @@ if (!doNotTrack) {
     function setTheme(mode) {
         localStorage.setItem("dark-mode-storage", mode);
 
+        var darkTheme = document.getElementById("dark-mode-theme");
+
         if (mode === "dark") {
-            darkTheme.disabled = false;
+            if (!darkTheme) {
+                createDarkThemeStylesheet(mode);
+            } else {
+                darkTheme.disabled = false;
+            }
             nightOwlPrism.disabled = false;
             defaultPrism.disabled = true;
             toggleIcon.className = "fa fa-sun fa-lg";
             toggleText.textContent = "Light"
         } else if (mode === "light") {
-            darkTheme.disabled = true;
+            if (darkTheme) {
+                darkTheme.disabled = true;
+            }
             nightOwlPrism.disabled = true;
             defaultPrism.disabled = false;
             toggleIcon.className = "fa fa-moon fa-lg";
