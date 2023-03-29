@@ -64,7 +64,7 @@
 &lt;p&gt;Declare your variables accordingly.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Log in to your Azure Stack Hub &lt;em&gt;Default Provider Subscription&lt;/em&gt; with administrator user credentials (needs to have &lt;strong&gt;Owner&lt;/strong&gt; role).
+&lt;p&gt;Log in to your Azure Stack Hub &lt;em&gt;Default Provider Subscription&lt;/em&gt; with administrator user credentials (needs to have the &lt;strong&gt;Owner&lt;/strong&gt; role).
 
 
 &lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
