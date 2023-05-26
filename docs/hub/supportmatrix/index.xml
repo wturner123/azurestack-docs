@@ -4,6 +4,7 @@
     <link>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/</link>
     <description>Recent content in Support Matrix on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     
 	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/index.xml" rel="self" type="application/rss+xml" />
     
@@ -12,6 +13,19 @@
         
       
     
+    
+    <item>
+      <title>Docs: Support Matrix for 2303</title>
+      <link>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2303/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2303/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
     
     <item>
       <title>Docs: Support Matrix for 2212</title>
