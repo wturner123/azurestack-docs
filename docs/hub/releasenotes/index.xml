@@ -31,7 +31,7 @@
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;NOTE&lt;/h4&gt;
 
-    These release notes contain supplemental information for the Dell 2309 release and the Microsoft 2306 release.
+    Dell Azure Stack Hub OEM updates must be installed in sequential order, it is not supported to skip or miss-out an OEM update version. These release notes contain supplemental information for the Dell 2309 release and the Microsoft 2306 release.
 
 &lt;/div&gt;
 
@@ -196,7 +196,7 @@ caption {
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;NOTE&lt;/h4&gt;
 
-    These release notes contain supplemental information for the Dell 2306 release and the Microsoft 2301 release.
+    Dell Azure Stack Hub OEM updates must be installed in sequential order, it is not supported to skip or miss-out an OEM update version. These release notes contain supplemental information for the Dell 2306 release and the Microsoft 2301 release.
 
 &lt;/div&gt;
 
@@ -367,7 +367,7 @@ caption {
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;NOTE&lt;/h4&gt;
 
-    These release notes contain supplemental information for the Dell 2303 release and the Microsoft 2206 release.
+    Dell Azure Stack Hub OEM updates must be installed in sequential order, it is not supported to skip or miss-out an OEM update version. These release notes contain supplemental information for the Dell 2303 release and the Microsoft 2206 release.
 
 &lt;/div&gt;
 
