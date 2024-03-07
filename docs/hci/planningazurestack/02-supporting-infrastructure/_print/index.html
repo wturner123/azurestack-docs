@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.123.7">
 <link rel="canonical" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/">
 <link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/index.xml">
 <meta name="robots" content="noindex, nofollow">
@@ -33,8 +33,8 @@
 
 
 
-<link rel="preload" href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
-<link href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
+<link rel="preload" href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
+<link href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
 
 
 <link id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css" />
@@ -132,7 +132,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.a215ce4b880ae94a15e70edd73d85d7b.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/azurestack-docs/offline-search-index.39a197374326f7b0449ef2340256d370.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -187,20 +187,20 @@ This is the multi-page printable view of this section.
 <h2 id="minimum-infrastructure">Minimum infrastructure</h2>
 <p>The minimum components are Domain Controller and Management machine. Management machine can be Windows 10 or Windows Server at least the same version as the managed server (for example Windows 10 1809 and newer can manage Windows Server 2019). DHCP server can significantly help as managed servers can receive IP address. That means you can manage them remotely without logging into servers to configure static IP, but it&rsquo;s not mandatory.</p>
 <p>Windows Admin Center can be installed on Admin Workstation. From there, infrastructure can be managed using Windows Admin Center, PowerShell or legacy remote management tools (such as mmc).</p>
-<p><img src="MinimumInfrastructure01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/MinimumInfrastructure01.png"></p>
 <h2 id="medium-infrastructure">Medium infrastructure</h2>
 <p>Medium infrastructure assumes you have multiple administrators and/or multiple clusters in your environment. Another servers dedicated for management can be introduced to help with management centralization or automating management.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install#install-on-server-core">Installing Windows Admin Center in Gateway Mode</a></li>
 <li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-install?view=sc-vmm-2019">Planning SCVMM Installation</a></li>
 </ul>
-<p><img src="MediumInfrastructure01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/MediumInfrastructure01.png"></p>
 <h2 id="large-scale-infrastructure">Large Scale infrastructure</h2>
 <p>Large Infrastructure assumes that you have more clusters spanning multiple racks or even sites. To help with bare-metal deployment, network management, patch management is SCVMM essential. Supporting roles (WSUS, WDS, Library servers) managed by SCVMM can be deployed across multiple servers. SCVMM supports deployment in HA Mode (Active-Passive) with SQL server Always On. DHCP is mandatory for bare-metal deployment as during PXE boot, server needs to obtain IP Address.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/system-center/vmm/plan-ha-install?view=sc-vmm-2019">Planning HA SCVMM Installation</a></li>
 </ul>
-<p><img src="LargeScaleInfrastructure01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/02-supporting-infrastructure/LargeScaleInfrastructure01.png"></p>
 
 </div>
 </div>
@@ -291,7 +291,7 @@ This is the multi-page printable view of this section.
 
 
 
-<script src="https://dell.github.io/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
+<script src="https://dell.github.io/azurestack-docs/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
 
 
 

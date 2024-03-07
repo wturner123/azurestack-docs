@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.123.7">
 <link rel="canonical" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/">
 <link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/index.xml">
 <meta name="robots" content="noindex, nofollow">
@@ -33,8 +33,8 @@
 
 
 
-<link rel="preload" href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
-<link href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
+<link rel="preload" href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
+<link href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
 
 
 <link id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css" />
@@ -132,7 +132,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.a215ce4b880ae94a15e70edd73d85d7b.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/azurestack-docs/offline-search-index.39a197374326f7b0449ef2340256d370.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -198,11 +198,11 @@ This is the multi-page printable view of this section.
 <div class="content">
       <p>Understanding storage stack is crucial for understanding what technologies are involved and how (where storage replica is, where is ReFS Multi-resilient Volume, &hellip;). Understanding how layers are stacked will also help when IO flow is troubleshooted - like reviewing performance counters or troubleshooting core functionality.</p>
 <p>Traditional stack compared to storage spaces stack (note that MPIO is missing, but for Storage Spaces Direct it&rsquo;s not needed as there is only one path to the physical device, so it was omitted)</p>
-<p><img src="StorageStack01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack01.png"></p>
 <p>You can notice 4 &ldquo;new&rdquo; layers, but actually it&rsquo;s just Spaces layer (Spaceport) and Storage Bus Layer.</p>
 <p>To better understand what&rsquo;s in the stack, you can also explore some parts with PowerShell</p>
-<p><img src="StorageStack02.png" alt=""></p>
-<p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version found was from webarchive and can be accessed <a href="Storage.pdf">here</a>.</p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack02.png"></p>
+<p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version found was from webarchive and can be accessed <a href="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/Storage.pdf">here</a>.</p>
 <h2 id="layers-below-s2d-stack">Layers below S2D Stack</h2>
 <h3 id="port--miniport-driver">Port &amp; Miniport driver</h3>
 <p><em><strong>storport.sys</strong></em> &amp; <em><strong>stornvme.sys</strong></em></p>
@@ -215,14 +215,14 @@ This is the multi-page printable view of this section.
 <p>A <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/introduction-to-storage-class-drivers">storage class driver</a> (typically <em><strong>disk.sys</strong></em>) uses the well-established SCSI class/port interface to control a mass storage device of its type on any bus for which the system supplies a storage port driver (currently SCSI, IDE, USB and IEEE 1394). The particular bus to which a storage device is connected is transparent to the storage class driver.</p>
 <p>Storage class driver is responsible for claiming devices, interpreting system I/O requests and <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-class-driver-s-general-functionality">many more</a></p>
 <p>In Storage Spaces stack (Virtual Disk) <em><strong>disk.sys</strong></em> is responsible for claiming Virtual Disk exposed by spaceport (storage spaces)</p>
-<p><img src="StorageStack03.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack03.png"></p>
 <h3 id="partition-manager">Partition Manager</h3>
 <p><em><strong>partmgr.sys</strong></em></p>
 <p>Partitions are handled by <em><strong>partmgr.sys</strong></em>. Partition is usually GPT or MBR (preferably GPT as MBR has many limitations such as 2TB size limit)</p>
 <p>As you can see in the stack, there are two partition managers. One partition layout is on physical disk and it is then consumed by storage spaces (spaceport).</p>
 <p>On the picture below you can see individual physical disk from spaces exposed and it&rsquo;s partitions showing metadata partition and partition containing pool data (normally not visible as it&rsquo;s hidden by <em><strong>partmgr.sys</strong></em> when it detects spaces).</p>
-<p><img src="StorageStack04.png" alt=""></p>
-<p><img src="StorageStack05.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack04.png"></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack05.png"></p>
 <h2 id="s2d-stack">S2D Stack</h2>
 <h3 id="storage-bus-layer">Storage Bus Layer</h3>
 <p><em><strong>clusport.sys</strong></em> and <em><strong>clusblft.sys</strong></em></p>
@@ -234,26 +234,26 @@ This is the multi-page printable view of this section.
 <p>Defines resiliency when volume (virtual disk) is created (creates/distributes extents across physical disks)</p>
 <h3 id="virtual-disk">Virtual Disk</h3>
 <p><em><strong>disk.sys</strong></em> is now used by storage spaces and exposes virtual disk that was provisioned using <em><strong>spaceport.sys</strong></em></p>
-<p><img src="StorageStack06.png" alt=""></p>
-<p><img src="StorageStack07.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack06.png"></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack07.png"></p>
 <h2 id="layers-above-s2d-stack">Layers above S2D Stack</h2>
 <h3 id="volume-manager">Volume Manager</h3>
 <p><em><strong>dmio.sys</strong></em>, <em><strong>volmgr.sys</strong></em></p>
 <p>Volumes are created on top of the partition and on volumes you can then create filesystems and expose it to the components higher in the stack.</p>
-<p><img src="StorageStack08.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack08.png"></p>
 <h3 id="volume-snapshot">Volume Snapshot</h3>
 <p><em><strong>volsnap.sys</strong></em></p>
 <p>Volsnap is the component that creates system provider for the volume <a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service">shadow copy service (VSS)</a>. This service is controller by <em><strong>vssadmin.exe</strong></em></p>
 <h3 id="bitlocker">BitLocker</h3>
 <p><em><strong>fvevol.sys</strong></em></p>
 <p>BitLocker is well known disk encryption software that is on the market since Windows Vista. In PowerShell you can expose volume status with <strong>Get-BitLockerVolume</strong> command.</p>
-<p><img src="StorageStack09.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack09.png"></p>
 <h3 id="filter-drivers">Filter Drivers</h3>
 <p>Interesting about filter drivers is, that all FileSystem drivers are actually filter drivers - special ones, File System Drivers - like <em><strong>REFS.sys</strong></em>, <em><strong>NTFS.sys</strong></em>, <em><strong>Exfat.sys</strong></em>.</p>
 <p>You can learn more about filesystem using fsutil</p>
-<p><img src="StorageStack10.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack10.png"></p>
 <p>There are also many first party and third party filter drivers. You can expose those with fltmc command</p>
-<p><img src="StorageStack11.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack11.png"></p>
 <p>As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes">reserve theirs</a>.</p>
 
 </div>
@@ -345,7 +345,7 @@ This is the multi-page printable view of this section.
 
 
 
-<script src="https://dell.github.io/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
+<script src="https://dell.github.io/azurestack-docs/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
 
 
 

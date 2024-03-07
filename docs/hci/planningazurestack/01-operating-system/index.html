@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.123.7">
 <link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/01-operating-system/index.xml">
 <link rel="alternate" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/01-operating-system/_print/">
 <meta name="robots" content="index, follow">
@@ -33,8 +33,8 @@
 
 
 
-<link rel="preload" href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
-<link href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
+<link rel="preload" href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
+<link href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
 
 
 <link id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css" />
@@ -132,7 +132,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.a215ce4b880ae94a15e70edd73d85d7b.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/azurestack-docs/offline-search-index.39a197374326f7b0449ef2340256d370.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +154,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.a215ce4b880ae94a15e70edd73d85d7b.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/azurestack-docs/offline-search-index.39a197374326f7b0449ef2340256d370.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -376,24 +376,24 @@ if (!doNotTrack) {
 	</header>
 	<h1 id="planning-operating-system">Planning Operating System</h1>
 <p>Storage Spaces Direct is technology, that is contained in both Azure Stack HCI OS and Windows Server Datacenter. It enables you to create hyperconverged cluster as there is a software storage bus, that enables every cluster node to access all physical disks in cluster.</p>
-<p><img src="PPT02.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/PPT02.png"></p>
 <!-- ## ![Azure Stack HCI](prod-1906-poweredge-r740xd-12x35-azure-stack-hci-980x366.jpg) -->
 <h2 id="familiar-for-it">Familiar for IT</h2>
 <p>Both operating systems are easy to use for Windows Server admins that are familiar with failover clustering as both systems are using traditional technologies (Failover Clustering, Hyper-V) while domain joined. Therefore all tools (such as Server Manager, MMC and Windows Admin Center) can be used for management.</p>
-<p><img src="OSManagement.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/OSManagement.png"></p>
 <h2 id="hyper-converged-infrastructure-stack">Hyper-Converged infrastructure stack</h2>
 <p>Both Azure Stack HCI and Windows Server are using the same technology that is well known since Windows Server 2016 - Storage Spaces Direct. Storage Spaces Direct enables all servers to see all disks from every node, therefore Storage Spaces stack can define resiliency and place data (slabs) in different fault domains. In this case nodes. Since all is happening in software, devices like high-speed NVMe disks can be used and shared using software stack using high-speed RDMA network adapters.</p>
-<p><img src="PPT04.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/PPT04.png"></p>
 <h2 id="delivered-as-an-azure-hybrid-service">Delivered as an Azure hybrid service</h2>
 <p>The difference between both products is in way the service is consumed. With Windows Server, it&rsquo;s traditional &ldquo;buy and forget&rdquo; model, where you can have operating system that is supported for 5+5 years (main+extended support) and you can pay upfront (OEM License, EA License &hellip;). Azure Stack HCI licensing can be dynamic. Imagine investing into the system where you have 40 cores/node, but you will initially use 16 cores only - you can easily configure number of cores in DELL systems using Openmanage Integration in Windows Admin Center and then pay only for how much you consume.</p>
-<p><img src="WAC01.png" alt=""></p>
-<p><img src="WAC02.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/WAC01.png"></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/WAC02.png"></p>
 <p>Additionally you can purchase Windows Server licenses as <a href="https://learn.microsoft.com/en-us/azure-stack/hci/manage/vm-activate#windows-server-subscription">subscription add-on</a></p>
-<p><img src="Portal01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/Portal01.png"></p>
 <h2 id="os-lifecycle">OS Lifecycle</h2>
 <p>The main difference is the way features are developed for each platform. Windows Server follows traditional development cycle (new version every 2.5-3years), while Azure Stack HCI follows cloud development cycle together with Windows Client OS (new version every year).</p>
 <p>As result, <a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server#compare-technical-features">new features</a> are developed and delivered into Azure Stack HCI OS every year.</p>
-<p><img src="PPT03.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/PPT03.png"></p>
 <p>While both Windows Server and Azure Stack HCI operating systems can run on virtualization host, going forward the main focus will be Azure Stack HCI OS for hosts and Windows Server for guest workloads. For more information see the video below.
 <div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
     <iframe
@@ -403,7 +403,7 @@ if (!doNotTrack) {
 </div>
 </p>
 <p>Comparison of Azure Stack HCI and Windows Server is available <a href="https://learn.microsoft.com/en-us/azure-stack/hci/concepts/compare-windows-server">in official docs</a>.</p>
-<p><img src="PPT01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/01-operating-system/PPT01.png"></p>
 
         <div class="section-index">
     
@@ -570,7 +570,7 @@ if (!doNotTrack) {
 
 
 
-<script src="https://dell.github.io/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
+<script src="https://dell.github.io/azurestack-docs/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
 
 
 

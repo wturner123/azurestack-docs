@@ -25,7 +25,7 @@
         
         &lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
 &lt;p&gt;This article explains how to create a service principal name (SPN) to manage Azure Stack Hub integrated with Active Directory Federation Services (AD FS) identity using PowerShell.&lt;/p&gt;
-&lt;p&gt;For more information about this process, visit &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/operator/give-app-access-to-resources?tabs=az1%2Caz2&amp;amp;pivots=state-disconnected&#34;&gt;Give an app access to Azure Stack Hub resources&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For more information about this process, visit &lt;a href=&#34;https://learn.microsoft.com/en-us/azure-stack/operator/give-app-access-to-resources?tabs=az1%2Caz2&amp;pivots=state-disconnected&#34;&gt;Give an app access to Azure Stack Hub resources&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;It will guide you through the creation of:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;

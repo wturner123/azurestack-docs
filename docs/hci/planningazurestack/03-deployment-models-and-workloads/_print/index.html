@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.123.7">
 <link rel="canonical" type="text/html" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/">
 <link rel="alternate" type="application/rss&#43;xml" href="https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/index.xml">
 <meta name="robots" content="noindex, nofollow">
@@ -33,8 +33,8 @@
 
 
 
-<link rel="preload" href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
-<link href="https://dell.github.io/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
+<link rel="preload" href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" as="style">
+<link href="https://dell.github.io/azurestack-docs/azurestack-docs/scss/main.min.f28669251d295836018a6bbf5273ec7f332a49449f7c4fed679c156d07249b58.css" rel="stylesheet" integrity="">
 
 
 <link id="dark-mode-theme" rel="stylesheet" href="https://dell.github.io/azurestack-docs/css/dark.css" />
@@ -132,7 +132,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/offline-search-index.a215ce4b880ae94a15e70edd73d85d7b.json"
+  data-offline-search-index-json-src="https://dell.github.io/azurestack-docs/azurestack-docs/offline-search-index.39a197374326f7b0449ef2340256d370.json"
   data-offline-search-base-href="https://dell.github.io/azurestack-docs/"
   data-offline-search-max-results="10"
 >
@@ -188,15 +188,15 @@ This is the multi-page printable view of this section.
 <h2 id="hyperconverged-deployments">HyperConverged deployments</h2>
 <p>HyperConverged deployments can be small as 2 nodes connected directly with network cable and grow to multi-PB 16 node clusters (unlike traditional clusters, where limit is 64 nodes). Minimum requirements are described in <a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements">hardware requirements doc</a>.</p>
 <p>Simplicity is the main benefit in this deployment model. All hardware is standardized and from one vendor, therefore there is a high chance that there are hundreds of customers with exact same configuration. This significantly helps with troubleshooting. There are no extra hops compared to SAN, where some IOs are going over FC infrastructure and some over LAN (CSV redirection).</p>
-<p><img src="HyperConvergedModel01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/HyperConvergedModel01.png"></p>
 <h2 id="converged-deployments">Converged deployments</h2>
 <p>Converged deployments have separate AzSHCI cluster with Scale-Out File Server role installed. Multiple compute clusters (up to 64 nodes each) can access single Scale-Out File Server. This design allows to use both Datacenter and Standard licenses for Compute Clusters.</p>
 <p>This design adds some complexity as Virtual Machines are accessing its storage over network. Main benefit is, that one VM consuming all CPU cycles will not affect other VMs because of degraded storage performance and also you can scale storage independently from RAM and CPU (if you run out of cpu, no need to buy server loaded with storage). This design allows higher density, better deduplication job schedule and decreased east-west traffic (as VMs are pointed to it&rsquo;s CSV owner node using Witness Service or new <a href="https://techcommunity.microsoft.com/t5/failover-clustering/scale-out-file-server-improvements-in-windows-server-2019/ba-p/372156">SMB Connections move on connect</a>).</p>
-<p><img src="ConvergedModel01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/ConvergedModel01.png"></p>
 <h2 id="cluster-sets">Cluster Sets</h2>
 <p>If multiple clusters are using multiple Scale-Out FileServers or even if multiple HyperConverged clusters are present, cluster sets helps putting all clusters under one namespace and allows to define fault domains. When VM is created, fault domain can be used (instead of pointing VM to specific node/cluster).</p>
 <p>Technically all VMs are located on SOFS share that is presented using DFS-N namespace. This namespace is hosted on Management cluster that does not need any shared storage as all configuration data are in registry.</p>
-<p><img src="ClusterSets01.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/ClusterSets01.png"></p>
 <h2 id="user-profile-disks-host">User Profile Disks host</h2>
 <p>Azure Stack HCI can also host user profile disks (UPDs). Since UPD is VHD (both native Windows Server functionality and <a href="https://github.com/microsoft/MSLab/tree/master/Scenarios/FSLogix">FSLogix</a>), Scale-Out File Server can be used as workload pattern is the same as for Virtual Machines. However it might make sense to use fileserver hosted Virtual Machine.</p>
 <h2 id="sql">SQL</h2>
@@ -204,7 +204,7 @@ This is the multi-page printable view of this section.
 <blockquote>
 <p>SQL Performance in one Virtual Machine (out of 40 on 4 node cluster) running SQL workload (database forced to read from disk)</p>
 </blockquote>
-<p><img src="SQLPerformanceVM.png" alt=""></p>
+<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/planningazurestack/03-deployment-models-and-workloads/SQLPerformanceVM.png"></p>
 <h2 id="kubernetes">Kubernetes</h2>
 <p>TBD</p>
 <h2 id="vdi">VDI</h2>
@@ -299,7 +299,7 @@ This is the multi-page printable view of this section.
 
 
 
-<script src="https://dell.github.io/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
+<script src="https://dell.github.io/azurestack-docs/azurestack-docs/js/main.min.9f90c5deff5c6f69d5eaaf614a76a233d8b0b3ae70b942fc78919b6d08041034.js" integrity="sha256-n5DF3v9cb2nV6q9hSnaiM9iws65wuUL8eJGbbQgEEDQ=" crossorigin="anonymous"></script>
 
 
 
