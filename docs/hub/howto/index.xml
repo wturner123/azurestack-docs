@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – How To</title>
-    <link>https://dell.github.io/azurestack-docs/docs/hub/howto/</link>
+    <link>/docs/hub/howto/</link>
     <description>Recent content in How To on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hub/howto/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="/docs/hub/howto/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: How to create a service principal name for Azure Stack Hub integrated with Active Directory Federation Services identity using PowerShell</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/howto/adfsspn/</link>
+      <link>/docs/hub/howto/adfsspn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/howto/adfsspn/</guid>
+      <guid>/docs/hub/howto/adfsspn/</guid>
       <description>
         
         

@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – Azure Stack Hub</title>
-    <link>https://dell.github.io/azurestack-docs/docs/hub/</link>
+    <link>/docs/hub/</link>
     <description>Recent content in Azure Stack Hub on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hub/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="/docs/hub/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Release Artifacts</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/</link>
+      <link>/docs/hub/releaseartifacts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/</guid>
+      <guid>/docs/hub/releaseartifacts/</guid>
       <description>
         
         
@@ -29,10 +29,10 @@
     
     <item>
       <title>Docs: Release Notes</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/</link>
+      <link>/docs/hub/releasenotes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/</guid>
+      <guid>/docs/hub/releasenotes/</guid>
       <description>
         
         
@@ -42,10 +42,10 @@
     
     <item>
       <title>Docs: Support Matrix</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/</link>
+      <link>/docs/hub/supportmatrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/</guid>
+      <guid>/docs/hub/supportmatrix/</guid>
       <description>
         
         
@@ -55,10 +55,10 @@
     
     <item>
       <title>Docs: How To</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/howto/</link>
+      <link>/docs/hub/howto/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/howto/</guid>
+      <guid>/docs/hub/howto/</guid>
       <description>
         
         
