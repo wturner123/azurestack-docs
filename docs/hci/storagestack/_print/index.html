@@ -198,10 +198,16 @@ This is the multi-page printable view of this section.
     
 	<p>Understanding storage stack is crucial for understanding what technologies are involved and how (where storage replica is, where is ReFS Multi-resilient Volume, &hellip;). Understanding how layers are stacked will also help when IO flow is troubleshooted - like reviewing performance counters or troubleshooting core functionality.</p>
 <p>Traditional stack compared to storage spaces stack (note that MPIO is missing, but for Storage Spaces Direct it&rsquo;s not needed as there is only one path to the physical device, so it was omitted)</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack01.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack01.png
+"></p>
 <p>You can notice 4 &ldquo;new&rdquo; layers, but actually it&rsquo;s just Spaces layer (Spaceport) and Storage Bus Layer.</p>
 <p>To better understand what&rsquo;s in the stack, you can also explore some parts with PowerShell</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack02.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack02.png
+"></p>
 <p>Anyway, let&rsquo;s explore layers a bit. Following info is based on storage description someone somewhere created and pushed to internet. The only version found was from webarchive and can be accessed <a href="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/Storage.pdf">here</a>.</p>
 <h2 id="layers-below-s2d-stack">Layers below S2D Stack</h2>
 <h3 id="port--miniport-driver">Port &amp; Miniport driver</h3>
@@ -215,14 +221,23 @@ This is the multi-page printable view of this section.
 <p>A <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/introduction-to-storage-class-drivers">storage class driver</a> (typically <em><strong>disk.sys</strong></em>) uses the well-established SCSI class/port interface to control a mass storage device of its type on any bus for which the system supplies a storage port driver (currently SCSI, IDE, USB and IEEE 1394). The particular bus to which a storage device is connected is transparent to the storage class driver.</p>
 <p>Storage class driver is responsible for claiming devices, interpreting system I/O requests and <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/storage-class-driver-s-general-functionality">many more</a></p>
 <p>In Storage Spaces stack (Virtual Disk) <em><strong>disk.sys</strong></em> is responsible for claiming Virtual Disk exposed by spaceport (storage spaces)</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack03.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack03.png
+"></p>
 <h3 id="partition-manager">Partition Manager</h3>
 <p><em><strong>partmgr.sys</strong></em></p>
 <p>Partitions are handled by <em><strong>partmgr.sys</strong></em>. Partition is usually GPT or MBR (preferably GPT as MBR has many limitations such as 2TB size limit)</p>
 <p>As you can see in the stack, there are two partition managers. One partition layout is on physical disk and it is then consumed by storage spaces (spaceport).</p>
 <p>On the picture below you can see individual physical disk from spaces exposed and it&rsquo;s partitions showing metadata partition and partition containing pool data (normally not visible as it&rsquo;s hidden by <em><strong>partmgr.sys</strong></em> when it detects spaces).</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack04.png"></p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack05.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack04.png
+"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack05.png
+"></p>
 <h2 id="s2d-stack">S2D Stack</h2>
 <h3 id="storage-bus-layer">Storage Bus Layer</h3>
 <p><em><strong>clusport.sys</strong></em> and <em><strong>clusblft.sys</strong></em></p>
@@ -234,26 +249,44 @@ This is the multi-page printable view of this section.
 <p>Defines resiliency when volume (virtual disk) is created (creates/distributes extents across physical disks)</p>
 <h3 id="virtual-disk">Virtual Disk</h3>
 <p><em><strong>disk.sys</strong></em> is now used by storage spaces and exposes virtual disk that was provisioned using <em><strong>spaceport.sys</strong></em></p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack06.png"></p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack07.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack06.png
+"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack07.png
+"></p>
 <h2 id="layers-above-s2d-stack">Layers above S2D Stack</h2>
 <h3 id="volume-manager">Volume Manager</h3>
 <p><em><strong>dmio.sys</strong></em>, <em><strong>volmgr.sys</strong></em></p>
 <p>Volumes are created on top of the partition and on volumes you can then create filesystems and expose it to the components higher in the stack.</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack08.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack08.png
+"></p>
 <h3 id="volume-snapshot">Volume Snapshot</h3>
 <p><em><strong>volsnap.sys</strong></em></p>
 <p>Volsnap is the component that creates system provider for the volume <a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service">shadow copy service (VSS)</a>. This service is controller by <em><strong>vssadmin.exe</strong></em></p>
 <h3 id="bitlocker">BitLocker</h3>
 <p><em><strong>fvevol.sys</strong></em></p>
 <p>BitLocker is well known disk encryption software that is on the market since Windows Vista. In PowerShell you can expose volume status with <strong>Get-BitLockerVolume</strong> command.</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack09.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack09.png
+"></p>
 <h3 id="filter-drivers">Filter Drivers</h3>
 <p>Interesting about filter drivers is, that all FileSystem drivers are actually filter drivers - special ones, File System Drivers - like <em><strong>REFS.sys</strong></em>, <em><strong>NTFS.sys</strong></em>, <em><strong>Exfat.sys</strong></em>.</p>
 <p>You can learn more about filesystem using fsutil</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack10.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack10.png
+"></p>
 <p>There are also many first party and third party filter drivers. You can expose those with fltmc command</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/overview/StorageStack11.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/overview/StorageStack11.png
+"></p>
 <p>As you can see on above example, there are many filters like Cluster Shared Volume (CsvNSFlt, CsvFLT), deduplication (Dedup), shared vhd (svhdxflt), storage QoS (storqosflt) and many more. Each filter driver has defined altitude and 3rd parties can <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/allocated-altitudes">reserve theirs</a>.</p>
 
 </div>
@@ -330,7 +363,10 @@ This is the multi-page printable view of this section.
 </li>
 </ul>
 <!-- /TOC -->
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/Stack-PhysicalDisks.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/Stack-PhysicalDisks.png
+"></p>
 <h2 id="resources">Resources</h2>
 <p>Microsoft Documentation</p>
 <ul>
@@ -349,23 +385,35 @@ This is the multi-page printable view of this section.
 </ul>
 <h2 id="interfaces">Interfaces</h2>
 <p>While SATA is still well performing for most of the customers (see performance results), NVMe offers benefit of higher capacity and also more effective protocol (AHCI vs NVMe), that was developed specifically for SSDs (opposite to AHCI, that was developed for spinning media). SATA/SAS is however not scaling well with the larger disks.</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/ScalablePerformance.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/ScalablePerformance.png
+"></p>
 <ul>
 <li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf">https://nvmexpress.org/wp-content/uploads/NVMe-101-1-Part-2-Hardware-Designs_Final.pdf</a></li>
 </ul>
 <p>There is also another aspect of performance limitation of SATA/SAS devices - the controller. All SATA/SAS devices are connected to one SAS controller (non-raid) that has limited speed (only one PCI-e connection).</p>
 <p>Drive Connector is universal (U2, also known as SFF-8639)</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/DriveConnector.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/DriveConnector.png
+"></p>
 <ul>
 <li>Source: <a href="https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf">https://nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf</a></li>
 </ul>
 <p>NVMe drives are mapped directly to CPU</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/NVMeDriveMapping.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/NVMeDriveMapping.png
+"></p>
 <ul>
 <li>Source: <a href="https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf">https://dl.dell.com/manuals/common/dellemc-nvme-io-topologies-poweredge.pdf</a></li>
 </ul>
 <p>NVMe backplane connection - Example AX7525 - 16 PCIe Gen4 lanes in each connection (8 are used), 12 connections in backplane, in this case no PCIe switches.</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX7525Backplane.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX7525Backplane.png
+"></p>
 <ul>
 <li>Source: <a href="https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/dell-emc-poweredge-r7525-internal-view-24x-nvme-backplane-and-fans/">https://www.servethehome.com/dell-emc-poweredge-r7525-review-flagship-dell-dual-socket-server-amd-epyc/dell-emc-poweredge-r7525-internal-view-24x-nvme-backplane-and-fans/</a></li>
 </ul>
@@ -383,14 +431,23 @@ This is the multi-page printable view of this section.
 </ul>
 <p>When combining multiple media types, faster media will be used as caching. While it is recommended to use 10% of the capacity for cache, it should be noted, that it is just important to not spill the cache with the production workload, as it will dramatically reduce performance. Therefore all production workload should fit into the Storage Bus Layer Cache (cache devices). The sweet spot (price vs performance) is combination of fast NVMe (mixed use or write intensive) with HDDs. For performance intensive workloads it&rsquo;s recommended to use all-flash solutions as caching introduces ~20% overhead + less predicable behavior (data can be already destaged&hellip;), therefore it is recommended to use All-Flash for SQL workloads.</p>
 <p>Performance drop when spilling cache devices:</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/CachePerfDrop.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/CachePerfDrop.png
+"></p>
 <ul>
 <li>Source: <a href="https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/">https://web.archive.org/web/20160817193242/http://itpeernetwork.intel.com/iops-performance-nvme-hdd-configuration-windows-server-2016-storage-spaces-direct/</a></li>
 </ul>
 <h2 id="os-disks">OS Disks</h2>
 <p>In Dell Servers are BOSS (Boot Optimized Storage Solution) cards used. In essence it card wih 2x m2 2280 NVMe disks connected to PCI-e with configurable non-RAID/RAID 1</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX750BOSS01.png"></p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX750BOSS02.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX750BOSS01.png
+"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/AX750BOSS02.png
+"></p>
 <h2 id="consumer-grade-ssds">Consumer-Grade SSDs</h2>
 <p>You should avoid any consumer grade SSDs as consumer grade SSDs might contain NAND with higher latency (therefore there can be performance drop after spilling FTL buffer) or because consumer grade SSDs are not power protected (PLP). You can learn more about why consumer-grade SSDs are not good idea in a <a href="https://techcommunity.microsoft.com/t5/storage-at-microsoft/don-t-do-it-consumer-grade-solid-state-drives-ssd-in-storage/ba-p/425914">blog post</a>. Consumer-grade SSDs do also have lower DWPD (Disk Written Per Day). You can learn about DWPD in <a href="https://blogs.technet.microsoft.com/filecab/2017/08/11/understanding-dwpd-tbw/">this blogpost</a></p>
 <h2 id="exploring-stack-with-powershell">Exploring Stack with PowerShell</h2>
@@ -398,9 +455,15 @@ This is the multi-page printable view of this section.
 <pre><code class="language-powershell">$Server = &quot;axnode1&quot;
 Get-PhysicalDisk -CimSession $Server | Format-Table -Property FriendlyName, Manufacturer, Model, SerialNumber, MediaType, BusType, SpindleSpeed, LogicalSectorSize, PhysicalSectorSize
 </code></pre>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/PowerShell01.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/PowerShell01.png
+"></p>
 <p>From screenshot you can see, that AX640 BOSS card reports as SATA device with Unspecified Mediatype, while SAS disks are reported as SSDs, with SAS BusType. Let&rsquo;s deep dive into BusType/MediaType a little bit (see table below)</p>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/BusType.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/BusType.png
+"></p>
 <p>Storage Spaces requires BusType SATA/SAS/NVMe or SCM. BusType RAID is unsupported.</p>
 <p>You can also see Logical Sector Size and Physical Sector size. This refers to Drive Type (4K native vs 512E vs 512).</p>
 <table>
@@ -439,7 +502,10 @@ Get-PhysicalDisk -CimSession $Server | Format-Table -Property FriendlyName, Manu
 <pre><code class="language-powershell">$Server = &quot;axnode1&quot;
 Get-PhysicalDisk -CimSession $Server | Get-StorageReliabilityCounter -CimSession $Server | Format-Table -Property DeviceID, Wear, Temperature*, PowerOnHours, ManufactureDate, ReadLatencyMax, WriteLatencyMax, PSComputerName
 </code></pre>
-<p><img src="https://dell.github.io/azurestack-docs/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/PowerShell02.png"></p>
+<p><img src="
+
+https://dell.github.io/azurestack-docs/docs/hci/storagestack/01-layers-below-s2d-stack/01-storagedevices/PowerShell02.png
+"></p>
 <h2 id="performance-results">Performance results</h2>
 <p>From the results below you can see that SATA vs SAS vs NVMe is 590092 vs 738507 vs 1496373 4k 100% read IOPS. All measurements were done with VMFleet 2.0 <a href="https://github.com/DellGEOS/AzureStackHOLs/tree/main/lab-guides/05-TestPerformanceWithVMFleet">https://github.com/DellGEOS/AzureStackHOLs/tree/main/lab-guides/05-TestPerformanceWithVMFleet</a></p>
 <p>The difference between SAS and SATA is also 8 vs 4 disks in each node. The difference between SAS and NVMe is more than double.</p>
