@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – Release Notes</title>
-    <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/</link>
+    <link>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/</link>
     <description>Recent content in Release Notes on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hub/releasenotes/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Release Notes for 2401</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2401/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2401/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2401/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2401/</guid>
       <description>
         
         
@@ -79,7 +79,7 @@
 &lt;h2 id=&#34;microsoft-fixed-issues&#34;&gt;Microsoft fixed issues&lt;/h2&gt;
 &lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2306&#34;&gt;Azure Stack Hub 2306 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
 &lt;h2 id=&#34;hardware-and-firmware-support&#34;&gt;Hardware and firmware support&lt;/h2&gt;
-&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2401/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/hub/supportmatrix/2401/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
@@ -178,10 +178,10 @@ caption {
     
     <item>
       <title>Docs: Release Notes for 2309</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2309/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2309/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2309/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2309/</guid>
       <description>
         
         
@@ -245,7 +245,7 @@ caption {
 &lt;h2 id=&#34;microsoft-fixed-issues&#34;&gt;Microsoft fixed issues&lt;/h2&gt;
 &lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2306&#34;&gt;Azure Stack Hub 2306 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
 &lt;h2 id=&#34;hardware-and-firmware-support&#34;&gt;Hardware and firmware support&lt;/h2&gt;
-&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2309/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/hub/supportmatrix/2309/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
@@ -343,10 +343,10 @@ caption {
     
     <item>
       <title>Docs: Release Notes for 2306</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2306/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2306/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2306/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2306/</guid>
       <description>
         
         
@@ -415,7 +415,7 @@ For more information, please see the following KB article &lt;a href=&#34;https:
 &lt;h2 id=&#34;microsoft-fixed-issues&#34;&gt;Microsoft fixed issues&lt;/h2&gt;
 &lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2301&#34;&gt;Azure Stack Hub 2301 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
 &lt;h2 id=&#34;hardware-and-firmware-support&#34;&gt;Hardware and firmware support&lt;/h2&gt;
-&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2306/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/hub/supportmatrix/2306/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
@@ -514,10 +514,10 @@ caption {
     
     <item>
       <title>Docs: Release Notes for 2303</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2303/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2303/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releasenotes/2303/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releasenotes/2303/</guid>
       <description>
         
         
@@ -580,7 +580,7 @@ caption {
 &lt;h2 id=&#34;microsoft-fixed-issues&#34;&gt;Microsoft fixed issues&lt;/h2&gt;
 &lt;p&gt;For information about fixed issues in this release, see the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2206&#34;&gt;Azure Stack Hub 2206 update&lt;/a&gt; on the Microsoft website.&lt;/p&gt;
 &lt;h2 id=&#34;hardware-and-firmware-support&#34;&gt;Hardware and firmware support&lt;/h2&gt;
-&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/hub/supportmatrix/2303/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For information about supported hardware, firmware, and software, see the Dell Integrated System for Microsoft Azure Stack Hub Support Matrix. The Support Matrix is available at &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/hub/supportmatrix/2303/&#34;&gt;Dell Integrated System for Microsoft Azure Stack Hub Support Matrix&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;

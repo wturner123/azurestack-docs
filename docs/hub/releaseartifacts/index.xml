@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – Release Artifacts</title>
-    <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/</link>
+    <link>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/</link>
     <description>Recent content in Release Artifacts on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Release Artifacts for 2401</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2401/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2401/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2401/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2401/</guid>
       <description>
         
         
@@ -109,10 +109,10 @@ caption {
     
     <item>
       <title>Docs: Release Artifacts for 2309</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2309/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2309/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2309/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2309/</guid>
       <description>
         
         
@@ -202,10 +202,10 @@ caption {
     
     <item>
       <title>Docs: Release Artifacts for 2306</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2306/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2306/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2306/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2306/</guid>
       <description>
         
         
@@ -295,10 +295,10 @@ caption {
     
     <item>
       <title>Docs: Release Artifacts for 2303</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2303/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2303/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hub/releaseartifacts/2303/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hub/releaseartifacts/2303/</guid>
       <description>
         
         

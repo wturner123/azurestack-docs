@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – Azure Stack HCI</title>
-    <link>https://dell.github.io/azurestack-docs/docs/hci/</link>
+    <link>https://wturner123.github.io/azurestack-docs/docs/hci/</link>
     <description>Recent content in Azure Stack HCI on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/hci/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://wturner123.github.io/azurestack-docs/docs/hci/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Planning Azure Stack</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hci/planningazurestack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hci/planningazurestack/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hci/planningazurestack/</guid>
       <description>
         
         
@@ -30,10 +30,10 @@
     
     <item>
       <title>Docs: Storage Stack</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hci/storagestack/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hci/storagestack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hci/storagestack/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hci/storagestack/</guid>
       <description>
         
         
@@ -43,10 +43,10 @@
     
     <item>
       <title>Docs: Support Matrix</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hci/supportmatrix/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hci/supportmatrix/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/</guid>
       <description>
         
         
@@ -56,10 +56,10 @@
     
     <item>
       <title>Docs: BIOS and iDRAC configuration recommendations</title>
-      <link>https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/hci/biosandidrac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/hci/biosandidrac/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/hci/biosandidrac/</guid>
       <description>
         
         

@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solutions for Microsoft Azure Stack – References</title>
-    <link>https://dell.github.io/azurestack-docs/docs/references/</link>
+    <link>https://wturner123.github.io/azurestack-docs/docs/references/</link>
     <description>Recent content in References on Solutions for Microsoft Azure Stack</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	  <atom:link href="https://dell.github.io/azurestack-docs/docs/references/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://wturner123.github.io/azurestack-docs/docs/references/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Contribution Guidelines</title>
-      <link>https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/</link>
+      <link>https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/</guid>
+      <guid>https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/</guid>
       <description>
         
         
@@ -90,20 +90,20 @@ We use GitHub pull requests for this purpose.&lt;/p&gt;
 &lt;h4 id=&#34;steps-for-working-on-the-main-branch&#34;&gt;Steps for working on the main branch&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;Fork the repository.&lt;/li&gt;
-&lt;li&gt;Create a branch off of the main branch. The branch name should follow &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/#branch-naming-convention&#34;&gt;branch naming convention&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Create a branch off of the main branch. The branch name should follow &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/#branch-naming-convention&#34;&gt;branch naming convention&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Make your changes and commit them to your branch.&lt;/li&gt;
 &lt;li&gt;If other code changes have merged into the upstream main branch, perform a rebase of those changes into your branch.&lt;/li&gt;
-&lt;li&gt;Test your changes &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/#previewing-your-changes&#34;&gt;locally&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Test your changes &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/#previewing-your-changes&#34;&gt;locally&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Open a &lt;a href=&#34;https://github.com/dell/azurestack-docs/pulls&#34;&gt;pull request&lt;/a&gt; between your branch and the upstream main branch.&lt;/li&gt;
 &lt;li&gt;Once your pull request has merged with the required approvals, your branch can be deleted.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;steps-for-working-on-a-release-branch&#34;&gt;Steps for working on a release branch&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;Fork the repository.&lt;/li&gt;
-&lt;li&gt;Create a branch off of the release branch. The branch name should follow &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/#branch-naming-convention&#34;&gt;branch naming convention&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Create a branch off of the release branch. The branch name should follow &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/#branch-naming-convention&#34;&gt;branch naming convention&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Make your changes and commit them to your branch.&lt;/li&gt;
 &lt;li&gt;If other code changes have merged into the upstream release branch, perform a rebase of those changes into your branch.&lt;/li&gt;
-&lt;li&gt;Test your changes &lt;a href=&#34;https://dell.github.io/azurestack-docs/docs/references/contributionguidelines/#previewing-your-changes&#34;&gt;locally&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Test your changes &lt;a href=&#34;https://wturner123.github.io/azurestack-docs/docs/references/contributionguidelines/#previewing-your-changes&#34;&gt;locally&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Open a &lt;a href=&#34;https://github.com/dell/azurestack-docs/pulls&#34;&gt;pull request&lt;/a&gt; between your branch and the upstream release branch.&lt;/li&gt;
 &lt;li&gt;Once your pull request has merged with the required approvals, your branch can be deleted.&lt;/li&gt;
 &lt;/ol&gt;
