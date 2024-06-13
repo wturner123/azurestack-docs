@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack HCI Support Matrix (2406)"
-linkTitle: "2406"
+title: "Azure Stack HCI Support Matrix for 14G-15G (2406)"
+linkTitle: "14G-15G"
 weight: 7594
 Description: >
 
