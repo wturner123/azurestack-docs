@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="canonical" type="text/html" href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/">
-<link rel="alternate" type="application/rss&#43;xml" href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/index.xml">
+<link rel="canonical" type="text/html" href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/ws2016/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/ws2016/index.xml">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -19,21 +19,22 @@
 <link rel="icon" type="image/png" href="https://wturner123.github.io/azurestack-docs/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="https://wturner123.github.io/azurestack-docs/favicons/android-192x192.png" sizes="192x192">
 
-<title>Azure Stack HCI Support Matrix (Archive) | Solutions for Microsoft Azure Stack</title>
+<title>Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016) | Solutions for Microsoft Azure Stack</title>
 <meta name="description" content="Dell Technologies (Dell) Azure Stack documentation pages">
-<meta property="og:url" content="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/">
+<meta property="og:url" content="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/ws2016/">
   <meta property="og:site_name" content="Solutions for Microsoft Azure Stack">
-  <meta property="og:title" content="Azure Stack HCI Support Matrix (Archive)">
-  <meta property="og:description" content="Dell Technologies (Dell) Azure Stack documentation pages">
+  <meta property="og:title" content="Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016)">
+  <meta property="og:description" content="&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34; &#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;&gt; Introduction This matrix is for Windows Server operating systems that have exited Microsoft mainstream support. This Windows Server operating system is no longer being validated by Dell for use with hyperconverged cluster deployments. The table in the below link is a snapshot of the last firmware and driver versions that were validated by Dell engineering for use with this legacy Windows Server version.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Azure Stack HCI Support Matrix (Archive)">
-  <meta itemprop="description" content="Dell Technologies (Dell) Azure Stack documentation pages">
-  <meta itemprop="dateModified" content="2024-07-29T10:06:46+01:00">
+  <meta itemprop="name" content="Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016)">
+  <meta itemprop="description" content="&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34; &#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;&gt; Introduction This matrix is for Windows Server operating systems that have exited Microsoft mainstream support. This Windows Server operating system is no longer being validated by Dell for use with hyperconverged cluster deployments. The table in the below link is a snapshot of the last firmware and driver versions that were validated by Dell engineering for use with this legacy Windows Server version.">
+  <meta itemprop="dateModified" content="2024-07-29T10:07:24+01:00">
+  <meta itemprop="wordCount" content="2951">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Azure Stack HCI Support Matrix (Archive)">
-  <meta name="twitter:description" content="Dell Technologies (Dell) Azure Stack documentation pages">
+  <meta name="twitter:title" content="Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016)">
+  <meta name="twitter:description" content="&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34; &#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;&gt; Introduction This matrix is for Windows Server operating systems that have exited Microsoft mainstream support. This Windows Server operating system is no longer being validated by Dell for use with hyperconverged cluster deployments. The table in the below link is a snapshot of the last firmware and driver versions that were validated by Dell engineering for use with this legacy Windows Server version.">
 
 
 
@@ -162,48 +163,42 @@ if (!doNotTrack) {
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/">Return to the regular view of this page</a>.
+<a href="https://wturner123.github.io/azurestack-docs/docs/hci/supportmatrix/archive/ws2016/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">Azure Stack HCI Support Matrix (Archive)</h1>
+<h1 class="title">Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016)</h1>
 
 
 
 
 
   
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+        <li><a href="#storage-spaces-direct-ready-nodes-and-ax-nodes-supported-firmware-versions">Storage Spaces Direct Ready Nodes and AX nodes Supported Firmware versions</a></li>
+        <li><a href="#storage-spaces-direct-ready-nodes-and-ax-nodes-firmware-and-drivers-for-windows-server-2016">Storage Spaces Direct Ready Nodes and AX nodes Firmware and Drivers for Windows Server 2016</a></li>
+        <li><a href="#sas-25-hdd-drives---capacity-only">SAS 2.5” HDD Drives - Capacity Only</a></li>
+        <li><a href="#sata-25-hdd-drives---capacity-only">SATA 2.5” HDD Drives - Capacity Only</a></li>
+        <li><a href="#sata-35-hdd-drives---capacity-only">SATA 3.5” HDD Drives - Capacity Only</a></li>
+        <li><a href="#sas-35-hdd-drives---capacity-only">SAS 3.5” HDD Drives - Capacity Only</a></li>
+        <li><a href="#sata-25-ssd-drives---cache-or-capacity">SATA 2.5” SSD Drives - Cache or Capacity</a></li>
+        <li><a href="#sata-25-ssd-drives---capacity-only">SATA 2.5” SSD Drives - Capacity Only</a></li>
+        <li><a href="#sas-25-ssd-drives---cache-or-capacity">SAS 2.5” SSD Drives - Cache or Capacity</a></li>
+        <li><a href="#sas-25-ssd-drives---capacity-only">SAS 2.5” SSD Drives - Capacity Only</a></li>
+        <li><a href="#value-sas-25-ssd-drives---cache-or-capacity">Value SAS 2.5” SSD Drives - Cache or Capacity</a></li>
+        <li><a href="#nvme-drives---cache-or-capacity">NVMe Drives - Cache or Capacity</a></li>
+        <li><a href="#nvme-drives---capacity-only">NVMe Drives - Capacity Only</a></li>
+        <li><a href="#nvme-pcie-add-in-card-aic---cache-or-capacity">NVMe PCIe Add In Card (AIC) - Cache or Capacity</a></li>
+      </ul>
+</nav>
   
 
 
 <div class="content">
       
-</div>
-</div>
-
-
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-e4f7218b9b6c2db30a49712803ef4d0b">1 - Azure Stack HCI Firmware and Driver Matrix for Legacy Windows Server Operating Systems (Windows Server 2016)</h1>
-    
-	
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -2693,11 +2688,9 @@ Customers that are still running this Windows Server version for their hyperconv
 
 
 </div>
+</div>
 
 
-
-    
-      
   
   
   
@@ -2706,10 +2699,6 @@ Customers that are still running this Windows Server version for their hyperconv
   
   
 
-  
-
-    
-	
   
 
 
