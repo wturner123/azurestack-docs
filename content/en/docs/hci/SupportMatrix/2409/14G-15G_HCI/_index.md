@@ -56,8 +56,7 @@ Description: >
 
 ## Notes and warnings
 {{% alert title="CAUTION" color="warning" %}}
-The update of Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2 is currently not supported. For new deployments, we recommend that you use Azure Stack HCI, version 23H2 which is now generally available. For more information on Azure Stack HCI, version 23H2, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](
-https://learn.microsoft.com/en-us/azure-stack/hci/update/azure-update-manager-23h2).
+The update of Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2 is currently not supported. For new deployments, we recommend that you use Azure Stack HCI, version 23H2 which is now generally available. For more information on Azure Stack HCI, version 23H2, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](https://learn.microsoft.com/en-us/azure-stack/hci/update/azure-update-manager-23h2).
 {{% /alert %}}
 
 ### Supported Platforms
