@@ -54,6 +54,16 @@ Description: >
     <div id="content">
 {{< /rawhtml >}}
 
+## Notes and warnings
+{{% alert title="CAUTION" color="warning" %}}
+The Dell Integrated System for Microsoft Azure Stack HCI AX-650, AX-750, AX-7525, and AX-6515 now supports upgrades from Azure Stack HCI 22H2 to Azure Stack HCI 23H2. The cluster must have firmware and drivers updated to the levels listed in this support matrix prior to starting the upgrade process.
+
+Please see the following knowledge base article for procedure details and known issues:<br>
+[Upgrade Azure Stack HCI version 22H2 to Azure Stack HCI version 23H2](https://www.dell.com/support/kbdoc/en-us/000259175/upgrade-azure-local-version-22h2-to-azure-local-version-23h2)
+
+The upgrade on AX-640 and AX-740xd server models remains unsupported at this time by Dell. Dell customers are recommended to wait for Dell to complete the upgrade validation on AX-640 and AX-740xd server models prior to attempting the upgrade. Customers that choose to proceed with the upgrade need to contact Microsoft for any assistance with resolving problems that may occur during the upgrade process.
+{{% /alert %}}
+
 ### Supported Platforms
 {{< rawhtml >}}
 <table> <colgroup><col/><col/></colgroup> <tr><th>Model</th><th>Supported Operating System</th></tr> <tr><td>AX-4510c</td><td>Windows Server 2022 Datacenter<br>Azure Stack HCI-22H2<br>Azure Stack HCI-23H2</td></tr> <tr><td>AX-4520c</td><td>Windows Server 2022 Datacenter<br>Azure Stack HCI-22H2<br>Azure Stack HCI-23H2</td></tr> <tr><td>AX-640</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-740xd</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter</td></tr> <tr><td>AX-6515</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter<br>Azure Stack HCI-23H2</td></tr> <tr><td>AX-7525</td><td>Windows Server 2019 Datacenter<br>Azure Stack HCI-22H2<br>Windows Server 2022 Datacenter<br>Azure Stack HCI-23H2</td></tr> <tr><td>AX-650</td><td>Windows Server 2022 Datacenter<br>Azure Stack HCI-22H2<br>Azure Stack HCI-23H2</td></tr> <tr><td>AX-750</td><td>Windows Server 2022 Datacenter<br>Azure Stack HCI-22H2<br>Azure Stack HCI-23H2</td></tr> <tr><td>R640 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> <tr><td>R740xd Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> <tr><td>R440 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> <tr><td>R740xd2 Storage Spaces Direct RN</td><td>Windows Server 2019 Datacenter</td></tr> </table><br>
