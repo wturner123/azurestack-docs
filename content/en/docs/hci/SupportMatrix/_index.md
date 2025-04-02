@@ -7,4 +7,6 @@ hide_feedback: true
 
 ---
 
-[Dell Solution Builder Extensions for Azure Stack HCI Integrated System AX Server Release Notes](https://www.dell.com/support/kbdoc/en-us/000224407/dell-for-microsoft-azure-stack-hci-ax-hardware-updates-release-notes)
+{{% alert title="NOTE" color="primary" %}}
+Dell does not support 22H2 to 23H2 OS upgrades with stretch cluster.
+{{% /alert %}}
