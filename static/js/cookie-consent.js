@@ -250,7 +250,7 @@ class CookieConsentManager {
             // We will not force load Google Analytics here it will be loaded by default
             // this.enableGoogleAnalytics();
         } else {
-            this.disableGoogleAnalytics();
+            // this.disableGoogleAnalytics();
         }
 
         // Handle other analytics or tracking scripts
@@ -442,31 +442,6 @@ class CookieConsentManager {
             window.cookieConsentManager = new CookieConsentManager();
         }
         return window.cookieConsentManager;
-    }
-
-    // Method to check if a specific consent type is granted
-    hasConsent(type) {
-        const consent = this.getConsentCookie();
-        return consent ? consent[type] === true : false;
-    }
-
-    // Method to revoke all consent
-    revokeConsent() {
-        // Remove consent cookie
-        document.cookie = `${this.cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-
-        // Remove analytics cookies
-        this.removeGoogleAnalyticsCookies();
-
-        // Show banner again
-        this.showConsentBanner();
-
-        // Apply minimal consent
-        this.applyConsent({
-            essential: true,
-            analytics: false
-            // preferences: false
-        });
     }
 
 }
