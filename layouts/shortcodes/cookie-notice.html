@@ -1,0 +1,71 @@
+{{/*
+Cookie Consent Shortcode
+Usage: {{< cookie-notice>}}
+    {{< cookie-notice type="analytics">}}Content that requires analytics consent{{< /cookie-notice>}}
+            */}}
+
+            {{ $type := .Get "type" | default "all" }}
+            {{ $class := printf "cookie-consent-notice cookie-consent-%s" $type }}
+
+            {{ if .Inner }}
+            {{/* Block usage with content */}}
+            <div class="{{ $class }}" data-cookie-type="{{ $type }}">
+                <div class="cookie-content" style="display: none;">
+                    {{ .Inner | markdownify }}
+                </div>
+                <div class="cookie-placeholder"
+                    style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 20px; text-align: center; margin: 20px 0;">
+                    <p><strong>Content blocked</strong></p>
+                    <p>This content requires {{ if eq $type "analytics" }}analytics{{ else if eq $type "preferences"
+                        }}preference{{ else }}additional{{ end }} cookies to be displayed.</p>
+                    <button onclick="window.cookieConsentManager?.showSettingsModal()"
+                        style="background: #0076CE; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                        Manage Cookie Settings
+                    </button>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    function checkCookieConsent() {
+                        const consent = window.cookieConsent;
+                        const element = document.querySelector('[data-cookie-type="{{ $type }}"]');
+
+                        if (element && consent) {
+                            { { if eq $type "analytics" } }
+                            const shouldShow = consent.analytics;
+                            { { else if eq $type "preferences" } }
+                            const shouldShow = consent.preferences;
+                            { { else } }
+                            const shouldShow = consent.analytics || consent.preferences;
+                            { { end } }
+
+                            if (shouldShow) {
+                                element.querySelector('.cookie-content').style.display = 'block';
+                                element.querySelector('.cookie-placeholder').style.display = 'none';
+                            }
+                        }
+                    }
+
+                    // Check immediately
+                    checkCookieConsent();
+
+                    // Listen for consent updates
+                    window.addEventListener('cookieConsentUpdated', checkCookieConsent);
+                });
+            </script>
+            {{ else }}
+            {{/* Simple notice usage */}}
+            <div class="alert alert-info cookie-consent-notice" role="alert">
+                <strong>Cookie Notice:</strong>
+                {{ if eq $type "analytics" }}
+                This page uses analytics cookies to improve user experience.
+                {{ else if eq $type "preferences" }}
+                This page uses preference cookies to remember your settings.
+                {{ else }}
+                This page uses cookies to enhance your browsing experience.
+                {{ end }}
+                <a href="/docs/cookie-policy/" target="_blank">Learn more</a> or
+                <a href="#" onclick="window.cookieConsentManager?.showSettingsModal(); return false;">manage your
+                    preferences</a>.
+            </div>
+            {{ end }}
