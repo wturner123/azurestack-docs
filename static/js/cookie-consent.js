@@ -71,14 +71,12 @@ class CookieConsentManager {
                 <div class="cookie-consent-content">
                     <div class="cookie-consent-title">We use cookies</div>
                     <div class="cookie-consent-message">
-                        By continuing to use this website, you consent to the use of cookies in accordance with our Cookie Policy.
                         We use cookies to enhance your browsing experience and analyze website traffic. 
-                        By clicking "Accept All", you consent to our use of cookies. 
                         Learn more in our <a href="https://www.dell.com/en-us/lp/legal/policies-cookies-ads-emails" target="_blank">Cookie Policy</a>.
                     </div>
                 </div>
                 <div class="cookie-consent-buttons">
-                    <button id="cookie-accept-all" class="cookie-consent-btn cookie-consent-btn-accept">Accept All</button>
+                    <button id="cookie-accept-all" class="cookie-consent-btn cookie-consent-btn-accept">Accept</button>
                     <button id="cookie-decline" class="cookie-consent-btn cookie-consent-btn-decline">Decline</button>
                     <button id="cookie-customize" class="cookie-consent-btn cookie-consent-btn-customize">Customize</button>
                 </div>
@@ -244,40 +242,18 @@ class CookieConsentManager {
         this.applyConsent(consent);
         this.hideSettingsModal();
         this.hideConsentBanner();
-    } applyConsent(consent) {
+    }
+
+    applyConsent(consent) {
         // Handle Google Analytics
         if (consent.analytics) {
             // We will not force load Google Analytics here it will be loaded by default
             // this.enableGoogleAnalytics();
         } else {
-            // this.disableGoogleAnalytics();
+            this.removeGoogleAnalyticsCookies();
         }
-
-        // Handle other analytics or tracking scripts
-        // this.handleThirdPartyScripts(consent);
-
-        // Store consent in global variable for other scripts to check
-        window.cookieConsent = consent;
-
-        // Dispatch custom event
-        window.dispatchEvent(new CustomEvent('cookieConsentUpdated', { detail: consent }));
-
-        // Debug output
-        // setTimeout(() => this.debugGoogleAnalytics(), 1000);
     }
-    disableGoogleAnalytics() {
-        // console.log('Disabling Google Analytics...');
 
-        // if (window.gtag) {
-        //     gtag('consent', 'update', {
-        //         analytics_storage: 'denied',
-        //         ad_storage: 'denied'
-        //     });
-        // }
-
-        // Remove Google Analytics cookies
-        this.removeGoogleAnalyticsCookies();
-    }
     removeGoogleAnalyticsCookies() {
         const hostname = window.location.hostname;
         const domain = hostname.startsWith('www.') ? hostname.substring(4) : hostname;
@@ -335,15 +311,15 @@ class CookieConsentManager {
         }
 
         // Log remaining cookies after cleanup
-        setTimeout(() => {
-            const remainingCookies = document.cookie.split(';').map(c => c.split('=')[0].trim());
-            const remainingGACookies = remainingCookies.filter(name =>
-                name.startsWith('_ga') || name.startsWith('_gid') || name.startsWith('_gat') || name.startsWith('_gtag')
-            );
-            if (remainingGACookies.length > 0) {
-                console.warn('GA cookies still present after cleanup:', remainingGACookies);
-            }
-        }, 100);
+        // setTimeout(() => {
+        //     const remainingCookies = document.cookie.split(';').map(c => c.split('=')[0].trim());
+        //     const remainingGACookies = remainingCookies.filter(name =>
+        //         name.startsWith('_ga') || name.startsWith('_gid') || name.startsWith('_gat') || name.startsWith('_gtag')
+        //     );
+        //     if (remainingGACookies.length > 0) {
+        //         console.warn('GA cookies still present after cleanup:', remainingGACookies);
+        //     }
+        // }, 100);
     }
 
     // handleThirdPartyScripts(consent) {
