@@ -1,6 +1,3 @@
-canonifyURLs = true
-relativeURLs = false
-
 # Fix Hugo folder permission for public folder (local build only)
 noTimes = true
 noChmod = true
