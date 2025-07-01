@@ -2,4 +2,4 @@
   [services.googleAnalytics]
     id = 'G-PXKTSNG8VW'
 
-canonifyURLs = true
+canonifyURLs = false
