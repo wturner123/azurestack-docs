@@ -1,2 +1,5 @@
-googleAnalytics = 'G-PXKTSNG8VW'
+[services]
+  [services.googleAnalytics]
+    id = 'G-PXKTSNG8VW'
+
 canonifyURLs = true

@@ -204,3 +204,7 @@ section = ["HTML", "RSS", "print"]
 # [params.print]
 # disable_toc = false
 
+# Privacy settings for GDPR compliance
+[privacy]
+  [privacy.googleAnalytics]
+    respectDoNotTrack = true
