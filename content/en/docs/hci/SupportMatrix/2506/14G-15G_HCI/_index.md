@@ -55,6 +55,10 @@ Description: >
 {{< /rawhtml >}}
 
 {{% alert title="NOTE" color="primary" %}}
+The 2506 release for the AX-650, AX-750. AX-6515, AX-7525, AX-640, and AX-740xd platforms is coming soon.
+{{% /alert %}}
+
+{{% alert title="NOTE" color="primary" %}}
 The Dell AX System for Azure Local AX-640, AX-740xd, AX-650, AX-750, AX-7525, and AX-6515 now supports upgrades from Azure Stack HCI operating system 22H2 to Azure Stack HCI operating system 23H2. The cluster must have firmware and drivers updated to the levels listed in this support matrix prior to starting the upgrade process.
 
 Please see the following knowledge base article for procedure details and known issues:<br>
