@@ -3,6 +3,7 @@ title: "05. Storage Capacity Planning"
 linkTitle: "05. Storage Capacity Planning"
 weight: 7
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

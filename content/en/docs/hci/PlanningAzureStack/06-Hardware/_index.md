@@ -3,6 +3,7 @@ title: "06. Hardware"
 linkTitle: "06. Hardware"
 weight: 8
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

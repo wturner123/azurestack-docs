@@ -4,6 +4,7 @@ linkTitle: "Golden Images"
 weight: 15000
 Description: >
 hide_feedback: false
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 
