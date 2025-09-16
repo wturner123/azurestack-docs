@@ -1,4 +1,3 @@
-
 ---
 title: "Dell Technologies Solutions for Microsoft Azure"
 linkTitle: "Dell Technologies Solutions for Microsoft Azure"
@@ -7,6 +6,7 @@ menu:
   main:
     weight: 1
 hide_feedback: true
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

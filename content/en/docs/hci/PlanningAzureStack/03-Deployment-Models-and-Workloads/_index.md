@@ -3,6 +3,7 @@ title: "03. Planning Deployment Models and Workloads"
 linkTitle: "03. Planning Deployment Models and Workloads"
 weight: 5
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

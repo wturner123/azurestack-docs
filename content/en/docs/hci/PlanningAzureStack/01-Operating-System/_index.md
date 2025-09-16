@@ -3,6 +3,7 @@ title: "01. Operating System"
 linkTitle: "01. Operating System"
 weight: 3
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

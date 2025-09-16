@@ -3,6 +3,7 @@ title: "Azure Local Support Matrix for 14G-15G (2412)"
 linkTitle: "14G-15G"
 weight: 7588
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

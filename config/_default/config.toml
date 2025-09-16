@@ -63,8 +63,8 @@ languageName ="English"
 # Everything below this are Site Params
 
 [params]
-copyright = "The Dell Technologies"
-privacy_policy = "https://www.dell.com/learn/us/en/uscorp1/policies-privacy"
+copyright = "[Copyright © 2025 Dell Inc.](https://www.dell.com/en-us/lp/legal/site-terms-of-use-copyright) | [Terms of Sale](https://www.dell.com/en-us/lp/legal/terms-of-sale) | [Privacy Statement](https://www.dell.com/en-us/lp/legal/policies-privacy) | [Do Not Sell or Share My Personal Information](https://www.dell.com/en-us/lp/do-not-sell-my-info) | [Cookies, Ads & Emails](https://www.dell.com/en-us/lp/legal/policies-cookies-ads-emails) | [Legal & Regulatory](https://www.dell.com/en-us/lp/legal/terms)"
+# privacy_policy = "https://www.dell.com/learn/us/en/uscorp1/policies-privacy"
 
 # Enable syntax highlighting and copy buttons on code blocks with Prism
 prism_syntax_highlighting = true

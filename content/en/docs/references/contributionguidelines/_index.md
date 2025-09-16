@@ -5,6 +5,7 @@ weight: 3
 Description: >
   Dell Technologies Azure Stack Docs Contribution Guidelines
 hide_feedback: true
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 

@@ -3,6 +3,7 @@ title: "BIOS and iDRAC configuration recommendations"
 linkTitle: "BIOS and iDRAC configuration recommendations"
 weight: 10000
 Description: >
+comment: "Copyright © 2025 Dell Inc."
 
 ---
 
