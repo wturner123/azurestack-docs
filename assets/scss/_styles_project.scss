@@ -1,4 +1,9 @@
-.td-page-meta--child {
+.td-page-meta--child,
+.td-page-meta--edit,
+.td-page-meta--issue,
+.td-page-meta__child,
+.td-page-meta__edit,
+.td-page-meta__issue {
     display: none !important;
 }
 
