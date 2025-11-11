@@ -1,6 +1,6 @@
 ---
-title: "Azure Local Support Matrix for AX-4500 (Dell 2509)"
-linkTitle: "AX-4500"
+title: "Azure Local Support Matrix for 45n0c (Dell 2509)"
+linkTitle: "45n0c"
 weight: 7491
 Description: >
 comment: "Copyright © 2025 Dell Inc."
@@ -56,6 +56,7 @@ comment: "Copyright © 2025 Dell Inc."
 {{< /rawhtml >}}
 
 ### Supported Platforms
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/></colgroup>
@@ -67,6 +68,7 @@ comment: "Copyright © 2025 Dell Inc."
 {{< /rawhtml >}}
 
 ### Base Components
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/><col/><col/><col/></colgroup>
@@ -82,6 +84,7 @@ comment: "Copyright © 2025 Dell Inc."
 {{< /rawhtml >}}
 
 ### Network Adapters
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
@@ -97,6 +100,7 @@ comment: "Copyright © 2025 Dell Inc."
 {{< /rawhtml >}}
 
 ### Network Switches
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/></colgroup>
@@ -113,6 +117,7 @@ comment: "Copyright © 2025 Dell Inc."
 {{< /rawhtml >}}
 
 ### GPUs
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
@@ -125,7 +130,9 @@ comment: "Copyright © 2025 Dell Inc."
 {{% alert title="NOTE" color="primary" %}}
 Dell update packages are not available for GPU cards, please download the latest driver version from NVIDIA driver download page.
 {{% /alert %}}
+
 ### Storage Controllers
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
@@ -135,8 +142,8 @@ Dell update packages are not available for GPU cards, please download the latest
 <br>
 {{< /rawhtml >}}
 
-
 ### NVMe 2.5" Capacity Only
+
 {{< rawhtml >}}
 <table>
 <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
@@ -165,6 +172,4 @@ Dell update packages are not available for GPU cards, please download the latest
 
 </html>
 
-
 {{< /rawhtml >}}
-
