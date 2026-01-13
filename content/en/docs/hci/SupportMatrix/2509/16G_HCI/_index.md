@@ -111,18 +111,9 @@ comment: "Copyright © 2026 Dell Inc."
 
 ### Network Switches
 {{< rawhtml >}}
-<table>
-<colgroup><col/><col/><col/></colgroup>
-<tr><th>Component</th><th>Category</th><th>Minimum Supported Version</th></tr>
-<tr><td>Dell EMC Networking S4112F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S4128F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S4148F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S5212F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S5224F/S5248F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S5232F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-<tr><td>Dell EMC Networking S5448F-ON</td><td>Network Switch</td><td>10.6.0.1.35</td></tr>
-</table>
-<br>
+{{% alert title="NOTE" color="primary" %}}
+A list of supported Network Switch models along with the supported firmware versions can be found here, [Physical network requirements for Azure Local](https://learn.microsoft.com/en-us/azure/azure-local/concepts/physical-network-requirements?#network-switches-for-azure-local).
+{{% /alert %}}
 {{< /rawhtml >}}
 
 ### GPUs
