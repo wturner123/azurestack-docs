@@ -202,11 +202,10 @@ Please see the following knowledge base article for procedure details and known 
 {{< /rawhtml >}}
 
 ### Network Switches
-{{< rawhtml >}}
+
 {{% alert title="NOTE" color="primary" %}}
 A list of supported Network Switch models along with the supported firmware versions can be found here, [Physical network requirements for Azure Local](https://learn.microsoft.com/en-us/azure/azure-local/concepts/physical-network-requirements?#network-switches-for-azure-local).
 {{% /alert %}}
-{{< /rawhtml >}}
 
 ### GPUs
 {{< rawhtml >}}
