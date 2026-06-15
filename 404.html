@@ -1,5 +1,27 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://dell.github.io/azurestack-docs/</title>
-<meta http-equiv="refresh" content="0; URL=https://dell.github.io/azurestack-docs/">
-<link rel="canonical" href="https://dell.github.io/azurestack-docs/">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Error 404 :(</title>
+
+    <script>
+        window.onload = function () {
+            const destination = window.location.href;
+            if (window.location.href.includes("wturner123.github.io/azurestack-docs")) {
+                const redirectLocation = window.location.href.replace(
+                    "wturner123.github.io/azurestack-docs",
+                    "dell.github.io/azurestack-docs"
+                );
+                document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+                window.location.href = redirectLocation;
+            }
+        }
+    </script>
+</head>
+
+<body id="body" style="text-align: center">
+    Page not found
+</body>
+
+</html>
